@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Item {
+    
+}
+
 enum HackerNewsItemType: String {
     case topStories = "Top Stories"
     case newStories = "New Stories"
