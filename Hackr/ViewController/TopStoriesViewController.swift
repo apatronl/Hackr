@@ -79,6 +79,7 @@ extension TopStoriesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Top Story")
             ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Top Story")
         if (!refresher.isRefreshing) {
+            cell.textLabel?.numberOfLines = 0 // Bigger cell for long titles
             cell.textLabel?.text = "\(indexPath.row + 1). " + self.topStories[indexPath.row].title!
             cell.detailTextLabel?.text =
                 "👾 by \(self.topStories[indexPath.row].by!)"
