@@ -1,4 +1,4 @@
-Hackr: an iOS client for Y Combinator's [Hacker News](https://news.ycombinator.com/).
+Hackr: a simple iOS client for Y Combinator's [Hacker News](https://news.ycombinator.com/).
 
 <p align="center">
 <img src="img/mock1.png" width="350"/>
