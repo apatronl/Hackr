@@ -10,19 +10,27 @@ import Foundation
 
 struct HackerNewsParser {
     
-    static func parseDataForType(type: HackerNewsItemType, data: Data) {
-        switch type {
-        case .topStories:
-            if let text = String(data: data, encoding: String.Encoding.utf8) {
-                let trimemdText = text.trimmingCharacters(in: CharacterSet.init(
-                    charactersIn: "[]")).replacingOccurrences(of: " ", with: "")
-                let itemIds = trimemdText.components(separatedBy: ",")
-                for itemId in itemIds {
-                    print(itemId)
-                }
+    static func parseDataForStoryIds(data: Data) -> [String]? {
+        if let text = String(data: data, encoding: String.Encoding.utf8) {
+            let trimemdText = text.trimmingCharacters(in: CharacterSet.init(
+                charactersIn: "[]")).replacingOccurrences(of: " ", with: "")
+            let itemIds = trimemdText.components(separatedBy: ",")
+            return itemIds
+        }
+        return nil
+    }
+    
+    static func parseDataForStory(data: Data) -> HackerNewsStory? {
+        do {
+            if let json =
+                try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                print(json)
+                return HackerNewsStory(json: json)
+            } else {
+                return nil
             }
-        default:
-            print("HackerNewsItemType \'\(type.rawValue)\' not yet supported")
+        } catch {
+            return nil
         }
     }
     

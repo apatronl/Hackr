@@ -19,23 +19,14 @@ struct HackerNewsStory {
     let title: String?
     let url: String?
     
-    init(by: String?, descendants: Int?, id: String?, kids: [String]?, score: Int?, title: String?,
-         url: String?) {
-        self.by = by
-        self.descendants = descendants
-        self.id = id
-        self.kids = kids
-        self.score = score
-        self.title = title
-        self.url = url
+    init(json: [String: Any]) {
+        self.by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
+        self.descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0
+        self.id = json[HackerNewsItemFieldKeys.id] as? String ?? "id"
+        self.kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
+        self.score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
+        self.title = json[HackerNewsItemFieldKeys.title] as? String ?? "Title"
+        self.url = json[HackerNewsItemFieldKeys.url] as? String ?? ""
     }
     
 }
-
-//extension HackerNewsStory: Decodable {
-//
-//    init(from decoder: Decoder) throws {
-//        
-//    }
-//
-//}

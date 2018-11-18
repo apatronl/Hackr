@@ -8,22 +8,22 @@
 
 import Foundation
 
-enum HackerNewsItemFieldKeys: String, CodingKey {
-    case id = "id"
-    case deleted = "deleted"
-    case type = "type"
-    case by = "by"
-    case time = "time"
-    case text = "text"
-    case dead = "dead"
-    case parent = "parent"
-    case poll = "poll"
-    case kids = "kids"
-    case url = "url"
-    case score = "score"
-    case title = "title"
-    case parts = "parts"
-    case descendants = "descendants"
+struct HackerNewsItemFieldKeys {
+    static let id = "id"
+    static let deleted = "deleted"
+    static let type = "type"
+    static let by = "by"
+    static let time = "time"
+    static let text = "text"
+    static let dead = "dead"
+    static let parent = "parent"
+    static let poll = "poll"
+    static let kids = "kids"
+    static let url = "url"
+    static let score = "score"
+    static let title = "title"
+    static let parts = "parts"
+    static let descendants = "descendants"
 }
 
 enum HackerNewsItemType: String {
