@@ -15,6 +15,10 @@ struct HackerNewsService {
     static private let NEW_STORIES = "newstories"
     static private let JSON = ".json"
     
+    /// Sends a GET request to the Hacker News API for a given item type.
+    ///
+    /// - Parameters:
+    ///     - type: The item type to get data for.
     static func getItemsForType(type: HackerNewsItemType) {
         var url: URL!
         switch type {
