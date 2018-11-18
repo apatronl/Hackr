@@ -24,7 +24,6 @@ struct HackerNewsParser {
         do {
             if let json =
                 try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                print(json)
                 return HackerNewsStory(json: json)
             } else {
                 return nil

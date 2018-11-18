@@ -20,8 +20,11 @@ struct HackerNewsService {
     ///
     /// - Parameters:
     ///     - type: The item type to get data for.
+    ///     - completion: The function to execute when a story finished loading from the server. The
+    ///         done field will only be true when all stories are done fetching.
     static func getStoriesForType(
-        type: HackerNewsItemType, completion: @escaping (HackerNewsStory) -> ()) {
+        type: HackerNewsItemType,
+        completion: @escaping (_ story: HackerNewsStory, _ done: Bool) -> ()) {
         var url: URL!
         switch type {
         case .topStories:
@@ -41,22 +44,27 @@ struct HackerNewsService {
         task.resume()
     }
     
+    /// Sends a GET request to the Hacker News API for a story given the story id.
+    ///
+    /// - Parameters:
+    ///     - completion: The function to execute when a story finished loading from the server. The
+    ///         done field will only be true when all stories are done fetching.
     private static func getStoriesFromIds(
-        storyIds: [String], completion: @escaping (HackerNewsStory) -> ()) {
-        for id in storyIds {
-            let url = URL(string: BASE_URL + ITEM + id + JSON)!
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                DispatchQueue.main.async {
-                    if let story =
-                        self.handleStoryResponse(data: data, response: response, error: error) {
-                        completion(story)
-                    }
-                }
+        storyIds: [String], completion: @escaping (HackerNewsStory, Bool) -> ()) {
+        if (storyIds.count == 0) { return }
+        var storyIds = storyIds
+        let id = storyIds.removeFirst()
+        let url = URL(string: BASE_URL + ITEM + id + JSON)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let story =
+                self.handleStoryResponse(data: data, response: response, error: error) {
+                completion(story, storyIds.count == 0)
             }
-            task.resume()
+            getStoriesFromIds(storyIds: storyIds, completion: completion)
         }
+        task.resume()
     }
-    
+
     private static func handleStoryIdsResponse(
         data: Data?, response: URLResponse?, error: Error?) -> [String]? {
         if let _ = error {
