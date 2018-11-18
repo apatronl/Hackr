@@ -16,6 +16,7 @@
 		EDD848E621A0BADC0005CD69 /* HackerNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */; };
 		EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */; };
 		EDD848EC21A114FE0005CD69 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EB21A114FE0005CD69 /* UIColor.swift */; };
+		EDD848F021A1E1CE0005CD69 /* HNStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EF21A1E1CE0005CD69 /* HNStoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsItem.swift; sourceTree = "<group>"; };
 		EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsStory.swift; sourceTree = "<group>"; };
 		EDD848EB21A114FE0005CD69 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		EDD848EF21A1E1CE0005CD69 /* HNStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNStoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +64,10 @@
 		EDD848CC21A0BA190005CD69 /* Hackr */ = {
 			isa = PBXGroup;
 			children = (
+				EDD848DF21A0BAB40005CD69 /* Model */,
 				EDD848EA21A114D60005CD69 /* View */,
 				EDD848E721A0CF600005CD69 /* ViewController */,
 				EDD848E021A0BAB90005CD69 /* HackerNews */,
-				EDD848DF21A0BAB40005CD69 /* Model */,
 				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
 				EDD848D421A0BA1A0005CD69 /* Assets.xcassets */,
 				EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */,
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				EDD848EB21A114FE0005CD69 /* UIColor.swift */,
+				EDD848EF21A1E1CE0005CD69 /* HNStoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */,
 				EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */,
 				EDD848E221A0BAC80005CD69 /* HackerNewsService.swift in Sources */,
+				EDD848F021A1E1CE0005CD69 /* HNStoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

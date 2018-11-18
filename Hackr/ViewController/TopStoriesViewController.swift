@@ -80,7 +80,9 @@ extension TopStoriesViewController: UITableViewDataSource {
             ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Top Story")
         if (!refresher.isRefreshing) {
             cell.textLabel?.text = "\(indexPath.row + 1). " + self.topStories[indexPath.row].title!
-            cell.detailTextLabel?.text = self.topStories[indexPath.row].by
+            cell.detailTextLabel?.text =
+                "👾 by \(self.topStories[indexPath.row].by!)"
+                + " | \(self.topStories[indexPath.row].score!) points 🔥"
             cell.accessoryType = .disclosureIndicator
         }
         return cell
