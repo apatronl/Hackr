@@ -95,8 +95,8 @@ extension TopStoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (self.refresher.isRefreshing) { return }
         if let url = URL(string: topStories[indexPath.row].url ?? "") {
-            let safariVC = SFSafariViewController(url: url)
-            safariVC.preferredControlTintColor = UIColor.hackerNewsOrange
+            guard let safariVC = self.safariViewForItem(
+                at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
             self.present(safariVC, animated: true, completion: nil)
         }
         self.topStoriesTable.deselectRow(at: indexPath, animated: true)
@@ -112,8 +112,8 @@ extension TopStoriesViewController: UIViewControllerPreviewingDelegate {
         guard let indexPath = self.topStoriesTable.indexPathForRow(at: location) else { return nil }
         guard let cell = self.topStoriesTable.cellForRow(at: indexPath)
             as? StoryTableViewCell else { return nil }
-        guard let url = URL(string: cell.story?.url ?? "") else { return nil }
-        return SFSafariViewController(url: url)
+        return self.safariViewForItem(
+            at: URL(string: cell.story?.url ?? ""), defaultUrl: HackerNewsService.HOME_URL)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,

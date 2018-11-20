@@ -10,6 +10,7 @@ import Foundation
 
 struct HackerNewsService {
     
+    static let HOME_URL = URL(string: "https://news.ycombinator.com/news")
     static private let BASE_URL = "https://hacker-news.firebaseio.com/v0/"
     static private let ITEM = "item/"
     static private let TOP_STORIES = "topstories"

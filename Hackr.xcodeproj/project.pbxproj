@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED07AB3F21A3B659000B5607 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB3E21A3B659000B5607 /* UIView.swift */; };
+		ED07AB4121A3C485000B5607 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4021A3C485000B5607 /* UIViewController.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		ED07AB3E21A3B659000B5607 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		ED07AB4021A3C485000B5607 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 				EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */,
 			);
 			path = Story;
+			sourceTree = "<group>";
+		};
+		ED07AB4221A3C489000B5607 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED07AB4021A3C485000B5607 /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EDD848C121A0BA190005CD69 = {
@@ -116,6 +126,7 @@
 		EDD848E721A0CF600005CD69 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ED07AB4221A3C489000B5607 /* Extensions */,
 				EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */,
 			);
 			path = ViewController;
@@ -204,6 +215,7 @@
 				EDD848EC21A114FE0005CD69 /* UIColor.swift in Sources */,
 				EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */,
 				EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */,
+				ED07AB4121A3C485000B5607 /* UIViewController.swift in Sources */,
 				EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */,
 				EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */,
 				EDD848E221A0BAC80005CD69 /* HackerNewsService.swift in Sources */,
