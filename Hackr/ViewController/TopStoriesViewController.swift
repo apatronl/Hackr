@@ -10,6 +10,8 @@ import UIKit
 import SafariServices
 
 class TopStoriesViewController: UIViewController {
+    
+    private let cellIdentifier = "Top Story"
 
     var topStoriesTable: UITableView!
     var topStories = [HackerNewsStory]()
@@ -25,12 +27,17 @@ class TopStoriesViewController: UIViewController {
         topStoriesTable.tableFooterView = UIView(frame: CGRect.zero)
         topStoriesTable.delegate = self
         topStoriesTable.dataSource = self
+        topStoriesTable.register(StoryTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(refreshTopStories), for: .valueChanged)
         refresher.tintColor = UIColor.hackerNewsOrange
         topStoriesTable.refreshControl = refresher
         self.view.addSubview(topStoriesTable)
+        
+        if (traitCollection.forceTouchCapability == .available) {
+            self.registerForPreviewing(with: self, sourceView: self.topStoriesTable)
+        }
 
         HackerNewsService.getStoriesForType(type: .topStories, completion: { story, done in
             DispatchQueue.main.async {
@@ -70,38 +77,46 @@ extension TopStoriesViewController: UITableViewDelegate {
     
 }
 
+// MARK: UITableViewDataSource
+
 extension TopStoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topStories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Top Story")
-            ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Top Story")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Top Story") as! StoryTableViewCell
         if (!refresher.isRefreshing) {
-            cell.textLabel?.numberOfLines = 0 // Bigger cell for long titles
-            cell.textLabel?.text = "\(indexPath.row + 1). " + self.topStories[indexPath.row].title!
-            cell.detailTextLabel?.text =
-                "👾 by \(self.topStories[indexPath.row].by!)"
-                + " | \(self.topStories[indexPath.row].score!) points 🔥"
-            cell.accessoryType = .disclosureIndicator
+            cell.story = self.topStories[indexPath.row]
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (self.refresher.isRefreshing) { return }
-        self.topStoriesTable.deselectRow(at: indexPath, animated: true)
         if let url = URL(string: topStories[indexPath.row].url ?? "") {
             let safariVC = SFSafariViewController(url: url)
             safariVC.preferredControlTintColor = UIColor.hackerNewsOrange
             self.present(safariVC, animated: true, completion: nil)
         }
+        self.topStoriesTable.deselectRow(at: indexPath, animated: true)
     }
 }
 
-//extension TopStoriesViewController: UITableViewDataSourcePrefetching {
-//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-//
-//    }
-//}
+// MARK: UIViewControllerPreviewingDelegate
+
+extension TopStoriesViewController: UIViewControllerPreviewingDelegate {
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = self.topStoriesTable.indexPathForRow(at: location) else { return nil }
+        guard let cell = self.topStoriesTable.cellForRow(at: indexPath)
+            as? StoryTableViewCell else { return nil }
+        guard let url = URL(string: cell.story?.url ?? "") else { return nil }
+        return SFSafariViewController(url: url)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.present(viewControllerToCommit, animated: true, completion: nil)
+    }
+    
+}

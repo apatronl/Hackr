@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED07AB3F21A3B659000B5607 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB3E21A3B659000B5607 /* UIView.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
@@ -16,10 +17,11 @@
 		EDD848E621A0BADC0005CD69 /* HackerNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */; };
 		EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */; };
 		EDD848EC21A114FE0005CD69 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EB21A114FE0005CD69 /* UIColor.swift */; };
-		EDD848F021A1E1CE0005CD69 /* HNStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EF21A1E1CE0005CD69 /* HNStoryTableViewCell.swift */; };
+		EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED07AB3E21A3B659000B5607 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
@@ -31,7 +33,7 @@
 		EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsItem.swift; sourceTree = "<group>"; };
 		EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsStory.swift; sourceTree = "<group>"; };
 		EDD848EB21A114FE0005CD69 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		EDD848EF21A1E1CE0005CD69 /* HNStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNStoryTableViewCell.swift; sourceTree = "<group>"; };
+		EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED07AB3C21A3B4FF000B5607 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EDD848EB21A114FE0005CD69 /* UIColor.swift */,
+				ED07AB3E21A3B659000B5607 /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ED07AB3D21A3B5CF000B5607 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
 		EDD848C121A0BA190005CD69 = {
 			isa = PBXGroup;
 			children = (
@@ -105,8 +124,8 @@
 		EDD848EA21A114D60005CD69 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EDD848EB21A114FE0005CD69 /* UIColor.swift */,
-				EDD848EF21A1E1CE0005CD69 /* HNStoryTableViewCell.swift */,
+				ED07AB3C21A3B4FF000B5607 /* Extensions */,
+				ED07AB3D21A3B5CF000B5607 /* Story */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,7 +207,8 @@
 				EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */,
 				EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */,
 				EDD848E221A0BAC80005CD69 /* HackerNewsService.swift in Sources */,
-				EDD848F021A1E1CE0005CD69 /* HNStoryTableViewCell.swift in Sources */,
+				ED07AB3F21A3B659000B5607 /* UIView.swift in Sources */,
+				EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
