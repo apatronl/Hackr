@@ -5,6 +5,8 @@
 //  Created by Alejandrina Patron on 11/19/18.
 //  Copyright © 2018 Alejandrina Patron. All rights reserved.
 //
+// Adapted from https://medium.com/@kemalekren/swift-create-custom-tableview-cell-with-programmatically-in-ios-835d3880513d
+//
 
 import UIKit
 
@@ -21,9 +23,6 @@ extension UIView {
             let insets = self.safeAreaInsets
             topInset = insets.top
             bottomInset = insets.bottom
-            
-            print("Top: \(topInset)")
-            print("Bottom: \(bottomInset)")
         }
         
         translatesAutoresizingMaskIntoConstraints = false

@@ -107,7 +107,8 @@ extension TopStoriesViewController: UITableViewDataSource {
 
 extension TopStoriesViewController: UIViewControllerPreviewingDelegate {
 
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = self.topStoriesTable.indexPathForRow(at: location) else { return nil }
         guard let cell = self.topStoriesTable.cellForRow(at: indexPath)
             as? StoryTableViewCell else { return nil }
@@ -115,7 +116,8 @@ extension TopStoriesViewController: UIViewControllerPreviewingDelegate {
         return SFSafariViewController(url: url)
     }
     
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           commit viewControllerToCommit: UIViewController) {
         self.present(viewControllerToCommit, animated: true, completion: nil)
     }
     
