@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ED07AB3F21A3B659000B5607 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB3E21A3B659000B5607 /* UIView.swift */; };
 		ED07AB4121A3C485000B5607 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4021A3C485000B5607 /* UIViewController.swift */; };
+		ED07AB4421A4DE47000B5607 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4321A4DE47000B5607 /* UILabel.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		ED07AB3E21A3B659000B5607 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		ED07AB4021A3C485000B5607 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		ED07AB4321A4DE47000B5607 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				EDD848EB21A114FE0005CD69 /* UIColor.swift */,
 				ED07AB3E21A3B659000B5607 /* UIView.swift */,
+				ED07AB4321A4DE47000B5607 /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				EDD848E621A0BADC0005CD69 /* HackerNewsItem.swift in Sources */,
 				EDD848EC21A114FE0005CD69 /* UIColor.swift in Sources */,
 				EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */,
+				ED07AB4421A4DE47000B5607 /* UILabel.swift in Sources */,
 				EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */,
 				ED07AB4121A3C485000B5607 /* UIViewController.swift in Sources */,
 				EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */,

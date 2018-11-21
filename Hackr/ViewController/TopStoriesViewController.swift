@@ -103,6 +103,12 @@ extension TopStoriesViewController: UITableViewDataSource {
     }
 }
 
+//extension TopStoriesViewController: UITableViewDataSourcePrefetching {
+//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+//
+//    }
+//}
+
 // MARK: UIViewControllerPreviewingDelegate
 
 extension TopStoriesViewController: UIViewControllerPreviewingDelegate {

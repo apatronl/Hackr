@@ -18,16 +18,14 @@ class StoryTableViewCell: UITableViewCell {
     }
     
     private let titleLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel().withTextStyle(textStyle: .body)
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = UIColor.black
         return label
     }()
     
     private let authorAndPointsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
+        let label = UILabel().withTextStyle(textStyle: .caption1)
         label.textColor = UIColor.lightGray
         return label
     }()
@@ -39,11 +37,11 @@ class StoryTableViewCell: UITableViewCell {
         self.addSubview(authorAndPointsLabel)
         
         titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: authorAndPointsLabel.topAnchor,
-                          right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5,
-                          paddingRight: 30, width: 0, height: 0, enableInsets: false)
+                          right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingBottom: 5,
+                          paddingRight: 35, width: 0, height: 0, enableInsets: false)
         authorAndPointsLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor,
                                     bottom: bottomAnchor, right: rightAnchor, paddingTop: 5,
-                                    paddingLeft: 10, paddingBottom: 10, paddingRight: 20, width: 0,
+                                    paddingLeft: 15, paddingBottom: 10, paddingRight: 35, width: 0,
                                     height: 0, enableInsets: false)
     }
     
