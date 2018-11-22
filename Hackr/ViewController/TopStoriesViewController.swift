@@ -13,9 +13,9 @@ class TopStoriesViewController: UIViewController {
     
     private let cellIdentifier = "Top Story"
 
-    var topStoriesTable: UITableView!
-    var topStories = [HackerNewsStory]()
-    var refresher: UIRefreshControl!
+    private var topStoriesTable: UITableView!
+    private var topStories = [HackerNewsStory]()
+    private var refresher: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +85,9 @@ extension TopStoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Top Story") as! StoryTableViewCell
+        let cell =
+            tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! StoryTableViewCell
+        cell.delegate = self
         if (!refresher.isRefreshing) {
             cell.story = self.topStories[indexPath.row]
         }
@@ -125,6 +127,18 @@ extension TopStoriesViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            commit viewControllerToCommit: UIViewController) {
         self.present(viewControllerToCommit, animated: true, completion: nil)
+    }
+    
+}
+
+extension TopStoriesViewController: StoryTableViewCellDelegate {
+
+    func didPressCommentsButton(_ cell: StoryTableViewCell) {
+        let url = URL(string: HackerNewsService.COMMENTS_URL + "\(cell.story?.id ?? "1")")
+        guard let safariVC =
+            self.safariViewForItem(at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
+        self.present(safariVC, animated: true, completion: nil)
+        
     }
     
 }

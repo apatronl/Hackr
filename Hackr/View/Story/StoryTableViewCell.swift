@@ -10,10 +10,13 @@ import UIKit
 
 class StoryTableViewCell: UITableViewCell {
     
+    var delegate: StoryTableViewCellDelegate?
+    
     var story: HackerNewsStory? {
         didSet {
             titleLabel.text = story?.title
             authorAndPointsLabel.text = "👾 by \(story!.by!) | \(story!.score!) points 🔥"
+            numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
         }
     }
     
@@ -29,20 +32,55 @@ class StoryTableViewCell: UITableViewCell {
         label.textColor = UIColor.lightGray
         return label
     }()
+    
+    private let commentsImageView: UIImageView = {
+        let imgView = UIImageView(image: #imageLiteral(resourceName: "comments"))
+        imgView.contentMode = .scaleAspectFit
+        imgView.clipsToBounds = true
+        return imgView
+    }()
+    
+    private let numberOfCommentsLabel: UILabel = {
+        let label = UILabel().withTextStyle(textStyle: .caption1)
+        label.textColor = UIColor.lightGray
+        return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.accessoryType = .disclosureIndicator
+        
+        let commentsStack =
+            UIStackView(arrangedSubviews: [commentsImageView, numberOfCommentsLabel])
+        commentsStack.axis = .vertical
+        commentsStack.distribution = .equalSpacing
+        commentsStack.translatesAutoresizingMaskIntoConstraints = false
+        commentsStack.spacing = 3
+        commentsStack.alignment = .center
+        
         self.addSubview(titleLabel)
         self.addSubview(authorAndPointsLabel)
+        self.addSubview(commentsStack)
         
         titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: authorAndPointsLabel.topAnchor,
-                          right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingBottom: 5,
-                          paddingRight: 35, width: 0, height: 0, enableInsets: false)
+                          right: commentsStack.leftAnchor, paddingTop: 10, paddingLeft: 15,
+                          paddingBottom: 5, paddingRight: 5, width: 0, height: 0,
+                          enableInsets: false)
+
         authorAndPointsLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor,
                                     bottom: bottomAnchor, right: rightAnchor, paddingTop: 5,
-                                    paddingLeft: 15, paddingBottom: 10, paddingRight: 35, width: 0,
+                                    paddingLeft: 15, paddingBottom: 10, paddingRight: 50, width: 0,
                                     height: 0, enableInsets: false)
+
+        commentsStack.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        commentsStack.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        commentsStack.rightAnchor.constraint(equalTo: rightAnchor, constant: 5).isActive = true
+        commentsStack.leftAnchor.constraint(
+            equalTo: titleLabel.rightAnchor, constant: 5).isActive = true
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(StoryTableViewCell.commentsButtonTapped))
+        commentsImageView.isUserInteractionEnabled = true
+        commentsImageView.addGestureRecognizer(tap)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,5 +92,13 @@ class StoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @objc func commentsButtonTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.delegate?.didPressCommentsButton(self)
+    }
 
+}
+
+protocol StoryTableViewCellDelegate {
+    func didPressCommentsButton(_ cell: StoryTableViewCell)
 }

@@ -22,7 +22,7 @@ struct HackerNewsStory {
     init(json: [String: Any]) {
         self.by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
         self.descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0
-        self.id = json[HackerNewsItemFieldKeys.id] as? String ?? "id"
+        self.id = "\(json[HackerNewsItemFieldKeys.id] ?? "id")"
         self.kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
         self.score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
         self.title = json[HackerNewsItemFieldKeys.title] as? String ?? "Title"

@@ -11,6 +11,7 @@ import Foundation
 struct HackerNewsService {
     
     static let HOME_URL = URL(string: "https://news.ycombinator.com/news")
+    static let COMMENTS_URL = "https://news.ycombinator.com/item?id="
     static private let BASE_URL = "https://hacker-news.firebaseio.com/v0/"
     static private let ITEM = "item/"
     static private let TOP_STORIES = "topstories"
@@ -66,6 +67,17 @@ struct HackerNewsService {
         task.resume()
     }
 
+    /// Handles response for story ids. If data is successfully fetched, calls the parser method
+    /// to return a list of story ids.
+    ///
+    /// - Parameters:
+    ///     - data: The data returned by the server.
+    ///     - response: An object that provides response metadata, such as HTTP headers and status
+    ///         code. If you are making an HTTP or HTTPS request, the returned object is actually an
+    ///         `HTTPURLResponse` object.
+    ///     - error:  An error object that indicates why the request failed, or `nil` if the request
+    ///         was successful.
+    /// - Returns: A list of story ids.
     private static func handleStoryIdsResponse(
         data: Data?, response: URLResponse?, error: Error?) -> [String]? {
         if let _ = error {
