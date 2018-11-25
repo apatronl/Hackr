@@ -138,7 +138,6 @@ extension TopStoriesViewController: StoryTableViewCellDelegate {
         guard let safariVC =
             self.safariViewForItem(at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
         self.present(safariVC, animated: true, completion: nil)
-        
     }
     
 }

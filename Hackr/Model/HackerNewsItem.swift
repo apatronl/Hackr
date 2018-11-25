@@ -8,6 +8,9 @@
 
 import Foundation
 
+///
+/// Hacker News API constants.
+///
 struct HackerNewsItemFieldKeys {
     static let id = "id"
     static let deleted = "deleted"
@@ -26,6 +29,9 @@ struct HackerNewsItemFieldKeys {
     static let descendants = "descendants"
 }
 
+///
+/// Hacker News API request types.
+///
 enum HackerNewsItemType: String {
     case topStories = "Top Stories"
     case newStories = "New Stories"
