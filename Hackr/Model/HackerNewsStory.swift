@@ -15,7 +15,7 @@ struct HackerNewsStory {
     let id: String?
     let kids: [String]?
     let score: Int?
-    //    let time: Date
+    let time: Date?
     let title: String?
     let url: String?
     
@@ -25,6 +25,11 @@ struct HackerNewsStory {
         self.id = "\(json[HackerNewsItemFieldKeys.id] ?? "id")"
         self.kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
         self.score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
+        if let timeInterval = json[HackerNewsItemFieldKeys.time] as? TimeInterval {
+            self.time = Date(timeIntervalSince1970: timeInterval)
+        } else {
+            self.time = nil
+        }
         self.title = json[HackerNewsItemFieldKeys.title] as? String ?? "Title"
         self.url = json[HackerNewsItemFieldKeys.url] as? String ?? ""
     }

@@ -20,6 +20,7 @@ class StoryTableViewCell: UITableViewCell {
         didSet {
             titleLabel.text = story?.title
             authorAndPointsLabel.text = "👾 by \(story!.by!) | \(story!.score!) points 🔥"
+            dateLabel.text = self.story?.time?.formatted()
             numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
         }
     }
@@ -32,6 +33,12 @@ class StoryTableViewCell: UITableViewCell {
     }()
     
     private let authorAndPointsLabel: UILabel = {
+        let label = UILabel().withTextStyle(textStyle: .caption1)
+        label.textColor = UIColor.lightGray
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
         let label = UILabel().withTextStyle(textStyle: .caption1)
         label.textColor = UIColor.lightGray
         return label
@@ -63,6 +70,7 @@ class StoryTableViewCell: UITableViewCell {
         
         self.addSubview(titleLabel)
         self.addSubview(authorAndPointsLabel)
+        self.addSubview(dateLabel)
         self.addSubview(commentsStack)
         
         titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: authorAndPointsLabel.topAnchor,
@@ -71,9 +79,14 @@ class StoryTableViewCell: UITableViewCell {
                           enableInsets: false)
 
         authorAndPointsLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor,
-                                    bottom: bottomAnchor, right: rightAnchor, paddingTop: 5,
-                                    paddingLeft: 15, paddingBottom: 10, paddingRight: 50, width: 0,
+                                    bottom: dateLabel.topAnchor, right: rightAnchor, paddingTop: 5,
+                                    paddingLeft: 15, paddingBottom: 5, paddingRight: 50, width: 0,
                                     height: 0, enableInsets: false)
+        
+        dateLabel.anchor(top: authorAndPointsLabel.bottomAnchor, left: leftAnchor,
+                         bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15,
+                         paddingBottom: 10, paddingRight: 50, width: 0, height: 0,
+                         enableInsets: false)
 
         commentsStack.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         commentsStack.widthAnchor.constraint(equalToConstant: 70).isActive = true
