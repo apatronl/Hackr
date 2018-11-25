@@ -9,8 +9,8 @@
 import UIKit
 
 ///
-/// A `UITableViewCell` that shows a `HackerNewsStory` with a title, username, score, # of comments,
-/// and comments button.
+/// A `UITableViewCell` that shows a `HackerNewsStory` with a title, username, score, date, # of
+/// comments, and comments button.
 ///
 class StoryTableViewCell: UITableViewCell {
     
