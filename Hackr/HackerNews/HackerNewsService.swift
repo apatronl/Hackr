@@ -71,8 +71,8 @@ struct HackerNewsService {
             let operation = StoryDownloadOperation(
                 url: URL(string: BASE_URL + ITEM + id + JSON)!, completion: { story, error in
                     if let _ = error {
-                        finishPageLoad(withSuccess: false)
                         completion(nil, error)
+                        finishPageLoad(withSuccess: false)
                         return
                     }
                     guard let story = story else { return }

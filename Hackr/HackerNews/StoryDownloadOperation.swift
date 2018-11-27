@@ -38,6 +38,7 @@ class StoryDownloadOperation: AsyncOperation {
                 return
             }
             self.completion(HackerNewsParser.parseDataForStory(data: data), nil)
+            self.state = .isFinished
         }
         task.resume()
     }
