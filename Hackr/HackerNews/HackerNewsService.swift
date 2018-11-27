@@ -85,10 +85,10 @@ struct HackerNewsService {
         }
         let finalOperation = BlockOperation(block: {
             completion(stories, nil)
+            finishPageLoad(withSuccess: true)
         })
         if let op = operations.last {
             finalOperation.addDependency(op)
-            finishPageLoad(withSuccess: true)
         }
         operations.append(finalOperation)
         storyFetchingQueue.addOperations(operations, waitUntilFinished: false)
