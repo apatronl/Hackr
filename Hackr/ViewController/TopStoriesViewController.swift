@@ -145,15 +145,3 @@ extension TopStoriesViewController: StoryTableViewCellDelegate {
     }
     
 }
-
-extension TopStoriesViewController {
-    func shouldLoadStory(for indexPath: IndexPath) -> Bool {
-        return indexPath.row >= self.topStories.count
-    }
-    
-    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
-        let indexPathsForVisibleRows = topStoriesTable.indexPathsForVisibleRows ?? []
-        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
-        return Array(indexPathsIntersection)
-    }
-}
