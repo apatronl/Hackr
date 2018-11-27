@@ -32,6 +32,7 @@ struct HackerNewsService {
     static func getStoriesForType(
         type: HackerNewsItemType,
         completion: @escaping (_ stories: [HackerNewsStory]?, _ error: Error?) -> ()) {
+        resetFetch()
         var url: URL!
         switch type {
         case .topStories:
@@ -39,11 +40,18 @@ struct HackerNewsService {
         case .newStories, .bestStories: // TODO: handle different story types once type menu is done
             url = URL(string: BASE_URL + NEW_STORIES + JSON)!
         }
+        isFetching = true
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let _ = error {
+                completion(nil, error)
+                resetFetch()
+                return
+            }
             guard let ids =
                 self.handleStoryIdsResponse(data: data, response: response, error: error) else {
                     // TODO: Better handle errors
                     print("Error")
+                    resetFetch()
                     return
             }
             self.ids = ids
@@ -116,8 +124,15 @@ struct HackerNewsService {
         }
         isFetching = false
     }
+    
+    private static func resetFetch() {
+        storyFetchingQueue.cancelAllOperations()
+        isFetching = false
+        currentPage = 0
+        ids = []
+    }
 
-
+    
     /// Handles response for story ids. If data is successfully fetched, calls the parser method
     /// to return a list of story ids.
     ///
@@ -137,15 +152,5 @@ struct HackerNewsService {
         }
         guard let data = data else { return nil }
         return HackerNewsParser.parseDataForStoryIds(data: data)
-    }
-    
-    private static func handleStoryResponse(
-        data: Data?, response: URLResponse?, error: Error?) -> HackerNewsStory? {
-        if let _ = error {
-            print("An error occurred while getting items")
-            return nil
-        }
-        guard let data = data else { return nil }
-        return HackerNewsParser.parseDataForStory(data: data)
     }
 }

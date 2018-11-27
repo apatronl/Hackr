@@ -53,32 +53,19 @@ class TopStoriesViewController: UIViewController {
     }
 
     @objc private func refreshTopStories() {
-//        URLSession.shared.getAllTasks(completionHandler: { tasks in
-//            tasks.forEach({ task in
-//                task.cancel()
-//            })
-//            DispatchQueue.main.async {
-//                self.topStories = []
-//                self.topStoriesTable.reloadData()
-//            }
-//            HackerNewsService.getStoriesForType(type: .topStories, completion: { stories, done in
-//                DispatchQueue.main.async {
-////                    if let story = story {
-////                        self.topStories.append(story)
-////                        self.topStoriesTable.reloadData()
-////                    }
-////                    self.topStories.append(story)
-//                    if (done) {
-//                        print("Done")
-//                        if stories.isEmpty { return }
-//                        self.topStories += stories
-//                        self.topStoriesTable.reloadData()
-//                        self.refresher.endRefreshing()
-//                    }
-////                    self.topStoriesTable.reloadData()
-//                }
-//            })
-//        })
+        self.topStories = []
+        self.topStoriesTable.reloadData()
+        HackerNewsService.getStoriesForType(type: .topStories, completion: { stories, error in
+            DispatchQueue.main.async {
+                self.refresher.endRefreshing()
+                if let _ = error {
+                    return
+                }
+                guard let stories = stories else { return }
+                self.topStories += stories
+                self.topStoriesTable.reloadData()
+            }
+        })
     }
 }
 
@@ -104,7 +91,6 @@ extension TopStoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.refresher.isRefreshing { return }
         if let url = URL(string: topStories[indexPath.row].url ?? "") {
-            print(url.absoluteString)
             guard let safariVC = self.safariViewForItem(
                 at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
             self.present(safariVC, animated: true, completion: nil)
