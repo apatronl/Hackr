@@ -11,6 +11,8 @@
 		ED07AB4121A3C485000B5607 /* UIViewController+Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4021A3C485000B5607 /* UIViewController+Safari.swift */; };
 		ED07AB4421A4DE47000B5607 /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4321A4DE47000B5607 /* UILabel+TextStyle.swift */; };
 		ED3C851821AAFB7C004299F4 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851721AAFB7C004299F4 /* Date+Format.swift */; };
+		ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */; };
+		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		ED07AB4021A3C485000B5607 /* UIViewController+Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Safari.swift"; sourceTree = "<group>"; };
 		ED07AB4321A4DE47000B5607 /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
 		ED3C851721AAFB7C004299F4 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDownloadOperation.swift; sourceTree = "<group>"; };
+		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +84,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		ED3C852021ACC18C004299F4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				ED3C851E21ACC180004299F4 /* AsyncOperation.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		EDD848C121A0BA190005CD69 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +115,7 @@
 				EDD848EA21A114D60005CD69 /* View */,
 				EDD848E721A0CF600005CD69 /* ViewController */,
 				EDD848E021A0BAB90005CD69 /* HackerNews */,
+				ED3C852021ACC18C004299F4 /* Networking */,
 				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
 				EDD848D421A0BA1A0005CD69 /* Assets.xcassets */,
 				EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */,
@@ -125,6 +138,7 @@
 			children = (
 				EDD848E121A0BAC80005CD69 /* HackerNewsService.swift */,
 				EDD848E321A0BAD20005CD69 /* HackerNewsParser.swift */,
+				ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */,
 			);
 			path = HackerNews;
 			sourceTree = "<group>";
@@ -223,9 +237,11 @@
 				ED07AB4421A4DE47000B5607 /* UILabel+TextStyle.swift in Sources */,
 				EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */,
 				ED07AB4121A3C485000B5607 /* UIViewController+Safari.swift in Sources */,
+				ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */,
 				ED3C851821AAFB7C004299F4 /* Date+Format.swift in Sources */,
 				EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */,
 				EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */,
+				ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */,
 				EDD848E221A0BAC80005CD69 /* HackerNewsService.swift in Sources */,
 				ED07AB3F21A3B659000B5607 /* UIView+Constraints.swift in Sources */,
 				EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */,

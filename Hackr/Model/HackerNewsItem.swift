@@ -35,4 +35,5 @@ struct HackerNewsItemFieldKeys {
 enum HackerNewsItemType: String {
     case topStories = "Top Stories"
     case newStories = "New Stories"
+    case bestStories = "Best Stories"
 }

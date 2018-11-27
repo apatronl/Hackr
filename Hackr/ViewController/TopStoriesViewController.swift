@@ -25,8 +25,8 @@ class TopStoriesViewController: UIViewController {
 
         topStoriesTable = UITableView(frame: self.view.frame)
         topStoriesTable.tableFooterView = UIView(frame: CGRect.zero)
-        topStoriesTable.delegate = self
         topStoriesTable.dataSource = self
+        topStoriesTable.delegate = self
         topStoriesTable.register(StoryTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         refresher = UIRefreshControl()
@@ -39,43 +39,50 @@ class TopStoriesViewController: UIViewController {
             self.registerForPreviewing(with: self, sourceView: self.topStoriesTable)
         }
 
-        HackerNewsService.getStoriesForType(type: .topStories, completion: { story, done in
+        HackerNewsService.getStoriesForType(type: .topStories, completion: { stories, error in
             DispatchQueue.main.async {
-                self.topStories.append(story)
-                if (done) {
-                    print("Done")
+                if let _ = error {
+                    return
                 }
-                self.topStoriesTable.reloadData()
+                if let stories = stories {
+                    self.topStories += stories
+                    self.topStoriesTable.reloadData()
+                }
             }
         })
     }
 
     @objc private func refreshTopStories() {
-        URLSession.shared.getAllTasks(completionHandler: { tasks in
-            tasks.forEach({ task in
-                task.cancel()
-            })
-            DispatchQueue.main.async {
-                self.topStories = []
-                self.topStoriesTable.reloadData()
-            }
-            HackerNewsService.getStoriesForType(type: .topStories, completion: { story, done in
-                DispatchQueue.main.async {
-                    self.topStories.append(story)
-                    if (done) {
-                        print("Done")
-                        self.refresher.endRefreshing()
-                    }
-                    self.topStoriesTable.reloadData()
-                }
-            })
-        })
+//        URLSession.shared.getAllTasks(completionHandler: { tasks in
+//            tasks.forEach({ task in
+//                task.cancel()
+//            })
+//            DispatchQueue.main.async {
+//                self.topStories = []
+//                self.topStoriesTable.reloadData()
+//            }
+//            HackerNewsService.getStoriesForType(type: .topStories, completion: { stories, done in
+//                DispatchQueue.main.async {
+////                    if let story = story {
+////                        self.topStories.append(story)
+////                        self.topStoriesTable.reloadData()
+////                    }
+////                    self.topStories.append(story)
+//                    if (done) {
+//                        print("Done")
+//                        if stories.isEmpty { return }
+//                        self.topStories += stories
+//                        self.topStoriesTable.reloadData()
+//                        self.refresher.endRefreshing()
+//                    }
+////                    self.topStoriesTable.reloadData()
+//                }
+//            })
+//        })
     }
 }
 
-extension TopStoriesViewController: UITableViewDelegate {
-    
-}
+extension TopStoriesViewController: UITableViewDelegate {}
 
 // MARK: UITableViewDataSource
 
@@ -95,21 +102,30 @@ extension TopStoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (self.refresher.isRefreshing) { return }
+        if self.refresher.isRefreshing { return }
         if let url = URL(string: topStories[indexPath.row].url ?? "") {
+            print(url.absoluteString)
             guard let safariVC = self.safariViewForItem(
                 at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
             self.present(safariVC, animated: true, completion: nil)
         }
         self.topStoriesTable.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.topStories.count - 1 {
+            HackerNewsService.loadMoreStoriesForType(type: .topStories, completion: { stories, error in
+                DispatchQueue.main.async {
+                    if let _ = error { return }
+                    guard let stories = stories else { return }
+                    if stories.isEmpty { return }
+                    self.topStories += stories
+                    self.topStoriesTable.reloadData()
+                }
+            })
+        }
+    }
 }
-
-//extension TopStoriesViewController: UITableViewDataSourcePrefetching {
-//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-//
-//    }
-//}
 
 // MARK: UIViewControllerPreviewingDelegate
 
@@ -131,6 +147,8 @@ extension TopStoriesViewController: UIViewControllerPreviewingDelegate {
     
 }
 
+// MARK: StoryTableViewCellDelegate
+
 extension TopStoriesViewController: StoryTableViewCellDelegate {
 
     func didPressCommentsButton(_ cell: StoryTableViewCell) {
@@ -140,4 +158,16 @@ extension TopStoriesViewController: StoryTableViewCellDelegate {
         self.present(safariVC, animated: true, completion: nil)
     }
     
+}
+
+extension TopStoriesViewController {
+    func shouldLoadStory(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= self.topStories.count
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = topStoriesTable.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+    }
 }

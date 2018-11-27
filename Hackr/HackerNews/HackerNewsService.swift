@@ -17,6 +17,11 @@ struct HackerNewsService {
     static private let TOP_STORIES = "topstories"
     static private let NEW_STORIES = "newstories"
     static private let JSON = ".json"
+    static private var ids = [String]()
+    static private var currentPage = 0
+    static private let maxStoriesToLoad = 20
+    static private var isFetching = false
+    static private let storyFetchingQueue = OperationQueue()
     
     /// Sends a GET request to the Hacker News API for a given item type.
     ///
@@ -26,46 +31,92 @@ struct HackerNewsService {
     ///         done field will only be true when all stories are done fetching.
     static func getStoriesForType(
         type: HackerNewsItemType,
-        completion: @escaping (_ story: HackerNewsStory, _ done: Bool) -> ()) {
+        completion: @escaping (_ stories: [HackerNewsStory]?, _ error: Error?) -> ()) {
         var url: URL!
         switch type {
         case .topStories:
             url = URL(string: BASE_URL + TOP_STORIES + JSON)!
-        case .newStories:
+        case .newStories, .bestStories: // TODO: handle different story types once type menu is done
             url = URL(string: BASE_URL + NEW_STORIES + JSON)!
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let ids =
                 self.handleStoryIdsResponse(data: data, response: response, error: error) else {
-                    // TODO: Better handle error
+                    // TODO: Better handle errors
                     print("Error")
                     return
             }
-            self.getStoriesFromIds(storyIds: ids, completion: completion)
+            self.ids = ids
+            self.getStoriesForIds(completion: completion)
         }
         task.resume()
     }
     
-    /// Sends a GET request to the Hacker News API for a story given the story id.
+
+    /// Sends a GET request to the Hacker News API for a story given the fetched story ids.
     ///
     /// - Parameters:
-    ///     - completion: The function to execute when a story finished loading from the server. The
-    ///         done field will only be true when all stories are done fetching.
-    private static func getStoriesFromIds(
-        storyIds: [String], completion: @escaping (HackerNewsStory, Bool) -> ()) {
-        if (storyIds.count == 0) { return }
-        var storyIds = storyIds
-        let id = storyIds.removeFirst()
-        let url = URL(string: BASE_URL + ITEM + id + JSON)!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let story =
-                self.handleStoryResponse(data: data, response: response, error: error) {
-                completion(story, storyIds.count == 0)
-            }
-            getStoriesFromIds(storyIds: storyIds, completion: completion)
+    ///     - completion: The function to execute when all stories in the current page are finished
+    ///         loading from the server.
+    private static func getStoriesForIds(completion: @escaping([HackerNewsStory]?, Error?) -> ()) {
+        let start = currentPage * maxStoriesToLoad
+        let end = min((currentPage + 1) * maxStoriesToLoad - 1, ids.count - 1)
+        if (start >= ids.count) {
+            return
         }
-        task.resume()
+        var stories = [HackerNewsStory]()
+        var operations = [Operation]()
+        for i in start...end {
+            let id = ids[i]
+            let operation = StoryDownloadOperation(
+                url: URL(string: BASE_URL + ITEM + id + JSON)!, completion: { story, error in
+                    if let _ = error {
+                        finishPageLoad(withSuccess: false)
+                        completion(nil, error)
+                        return
+                    }
+                    guard let story = story else { return }
+                    stories.append(story)
+            })
+            if i > start {
+                operation.addDependency(operations[i % maxStoriesToLoad - 1])
+            }
+            operations.append(operation)
+        }
+        let finalOperation = BlockOperation(block: {
+            completion(stories, nil)
+        })
+        if let op = operations.last {
+            finalOperation.addDependency(op)
+            finishPageLoad(withSuccess: true)
+        }
+        operations.append(finalOperation)
+        storyFetchingQueue.addOperations(operations, waitUntilFinished: false)
     }
+    
+    /// Loads more stories, if available, and if we're not currently in the process of fetching
+    /// stories. This method is used to implement infinite scrolling in the main stories VC.
+    ///
+    /// - Parameters:
+    ///     - type: The item type to get more stories for. NOTE: currently only handling top stories
+    ///     - completion: The function to execute when all stories in the current page are finished
+    ///         loading from the server.
+    static func loadMoreStoriesForType(
+        type: HackerNewsItemType,
+        completion: @escaping (_ stories: [HackerNewsStory]?, _ error: Error?) -> ()) {
+        if (self.isFetching) { return }
+        self.getStoriesForIds(completion: completion)
+    }
+    
+    private static func finishPageLoad(withSuccess: Bool) {
+        if !withSuccess {
+            storyFetchingQueue.cancelAllOperations()
+        } else {
+            currentPage += 1
+        }
+        isFetching = false
+    }
+
 
     /// Handles response for story ids. If data is successfully fetched, calls the parser method
     /// to return a list of story ids.

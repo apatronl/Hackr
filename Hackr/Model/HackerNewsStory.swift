@@ -22,7 +22,7 @@ struct HackerNewsStory {
     init(json: [String: Any]) {
         self.by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
         self.descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0
-        self.id = "\(json[HackerNewsItemFieldKeys.id] ?? "id")"
+        self.id = json[HackerNewsItemFieldKeys.id] as? String
         self.kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
         self.score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
         if let timeInterval = json[HackerNewsItemFieldKeys.time] as? TimeInterval {
@@ -31,7 +31,13 @@ struct HackerNewsStory {
             self.time = nil
         }
         self.title = json[HackerNewsItemFieldKeys.title] as? String ?? "Title"
-        self.url = json[HackerNewsItemFieldKeys.url] as? String ?? ""
+        if let url = json[HackerNewsItemFieldKeys.url] as? String {
+            self.url = url
+        } else if let id = self.id {
+            self.url = HackerNewsService.COMMENTS_URL + id
+        } else {
+            self.url = HackerNewsService.HOME_URL?.absoluteString
+        }
     }
     
 }
