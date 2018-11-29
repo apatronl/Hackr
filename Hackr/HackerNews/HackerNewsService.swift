@@ -61,7 +61,7 @@ struct HackerNewsService {
     }
     
 
-    /// Sends a GET request to the Hacker News API for a story given the fetched story ids.
+    /// Sends a GET request to the Hacker News API to get stories given the fetched story ids.
     ///
     /// - Parameters:
     ///     - completion: The function to execute when all stories in the current page are finished
@@ -116,6 +116,11 @@ struct HackerNewsService {
         self.getStoriesForIds(completion: completion)
     }
     
+    /// Finishes a page load
+    ///
+    /// - Parameters:
+    ///     - withSuccess: Whether the page load succeeded, that is, whether we were able to fetch
+    ///         the next `maxStoriesToLoad` stories.
     private static func finishPageLoad(withSuccess: Bool) {
         if !withSuccess {
             storyFetchingQueue.cancelAllOperations()
@@ -125,6 +130,8 @@ struct HackerNewsService {
         isFetching = false
     }
     
+    /// Resets a fetch by canceling all operations and re-initializing the current page to 0,
+    /// removing all currently loaded story ids.
     private static func resetFetch() {
         storyFetchingQueue.cancelAllOperations()
         isFetching = false
@@ -141,7 +148,7 @@ struct HackerNewsService {
     ///     - response: An object that provides response metadata, such as HTTP headers and status
     ///         code. If you are making an HTTP or HTTPS request, the returned object is actually an
     ///         `HTTPURLResponse` object.
-    ///     - error:  An error object that indicates why the request failed, or `nil` if the request
+    ///     - error: An error object that indicates why the request failed, or `nil` if the request
     ///         was successful.
     /// - Returns: A list of story ids.
     private static func handleStoryIdsResponse(

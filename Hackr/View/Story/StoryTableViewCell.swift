@@ -116,6 +116,9 @@ class StoryTableViewCell: UITableViewCell {
 
 }
 
+/// A method used by the delegate to respond to a tap event on the comments button of a
+/// `StoryTableViewCell`
+
 protocol StoryTableViewCellDelegate {
     func didPressCommentsButton(_ cell: StoryTableViewCell)
 }
