@@ -16,6 +16,7 @@ class TopStoriesViewController: UIViewController {
     private var topStoriesTable: UITableView!
     private var topStories = [HackerNewsStory]()
     private var refresher: UIRefreshControl!
+    private var spinner: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class TopStoriesViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Top Stories"
 
-        topStoriesTable = UITableView(frame: self.view.frame)
+        topStoriesTable = UITableView()
         topStoriesTable.tableFooterView = UIView(frame: CGRect.zero)
         topStoriesTable.dataSource = self
         topStoriesTable.delegate = self
@@ -34,13 +35,25 @@ class TopStoriesViewController: UIViewController {
         refresher.tintColor = UIColor.hackerNewsOrange
         topStoriesTable.refreshControl = refresher
         self.view.addSubview(topStoriesTable)
+        topStoriesTable.anchor(top: self.view.topAnchor, left: self.view.leftAnchor,
+                               bottom: self.view.bottomAnchor, right: self.view.rightAnchor,
+                               paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
+                               width: 0, height: 0, enableInsets: false)
         
         if (traitCollection.forceTouchCapability == .available) {
             self.registerForPreviewing(with: self, sourceView: self.topStoriesTable)
         }
 
+        spinner = UIActivityIndicatorView(style: .whiteLarge)
+        spinner.color = UIColor.hackerNewsOrange
+        spinner.autoresizingMask =
+            [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        spinner.center = self.view.center
+        self.view.addSubview(spinner)
+        spinner.startAnimating()
         HackerNewsService.getStoriesForType(type: .topStories, completion: { stories, error in
             DispatchQueue.main.async {
+                self.spinner.stopAnimating()
                 if let _ = error {
                     return
                 }
