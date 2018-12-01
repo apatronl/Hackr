@@ -22,6 +22,22 @@ class StoryTableViewCell: UITableViewCell {
             authorAndPointsLabel.text = "👾 by \(story!.by!) | \(story!.score!) points 🔥"
             dateLabel.text = self.story?.time?.formatted()
             numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
+            commentsImageView.isAccessibilityElement = true
+            
+            // Story details a11y
+            authorAndPointsLabel.isAccessibilityElement = true
+            let points = story?.score ?? 0
+            authorAndPointsLabel.accessibilityLabel =
+                "Story posted by \(story?.by ?? "unknown"), "
+                + "\(points) \(points == 1 ? "point" : "points")"
+            numberOfCommentsLabel.isAccessibilityElement = false
+            
+            // Comments button a11y
+            let numOfComments = story?.descendants ?? 0
+            commentsImageView.accessibilityLabel =
+                "\(numOfComments) \(numOfComments == 1 ? "comment" : "comments")"
+            commentsImageView.accessibilityHint = "Shows comments for this story"
+            commentsImageView.accessibilityTraits = .button
         }
     }
     
