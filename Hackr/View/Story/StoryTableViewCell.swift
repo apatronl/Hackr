@@ -22,7 +22,6 @@ class StoryTableViewCell: UITableViewCell {
             authorAndPointsLabel.text = "👾 by \(story!.by!) | \(story!.score!) points 🔥"
             dateLabel.text = self.story?.time?.formatted()
             numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
-            commentsImageView.isAccessibilityElement = true
             
             // Story details a11y
             authorAndPointsLabel.isAccessibilityElement = true
@@ -33,6 +32,7 @@ class StoryTableViewCell: UITableViewCell {
             numberOfCommentsLabel.isAccessibilityElement = false
             
             // Comments button a11y
+            commentsImageView.isAccessibilityElement = true
             let numOfComments = story?.descendants ?? 0
             commentsImageView.accessibilityLabel =
                 "\(numOfComments) \(numOfComments == 1 ? "comment" : "comments")"
