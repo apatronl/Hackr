@@ -1,3 +1,7 @@
+<p align="center">
+<img src="img/Hackr.png" width="450"/>
+</p>
+
 Hackr: a simple iOS client for Y Combinator's [Hacker News](https://news.ycombinator.com/).
 
 <p align="center">
