@@ -28,14 +28,14 @@ class StoryTableViewCell: UITableViewCell {
             let points = story?.score ?? 0
             authorAndPointsLabel.accessibilityLabel =
                 "Story posted by \(story?.by ?? "unknown"), "
-                + "\(points) \(points == 1 ? "point" : "points")"
+                + getQuantityString(for: points, singular: "point", plural: "points")
             numberOfCommentsLabel.isAccessibilityElement = false
             
             // Comments button a11y
             commentsImageView.isAccessibilityElement = true
             let numOfComments = story?.descendants ?? 0
             commentsImageView.accessibilityLabel =
-                "\(numOfComments) \(numOfComments == 1 ? "comment" : "comments")"
+                getQuantityString(for: numOfComments, singular: "comment", plural: "comments")
             commentsImageView.accessibilityHint = "Shows comments for this story"
             commentsImageView.accessibilityTraits = .button
         }
