@@ -14,6 +14,7 @@
 		ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */; };
 		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
 		ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
+		ED8D427621B77E5B00E3A130 /* UITableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDownloadOperation.swift; sourceTree = "<group>"; };
 		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		ED8D427321B6043600E3A130 /* String+Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Quantity.swift"; sourceTree = "<group>"; };
+		ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identifier.swift"; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				ED07AB3E21A3B659000B5607 /* UIView+Constraints.swift */,
 				ED07AB4321A4DE47000B5607 /* UILabel+TextStyle.swift */,
 				ED3C851721AAFB7C004299F4 /* Date+Format.swift */,
+				ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				EDD848EC21A114FE0005CD69 /* UIColor+HackrColor.swift in Sources */,
 				EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */,
 				ED07AB4421A4DE47000B5607 /* UILabel+TextStyle.swift in Sources */,
+				ED8D427621B77E5B00E3A130 /* UITableViewCell+Identifier.swift in Sources */,
 				EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */,
 				ED07AB4121A3C485000B5607 /* UIViewController+Safari.swift in Sources */,
 				ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */,

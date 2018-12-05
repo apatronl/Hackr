@@ -10,8 +10,6 @@ import UIKit
 import SafariServices
 
 class TopStoriesViewController: UIViewController {
-    
-    private let cellIdentifier = "Top Story"
 
     private var topStoriesTable: UITableView!
     private var topStories = [HackerNewsStory]()
@@ -28,7 +26,8 @@ class TopStoriesViewController: UIViewController {
         topStoriesTable.tableFooterView = UIView(frame: CGRect.zero)
         topStoriesTable.dataSource = self
         topStoriesTable.delegate = self
-        topStoriesTable.register(StoryTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        topStoriesTable.register(StoryTableViewCell.self,
+                                 forCellReuseIdentifier: StoryTableViewCell.identifier)
         
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(refreshTopStories), for: .valueChanged)
@@ -92,8 +91,8 @@ extension TopStoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =
-            tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! StoryTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: StoryTableViewCell.identifier) as! StoryTableViewCell
         cell.delegate = self
         if (!refresher.isRefreshing) {
             cell.story = self.topStories[indexPath.row]
