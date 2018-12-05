@@ -10,6 +10,6 @@ import UIKit
 
 extension UITableViewCell {
     class var identifier: String {
-        return  String.init(describing: self)
+        return  String(describing: self)
     }
 }
