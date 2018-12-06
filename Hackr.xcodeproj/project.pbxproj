@@ -15,6 +15,8 @@
 		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
 		ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
 		ED8D427621B77E5B00E3A130 /* UITableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */; };
+		ED8D427E21B8B51600E3A130 /* HackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427D21B8B51600E3A130 /* HackrTests.swift */; };
+		ED8D429721B8B6BE00E3A130 /* StringUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D429521B8B6BC00E3A130 /* StringUtilTest.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D021A0BA190005CD69 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
@@ -27,6 +29,16 @@
 		EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		ED8D428021B8B51600E3A130 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDD848C221A0BA190005CD69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDD848C921A0BA190005CD69;
+			remoteInfo = Hackr;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		ED07AB3E21A3B659000B5607 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		ED07AB4021A3C485000B5607 /* UIViewController+Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Safari.swift"; sourceTree = "<group>"; };
@@ -36,6 +48,10 @@
 		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		ED8D427321B6043600E3A130 /* String+Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Quantity.swift"; sourceTree = "<group>"; };
 		ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identifier.swift"; sourceTree = "<group>"; };
+		ED8D427B21B8B51600E3A130 /* HackrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED8D427D21B8B51600E3A130 /* HackrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackrTests.swift; sourceTree = "<group>"; };
+		ED8D427F21B8B51600E3A130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED8D429521B8B6BC00E3A130 /* StringUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtilTest.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848CF21A0BA190005CD69 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED8D427821B8B51600E3A130 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDD848C721A0BA190005CD69 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,10 +128,29 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		ED8D427C21B8B51600E3A130 /* HackrTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED8D427D21B8B51600E3A130 /* HackrTests.swift */,
+				ED8D429421B8B6A200E3A130 /* UtilTests */,
+				ED8D427F21B8B51600E3A130 /* Info.plist */,
+			);
+			path = HackrTests;
+			sourceTree = "<group>";
+		};
+		ED8D429421B8B6A200E3A130 /* UtilTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED8D429521B8B6BC00E3A130 /* StringUtilTest.swift */,
+			);
+			path = UtilTests;
+			sourceTree = "<group>";
+		};
 		EDD848C121A0BA190005CD69 = {
 			isa = PBXGroup;
 			children = (
 				EDD848CC21A0BA190005CD69 /* Hackr */,
+				ED8D427C21B8B51600E3A130 /* HackrTests */,
 				EDD848CB21A0BA190005CD69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				EDD848CA21A0BA190005CD69 /* Hackr.app */,
+				ED8D427B21B8B51600E3A130 /* HackrTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,13 +167,13 @@
 		EDD848CC21A0BA190005CD69 /* Hackr */ = {
 			isa = PBXGroup;
 			children = (
-				ED8D427221B6040800E3A130 /* Util */,
+				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
 				EDD848DF21A0BAB40005CD69 /* Model */,
 				EDD848EA21A114D60005CD69 /* View */,
 				EDD848E721A0CF600005CD69 /* ViewController */,
 				EDD848E021A0BAB90005CD69 /* HackerNews */,
 				ED3C852021ACC18C004299F4 /* Networking */,
-				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
+				ED8D427221B6040800E3A130 /* Util */,
 				EDD848D421A0BA1A0005CD69 /* Assets.xcassets */,
 				EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */,
 				EDD848D921A0BA1A0005CD69 /* Info.plist */,
@@ -178,6 +221,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ED8D427A21B8B51600E3A130 /* HackrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED8D428221B8B51600E3A130 /* Build configuration list for PBXNativeTarget "HackrTests" */;
+			buildPhases = (
+				ED8D427721B8B51600E3A130 /* Sources */,
+				ED8D427821B8B51600E3A130 /* Frameworks */,
+				ED8D427921B8B51600E3A130 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED8D428121B8B51600E3A130 /* PBXTargetDependency */,
+			);
+			name = HackrTests;
+			productName = HackrTests;
+			productReference = ED8D427B21B8B51600E3A130 /* HackrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EDD848C921A0BA190005CD69 /* Hackr */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDD848DC21A0BA1A0005CD69 /* Build configuration list for PBXNativeTarget "Hackr" */;
@@ -205,6 +266,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Alejandrina Patron";
 				TargetAttributes = {
+					ED8D427A21B8B51600E3A130 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = EDD848C921A0BA190005CD69;
+					};
 					EDD848C921A0BA190005CD69 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -224,11 +289,19 @@
 			projectRoot = "";
 			targets = (
 				EDD848C921A0BA190005CD69 /* Hackr */,
+				ED8D427A21B8B51600E3A130 /* HackrTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ED8D427921B8B51600E3A130 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDD848C821A0BA190005CD69 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +314,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED8D427721B8B51600E3A130 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED8D429721B8B6BE00E3A130 /* StringUtilTest.swift in Sources */,
+				ED8D427E21B8B51600E3A130 /* HackrTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDD848C621A0BA190005CD69 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +348,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		ED8D428121B8B51600E3A130 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDD848C921A0BA190005CD69 /* Hackr */;
+			targetProxy = ED8D428021B8B51600E3A130 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -278,6 +368,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED8D428321B8B51600E3A130 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MBTYQ8R5C4;
+				INFOPLIST_FILE = HackrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlePatron.HackrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hackr.app/Hackr";
+			};
+			name = Debug;
+		};
+		ED8D428421B8B51600E3A130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MBTYQ8R5C4;
+				INFOPLIST_FILE = HackrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlePatron.HackrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hackr.app/Hackr";
+			};
+			name = Release;
+		};
 		EDD848DA21A0BA1A0005CD69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -433,6 +563,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED8D428221B8B51600E3A130 /* Build configuration list for PBXNativeTarget "HackrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED8D428321B8B51600E3A130 /* Debug */,
+				ED8D428421B8B51600E3A130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDD848C521A0BA190005CD69 /* Build configuration list for PBXProject "Hackr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

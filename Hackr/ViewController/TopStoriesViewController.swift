@@ -110,16 +110,18 @@ extension TopStoriesViewController: UITableViewDataSource {
         self.topStoriesTable.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath) {
         if indexPath.row == self.topStories.count - 1 {
-            HackerNewsService.loadMoreStoriesForType(type: .topStories, completion: { stories, error in
-                DispatchQueue.main.async {
-                    if let _ = error { return }
-                    guard let stories = stories else { return }
-                    if stories.isEmpty { return }
-                    self.topStories += stories
-                    self.topStoriesTable.reloadData()
-                }
+            HackerNewsService.loadMoreStoriesForType(
+                type: .topStories, completion: { stories, error in
+                    DispatchQueue.main.async {
+                        if let _ = error { return }
+                        guard let stories = stories else { return }
+                        if stories.isEmpty { return }
+                        self.topStories += stories
+                        self.topStoriesTable.reloadData()
+                    }
             })
         }
     }
