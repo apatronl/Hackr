@@ -22,6 +22,7 @@ struct HackerNewsService {
     static private let maxStoriesToLoad = 20
     static private var isFetching = false
     static private let storyFetchingQueue = OperationQueue()
+    typealias Completion = ([HackerNewsStory]?, Error?) -> Void
     
     /// Sends a GET request to the Hacker News API for a given item type.
     ///
@@ -31,7 +32,7 @@ struct HackerNewsService {
     ///         done field will only be true when all stories are done fetching.
     static func getStoriesForType(
         type: HackerNewsItemType,
-        completion: @escaping (_ stories: [HackerNewsStory]?, _ error: Error?) -> ()) {
+        completion: @escaping Completion) {
         resetFetch()
         var url: URL!
         switch type {
@@ -66,7 +67,7 @@ struct HackerNewsService {
     /// - Parameters:
     ///     - completion: The function to execute when all stories in the current page are finished
     ///         loading from the server.
-    private static func getStoriesForIds(completion: @escaping([HackerNewsStory]?, Error?) -> ()) {
+    private static func getStoriesForIds(completion: @escaping Completion) {
         let start = currentPage * maxStoriesToLoad
         let end = min((currentPage + 1) * maxStoriesToLoad - 1, ids.count - 1)
         if (start >= ids.count) {
@@ -111,7 +112,7 @@ struct HackerNewsService {
     ///         loading from the server.
     static func loadMoreStoriesForType(
         type: HackerNewsItemType,
-        completion: @escaping (_ stories: [HackerNewsStory]?, _ error: Error?) -> ()) {
+        completion: @escaping Completion) {
         if (self.isFetching) { return }
         self.getStoriesForIds(completion: completion)
     }
