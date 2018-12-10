@@ -15,6 +15,7 @@ struct HackerNewsService {
     static private let BASE_URL = "https://hacker-news.firebaseio.com/v0/"
     static private let ITEM = "item/"
     static private let TOP_STORIES = "topstories"
+    static private let BEST_STORIES = "beststories"
     static private let NEW_STORIES = "newstories"
     static private let JSON = ".json"
     static private var ids = [String]()
@@ -30,15 +31,15 @@ struct HackerNewsService {
     ///     - type: The item type to get data for.
     ///     - completion: The function to execute when a story finished loading from the server. The
     ///         done field will only be true when all stories are done fetching.
-    static func getStoriesForType(
-        type: HackerNewsItemType,
-        completion: @escaping Completion) {
+    static func getStoriesForType(type: HackerNewsItemType, completion: @escaping Completion) {
         resetFetch()
         var url: URL!
         switch type {
         case .topStories:
             url = URL(string: BASE_URL + TOP_STORIES + JSON)!
-        case .newStories, .bestStories: // TODO: handle different story types once type menu is done
+        case .bestStories:
+            url = URL(string: BASE_URL + BEST_STORIES + JSON)!
+        case .newStories:
             url = URL(string: BASE_URL + NEW_STORIES + JSON)!
         }
         isFetching = true
@@ -110,9 +111,7 @@ struct HackerNewsService {
     ///     - type: The item type to get more stories for. NOTE: currently only handling top stories
     ///     - completion: The function to execute when all stories in the current page are finished
     ///         loading from the server.
-    static func loadMoreStoriesForType(
-        type: HackerNewsItemType,
-        completion: @escaping Completion) {
+    static func loadMoreStoriesForType(type: HackerNewsItemType, completion: @escaping Completion) {
         if (self.isFetching) { return }
         self.getStoriesForIds(completion: completion)
     }
