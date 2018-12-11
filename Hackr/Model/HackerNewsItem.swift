@@ -32,7 +32,7 @@ struct HackerNewsItemFieldKeys {
 ///
 /// Hacker News API request types.
 ///
-enum HackerNewsItemType: String {
+enum HackerNewsItemType: String, CaseIterable {
     case topStories = "Top Stories"
     case newStories = "New Stories"
     case bestStories = "Best Stories"
