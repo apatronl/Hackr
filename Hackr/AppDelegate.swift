@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let mainNavigationController = UINavigationController()
-        let topStoriesVC = TopStoriesViewController()
-        mainNavigationController.viewControllers = [topStoriesVC]
-//        mainNavigationController.viewControllers = [StoryPagesViewController()]
+//        let topStoriesVC = TopStoriesViewController()
+//        mainNavigationController.viewControllers = [topStoriesVC]
+        mainNavigationController.viewControllers = [StoryPagesViewController()]
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = mainNavigationController
         window!.makeKeyAndVisible()

@@ -15,11 +15,13 @@ class StoriesViewController: UIViewController {
     private var topStories = [HackerNewsStory]()
     private var refresher: UIRefreshControl!
     private var spinner: UIActivityIndicatorView!
+    private var hnService: HackerNewsService!
     
     var storyType: HackerNewsItemType
 
     public init(for storyType: HackerNewsItemType) {
         self.storyType = storyType
+        self.hnService = HackerNewsService(type: storyType)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,7 +60,7 @@ class StoriesViewController: UIViewController {
         spinner.center = self.view.center
         self.view.addSubview(spinner)
         spinner.startAnimating()
-        HackerNewsService.getStoriesForType(type: self.storyType, completion: { stories, error in
+        self.hnService.getStories(completion: { stories, error in
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 if let _ = error {
@@ -75,7 +77,7 @@ class StoriesViewController: UIViewController {
     @objc private func refreshTopStories() {
         self.topStories = []
         self.storiesTable.reloadData()
-        HackerNewsService.getStoriesForType(type: .topStories, completion: { stories, error in
+        self.hnService.getStories(completion: { stories, error in
             DispatchQueue.main.async {
                 self.refresher.endRefreshing()
                 if let _ = error {
@@ -112,7 +114,7 @@ extension StoriesViewController: UITableViewDataSource {
         if self.refresher.isRefreshing { return }
         if let url = URL(string: topStories[indexPath.row].url ?? "") {
             guard let safariVC = self.safariViewForItem(
-                at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
+                at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
             self.present(safariVC, animated: true, completion: nil)
         }
         self.storiesTable.deselectRow(at: indexPath, animated: true)
@@ -121,8 +123,7 @@ extension StoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                    forRowAt indexPath: IndexPath) {
         if indexPath.row == self.topStories.count - 1 {
-            HackerNewsService.loadMoreStoriesForType(
-                type: .topStories, completion: { stories, error in
+            self.hnService.loadMoreStories(completion: { stories, error in
                     DispatchQueue.main.async {
                         if let _ = error { return }
                         guard let stories = stories else { return }
@@ -145,7 +146,7 @@ extension StoriesViewController: UIViewControllerPreviewingDelegate {
         guard let cell = self.storiesTable.cellForRow(at: indexPath)
             as? StoryTableViewCell else { return nil }
         return self.safariViewForItem(
-            at: URL(string: cell.story?.url ?? ""), defaultUrl: HackerNewsService.HOME_URL)
+            at: URL(string: cell.story?.url ?? ""), defaultUrl: HackerNewsConstants.HOME_URL)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
@@ -160,9 +161,9 @@ extension StoriesViewController: UIViewControllerPreviewingDelegate {
 extension StoriesViewController: StoryTableViewCellDelegate {
     
     func didPressCommentsButton(_ cell: StoryTableViewCell) {
-        let url = URL(string: HackerNewsService.COMMENTS_URL + "\(cell.story?.id ?? "1")")
+        let url = URL(string: HackerNewsConstants.COMMENTS_URL + "\(cell.story?.id ?? "1")")
         guard let safariVC =
-            self.safariViewForItem(at: url, defaultUrl: HackerNewsService.HOME_URL) else { return }
+            self.safariViewForItem(at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
         self.present(safariVC, animated: true, completion: nil)
     }
     

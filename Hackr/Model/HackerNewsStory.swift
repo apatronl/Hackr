@@ -34,9 +34,9 @@ struct HackerNewsStory {
         if let url = json[HackerNewsItemFieldKeys.url] as? String {
             self.url = url
         } else if let id = self.id {
-            self.url = HackerNewsService.COMMENTS_URL + id
+            self.url = HackerNewsConstants.COMMENTS_URL + id
         } else {
-            self.url = HackerNewsService.HOME_URL?.absoluteString
+            self.url = HackerNewsConstants.HOME_URL?.absoluteString
         }
     }
     

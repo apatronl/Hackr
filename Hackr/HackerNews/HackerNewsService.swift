@@ -8,22 +8,20 @@
 
 import Foundation
 
-struct HackerNewsService {
+class HackerNewsService {
     
-    static let HOME_URL = URL(string: "https://news.ycombinator.com/news")
-    static let COMMENTS_URL = "https://news.ycombinator.com/item?id="
-    static private let BASE_URL = "https://hacker-news.firebaseio.com/v0/"
-    static private let ITEM = "item/"
-    static private let TOP_STORIES = "topstories"
-    static private let BEST_STORIES = "beststories"
-    static private let NEW_STORIES = "newstories"
-    static private let JSON = ".json"
-    static private var ids = [String]()
-    static private var currentPage = 0
-    static private let maxStoriesToLoad = 20
-    static private var isFetching = false
-    static private let storyFetchingQueue = OperationQueue()
+    private var url: URL!
+
+    private var ids = [String]()
+    private var currentPage = 0
+    private let maxStoriesToLoad = 20
+    private var isFetching = false
+    private let storyFetchingQueue = OperationQueue()
     typealias Completion = ([HackerNewsStory]?, Error?) -> Void
+    
+    init(type: HackerNewsItemType) {
+        self.url = HackerNewsConstants.urlForType(type)
+    }
     
     /// Sends a GET request to the Hacker News API for a given item type.
     ///
@@ -31,29 +29,20 @@ struct HackerNewsService {
     ///     - type: The item type to get data for.
     ///     - completion: The function to execute when a story finished loading from the server. The
     ///         done field will only be true when all stories are done fetching.
-    static func getStoriesForType(type: HackerNewsItemType, completion: @escaping Completion) {
+    func getStories(completion: @escaping Completion) {
         resetFetch()
-        var url: URL!
-        switch type {
-        case .topStories:
-            url = URL(string: BASE_URL + TOP_STORIES + JSON)!
-        case .bestStories:
-            url = URL(string: BASE_URL + BEST_STORIES + JSON)!
-        case .newStories:
-            url = URL(string: BASE_URL + NEW_STORIES + JSON)!
-        }
-        isFetching = true
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        self.isFetching = true
+        let task = URLSession.shared.dataTask(with: self.url) { (data, response, error) in
             if let _ = error {
                 completion(nil, error)
-                resetFetch()
+                self.resetFetch()
                 return
             }
             guard let ids =
                 self.handleStoryIdsResponse(data: data, response: response, error: error) else {
                     // TODO: Better handle errors
                     print("Error")
-                    resetFetch()
+                    self.resetFetch()
                     return
             }
             self.ids = ids
@@ -68,7 +57,7 @@ struct HackerNewsService {
     /// - Parameters:
     ///     - completion: The function to execute when all stories in the current page are finished
     ///         loading from the server.
-    private static func getStoriesForIds(completion: @escaping Completion) {
+    private func getStoriesForIds(completion: @escaping Completion) {
         let start = currentPage * maxStoriesToLoad
         let end = min((currentPage + 1) * maxStoriesToLoad - 1, ids.count - 1)
         if (start >= ids.count) {
@@ -79,10 +68,10 @@ struct HackerNewsService {
         for i in start...end {
             let id = ids[i]
             let operation = StoryDownloadOperation(
-                url: URL(string: BASE_URL + ITEM + id + JSON)!, completion: { story, error in
+                url: HackerNewsConstants.urlForId(id), completion: { story, error in
                     if let _ = error {
                         completion(nil, error)
-                        finishPageLoad(withSuccess: false)
+                        self.finishPageLoad(withSuccess: false)
                         return
                     }
                     guard let story = story else { return }
@@ -95,7 +84,7 @@ struct HackerNewsService {
         }
         let finalOperation = BlockOperation(block: {
             completion(stories, nil)
-            finishPageLoad(withSuccess: true)
+            self.finishPageLoad(withSuccess: true)
         })
         if let op = operations.last {
             finalOperation.addDependency(op)
@@ -111,7 +100,7 @@ struct HackerNewsService {
     ///     - type: The item type to get more stories for. NOTE: currently only handling top stories
     ///     - completion: The function to execute when all stories in the current page are finished
     ///         loading from the server.
-    static func loadMoreStoriesForType(type: HackerNewsItemType, completion: @escaping Completion) {
+    func loadMoreStories(completion: @escaping Completion) {
         if (self.isFetching) { return }
         self.getStoriesForIds(completion: completion)
     }
@@ -121,7 +110,7 @@ struct HackerNewsService {
     /// - Parameters:
     ///     - withSuccess: Whether the page load succeeded, that is, whether we were able to fetch
     ///         the next `maxStoriesToLoad` stories.
-    private static func finishPageLoad(withSuccess: Bool) {
+    private func finishPageLoad(withSuccess: Bool) {
         if !withSuccess {
             storyFetchingQueue.cancelAllOperations()
         } else {
@@ -132,7 +121,7 @@ struct HackerNewsService {
     
     /// Resets a fetch by canceling all operations and re-initializing the current page to 0,
     /// removing all currently loaded story ids.
-    private static func resetFetch() {
+    private func resetFetch() {
         storyFetchingQueue.cancelAllOperations()
         isFetching = false
         currentPage = 0
@@ -151,7 +140,7 @@ struct HackerNewsService {
     ///     - error: An error object that indicates why the request failed, or `nil` if the request
     ///         was successful.
     /// - Returns: A list of story ids.
-    private static func handleStoryIdsResponse(
+    private func handleStoryIdsResponse(
         data: Data?, response: URLResponse?, error: Error?) -> [String]? {
         if let _ = error {
             print("An error occurred while getting items")
