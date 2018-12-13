@@ -48,11 +48,7 @@ class StoriesViewController: UIViewController {
                                bottom: self.view.bottomAnchor, right: self.view.rightAnchor,
                                paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
                                width: 0, height: 0, enableInsets: false)
-        
-        if (traitCollection.forceTouchCapability == .available) {
-            self.registerForPreviewing(with: self, sourceView: self.storiesTable)
-        }
-        
+
         spinner = UIActivityIndicatorView(style: .whiteLarge)
         spinner.color = UIColor.hackerNewsOrange
         spinner.autoresizingMask =
@@ -72,6 +68,12 @@ class StoriesViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (traitCollection.forceTouchCapability == .available) {
+            self.registerForPreviewing(with: self, sourceView: self.storiesTable)
+        }
     }
     
     @objc private func refreshTopStories() {

@@ -33,7 +33,6 @@ class StoryPagesViewController: UIViewController {
         pageControl.currentPageIndicatorTintColor = UIColor.hackerNewsOrange
         self.navigationController?.navigationBar.addSubview(pageControl)
         
-        
         self.pagesViewController =
             UIPageViewController(transitionStyle: .scroll,
                                  navigationOrientation: .horizontal,
