@@ -11,6 +11,7 @@ import UIKit
 class StoryPagesViewController: UIViewController {
     
     var pagesViewController: UIPageViewController!
+    var pageControl: UIPageControl!
     let storyTypes = HackerNewsItemType.allCases
     var storyPages: [StoriesViewController] = []
     var lastPendingViewControllerIndex = 0
@@ -18,8 +19,21 @@ class StoryPagesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+
+        self.view.backgroundColor = UIColor.white
         self.navigationItem.title = storyTypes[0].rawValue
+        
+        self.pageControl =
+            UIPageControl(
+                frame: CGRect(x: 35,
+                              y: (self.navigationController?.navigationBar.frame.height)! / 2,
+                              width: 0, height: 0))
+        pageControl.numberOfPages = 3
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.hackerNewsOrange
+        self.navigationController?.navigationBar.addSubview(pageControl)
+        
+        
         self.pagesViewController =
             UIPageViewController(transitionStyle: .scroll,
                                  navigationOrientation: .horizontal,
@@ -60,6 +74,7 @@ extension StoryPagesViewController: UIPageViewControllerDelegate {
         if completed {
             self.currentViewControllerIndex = self.lastPendingViewControllerIndex
             self.navigationItem.title = storyTypes[self.currentViewControllerIndex].rawValue
+            self.pageControl.currentPage = self.currentViewControllerIndex
         }
     }
 }
