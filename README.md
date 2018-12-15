@@ -11,7 +11,7 @@ Hackr: a simple iOS client for Y Combinator's [Hacker News](https://news.ycombin
 
 |         | Features  |
 ----------|-----------------
-:trophy: | See Hacker News' top stories
+:trophy: | See Hacker News' top, new, and best stories
 :eyeglasses: | Accessibility for the visually impaired
 :octocat: | Free and open source
 
