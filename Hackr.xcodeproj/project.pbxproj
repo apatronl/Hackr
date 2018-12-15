@@ -20,14 +20,13 @@
 		ED8D42BB21BF603900E3A130 /* StoryPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42BA21BF603900E3A130 /* StoryPagesViewController.swift */; };
 		ED8D42BD21BF658300E3A130 /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42BC21BF658300E3A130 /* StoriesViewController.swift */; };
 		ED8D42BF21C1F00400E3A130 /* HackerNewsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42BE21C1F00400E3A130 /* HackerNewsConstants.swift */; };
-		ED8D42C621C4AED500E3A130 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8D42C421C4AED500E3A130 /* Interface.storyboard */; };
-		ED8D42C821C4AED800E3A130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8D42C721C4AED800E3A130 /* Assets.xcassets */; };
-		ED8D42CF21C4AED800E3A130 /* Hackr Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED8D42CE21C4AED800E3A130 /* Hackr Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		ED8D42D421C4AED800E3A130 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42D321C4AED800E3A130 /* InterfaceController.swift */; };
-		ED8D42D621C4AED800E3A130 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42D521C4AED800E3A130 /* ExtensionDelegate.swift */; };
-		ED8D42D821C4AED800E3A130 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42D721C4AED800E3A130 /* NotificationController.swift */; };
-		ED8D42DA21C4AED900E3A130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8D42D921C4AED900E3A130 /* Assets.xcassets */; };
-		ED8D42DF21C4AED900E3A130 /* Hackr Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ED8D42C221C4AED500E3A130 /* Hackr Watch.app */; };
+		EDA4075C21C4B5FE002B045B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA4075A21C4B5FE002B045B /* Interface.storyboard */; };
+		EDA4075E21C4B5FF002B045B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA4075D21C4B5FF002B045B /* Assets.xcassets */; };
+		EDA4076521C4B5FF002B045B /* Hackr Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA4076421C4B5FF002B045B /* Hackr Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EDA4076E21C4B5FF002B045B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA4076D21C4B5FF002B045B /* Assets.xcassets */; };
+		EDA4077221C4B5FF002B045B /* Hackr Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = EDA4075821C4B5FE002B045B /* Hackr Watch.app */; };
+		EDA4077B21C4B6B8002B045B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4077A21C4B6B8002B045B /* InterfaceController.swift */; };
+		EDA4077D21C4B6C2002B045B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4077C21C4B6C2002B045B /* ExtensionDelegate.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
 		EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */; };
@@ -47,43 +46,43 @@
 			remoteGlobalIDString = EDD848C921A0BA190005CD69;
 			remoteInfo = Hackr;
 		};
-		ED8D42D021C4AED800E3A130 /* PBXContainerItemProxy */ = {
+		EDA4076621C4B5FF002B045B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDD848C221A0BA190005CD69 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ED8D42CD21C4AED800E3A130;
+			remoteGlobalIDString = EDA4076321C4B5FF002B045B;
 			remoteInfo = "Hackr Watch Extension";
 		};
-		ED8D42DD21C4AED900E3A130 /* PBXContainerItemProxy */ = {
+		EDA4077021C4B5FF002B045B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDD848C221A0BA190005CD69 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ED8D42C121C4AED500E3A130;
+			remoteGlobalIDString = EDA4075721C4B5FE002B045B;
 			remoteInfo = "Hackr Watch";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		ED8D42E321C4AED900E3A130 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				ED8D42CF21C4AED800E3A130 /* Hackr Watch Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ED8D42E721C4AED900E3A130 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				ED8D42DF21C4AED900E3A130 /* Hackr Watch.app in Embed Watch Content */,
+				EDA4077221C4B5FF002B045B /* Hackr Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA4077621C4B600002B045B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EDA4076521C4B5FF002B045B /* Hackr Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -104,17 +103,15 @@
 		ED8D42BA21BF603900E3A130 /* StoryPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPagesViewController.swift; sourceTree = "<group>"; };
 		ED8D42BC21BF658300E3A130 /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
 		ED8D42BE21C1F00400E3A130 /* HackerNewsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsConstants.swift; sourceTree = "<group>"; };
-		ED8D42C221C4AED500E3A130 /* Hackr Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hackr Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED8D42C521C4AED500E3A130 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		ED8D42C721C4AED800E3A130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ED8D42C921C4AED800E3A130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED8D42CE21C4AED800E3A130 /* Hackr Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hackr Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED8D42D321C4AED800E3A130 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		ED8D42D521C4AED800E3A130 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		ED8D42D721C4AED800E3A130 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		ED8D42D921C4AED900E3A130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ED8D42DB21C4AED900E3A130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED8D42DC21C4AED900E3A130 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		EDA4075821C4B5FE002B045B /* Hackr Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hackr Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA4075B21C4B5FE002B045B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		EDA4075D21C4B5FF002B045B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA4075F21C4B5FF002B045B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA4076421C4B5FF002B045B /* Hackr Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hackr Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA4076D21C4B5FF002B045B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA4076F21C4B5FF002B045B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA4077A21C4B6B8002B045B /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		EDA4077C21C4B6C2002B045B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848D421A0BA1A0005CD69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,7 +133,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED8D42CB21C4AED800E3A130 /* Frameworks */ = {
+		EDA4076121C4B5FF002B045B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -215,25 +212,23 @@
 			path = UtilTests;
 			sourceTree = "<group>";
 		};
-		ED8D42C321C4AED500E3A130 /* Hackr Watch */ = {
+		EDA4075921C4B5FE002B045B /* Hackr Watch */ = {
 			isa = PBXGroup;
 			children = (
-				ED8D42C421C4AED500E3A130 /* Interface.storyboard */,
-				ED8D42C721C4AED800E3A130 /* Assets.xcassets */,
-				ED8D42C921C4AED800E3A130 /* Info.plist */,
+				EDA4075A21C4B5FE002B045B /* Interface.storyboard */,
+				EDA4075D21C4B5FF002B045B /* Assets.xcassets */,
+				EDA4075F21C4B5FF002B045B /* Info.plist */,
 			);
 			path = "Hackr Watch";
 			sourceTree = "<group>";
 		};
-		ED8D42D221C4AED800E3A130 /* Hackr Watch Extension */ = {
+		EDA4076821C4B5FF002B045B /* Hackr Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				ED8D42D321C4AED800E3A130 /* InterfaceController.swift */,
-				ED8D42D521C4AED800E3A130 /* ExtensionDelegate.swift */,
-				ED8D42D721C4AED800E3A130 /* NotificationController.swift */,
-				ED8D42D921C4AED900E3A130 /* Assets.xcassets */,
-				ED8D42DB21C4AED900E3A130 /* Info.plist */,
-				ED8D42DC21C4AED900E3A130 /* PushNotificationPayload.apns */,
+				EDA4077A21C4B6B8002B045B /* InterfaceController.swift */,
+				EDA4077C21C4B6C2002B045B /* ExtensionDelegate.swift */,
+				EDA4076D21C4B5FF002B045B /* Assets.xcassets */,
+				EDA4076F21C4B5FF002B045B /* Info.plist */,
 			);
 			path = "Hackr Watch Extension";
 			sourceTree = "<group>";
@@ -243,8 +238,8 @@
 			children = (
 				EDD848CC21A0BA190005CD69 /* Hackr */,
 				ED8D427C21B8B51600E3A130 /* HackrTests */,
-				ED8D42C321C4AED500E3A130 /* Hackr Watch */,
-				ED8D42D221C4AED800E3A130 /* Hackr Watch Extension */,
+				EDA4075921C4B5FE002B045B /* Hackr Watch */,
+				EDA4076821C4B5FF002B045B /* Hackr Watch Extension */,
 				EDD848CB21A0BA190005CD69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -254,8 +249,8 @@
 			children = (
 				EDD848CA21A0BA190005CD69 /* Hackr.app */,
 				ED8D427B21B8B51600E3A130 /* HackrTests.xctest */,
-				ED8D42C221C4AED500E3A130 /* Hackr Watch.app */,
-				ED8D42CE21C4AED800E3A130 /* Hackr Watch Extension.appex */,
+				EDA4075821C4B5FE002B045B /* Hackr Watch.app */,
+				EDA4076421C4B5FF002B045B /* Hackr Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,30 +332,30 @@
 			productReference = ED8D427B21B8B51600E3A130 /* HackrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ED8D42C121C4AED500E3A130 /* Hackr Watch */ = {
+		EDA4075721C4B5FE002B045B /* Hackr Watch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED8D42E421C4AED900E3A130 /* Build configuration list for PBXNativeTarget "Hackr Watch" */;
+			buildConfigurationList = EDA4077721C4B600002B045B /* Build configuration list for PBXNativeTarget "Hackr Watch" */;
 			buildPhases = (
-				ED8D42C021C4AED500E3A130 /* Resources */,
-				ED8D42E321C4AED900E3A130 /* Embed App Extensions */,
+				EDA4075621C4B5FE002B045B /* Resources */,
+				EDA4077621C4B600002B045B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ED8D42D121C4AED800E3A130 /* PBXTargetDependency */,
+				EDA4076721C4B5FF002B045B /* PBXTargetDependency */,
 			);
 			name = "Hackr Watch";
 			productName = "Hackr Watch";
-			productReference = ED8D42C221C4AED500E3A130 /* Hackr Watch.app */;
+			productReference = EDA4075821C4B5FE002B045B /* Hackr Watch.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		ED8D42CD21C4AED800E3A130 /* Hackr Watch Extension */ = {
+		EDA4076321C4B5FF002B045B /* Hackr Watch Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED8D42E021C4AED900E3A130 /* Build configuration list for PBXNativeTarget "Hackr Watch Extension" */;
+			buildConfigurationList = EDA4077321C4B600002B045B /* Build configuration list for PBXNativeTarget "Hackr Watch Extension" */;
 			buildPhases = (
-				ED8D42CA21C4AED800E3A130 /* Sources */,
-				ED8D42CB21C4AED800E3A130 /* Frameworks */,
-				ED8D42CC21C4AED800E3A130 /* Resources */,
+				EDA4076021C4B5FF002B045B /* Sources */,
+				EDA4076121C4B5FF002B045B /* Frameworks */,
+				EDA4076221C4B5FF002B045B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -368,7 +363,7 @@
 			);
 			name = "Hackr Watch Extension";
 			productName = "Hackr Watch Extension";
-			productReference = ED8D42CE21C4AED800E3A130 /* Hackr Watch Extension.appex */;
+			productReference = EDA4076421C4B5FF002B045B /* Hackr Watch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		EDD848C921A0BA190005CD69 /* Hackr */ = {
@@ -383,7 +378,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				ED8D42DE21C4AED900E3A130 /* PBXTargetDependency */,
+				EDA4077121C4B5FF002B045B /* PBXTargetDependency */,
 			);
 			name = Hackr;
 			productName = Hackr;
@@ -404,10 +399,10 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = EDD848C921A0BA190005CD69;
 					};
-					ED8D42C121C4AED500E3A130 = {
+					EDA4075721C4B5FE002B045B = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					ED8D42CD21C4AED800E3A130 = {
+					EDA4076321C4B5FF002B045B = {
 						CreatedOnToolsVersion = 10.1;
 					};
 					EDD848C921A0BA190005CD69 = {
@@ -430,8 +425,8 @@
 			targets = (
 				EDD848C921A0BA190005CD69 /* Hackr */,
 				ED8D427A21B8B51600E3A130 /* HackrTests */,
-				ED8D42C121C4AED500E3A130 /* Hackr Watch */,
-				ED8D42CD21C4AED800E3A130 /* Hackr Watch Extension */,
+				EDA4075721C4B5FE002B045B /* Hackr Watch */,
+				EDA4076321C4B5FF002B045B /* Hackr Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -444,20 +439,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED8D42C021C4AED500E3A130 /* Resources */ = {
+		EDA4075621C4B5FE002B045B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED8D42C821C4AED800E3A130 /* Assets.xcassets in Resources */,
-				ED8D42C621C4AED500E3A130 /* Interface.storyboard in Resources */,
+				EDA4075E21C4B5FF002B045B /* Assets.xcassets in Resources */,
+				EDA4075C21C4B5FE002B045B /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED8D42CC21C4AED800E3A130 /* Resources */ = {
+		EDA4076221C4B5FF002B045B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED8D42DA21C4AED900E3A130 /* Assets.xcassets in Resources */,
+				EDA4076E21C4B5FF002B045B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,13 +477,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED8D42CA21C4AED800E3A130 /* Sources */ = {
+		EDA4076021C4B5FF002B045B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED8D42D821C4AED800E3A130 /* NotificationController.swift in Sources */,
-				ED8D42D621C4AED800E3A130 /* ExtensionDelegate.swift in Sources */,
-				ED8D42D421C4AED800E3A130 /* InterfaceController.swift in Sources */,
+				EDA4077B21C4B6B8002B045B /* InterfaceController.swift in Sources */,
+				EDA4077D21C4B6C2002B045B /* ExtensionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,23 +519,23 @@
 			target = EDD848C921A0BA190005CD69 /* Hackr */;
 			targetProxy = ED8D428021B8B51600E3A130 /* PBXContainerItemProxy */;
 		};
-		ED8D42D121C4AED800E3A130 /* PBXTargetDependency */ = {
+		EDA4076721C4B5FF002B045B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ED8D42CD21C4AED800E3A130 /* Hackr Watch Extension */;
-			targetProxy = ED8D42D021C4AED800E3A130 /* PBXContainerItemProxy */;
+			target = EDA4076321C4B5FF002B045B /* Hackr Watch Extension */;
+			targetProxy = EDA4076621C4B5FF002B045B /* PBXContainerItemProxy */;
 		};
-		ED8D42DE21C4AED900E3A130 /* PBXTargetDependency */ = {
+		EDA4077121C4B5FF002B045B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ED8D42C121C4AED500E3A130 /* Hackr Watch */;
-			targetProxy = ED8D42DD21C4AED900E3A130 /* PBXContainerItemProxy */;
+			target = EDA4075721C4B5FE002B045B /* Hackr Watch */;
+			targetProxy = EDA4077021C4B5FF002B045B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ED8D42C421C4AED500E3A130 /* Interface.storyboard */ = {
+		EDA4075A21C4B5FE002B045B /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ED8D42C521C4AED500E3A130 /* Base */,
+				EDA4075B21C4B5FE002B045B /* Base */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -597,7 +591,7 @@
 			};
 			name = Release;
 		};
-		ED8D42E121C4AED900E3A130 /* Debug */ = {
+		EDA4077421C4B600002B045B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
@@ -619,7 +613,7 @@
 			};
 			name = Debug;
 		};
-		ED8D42E221C4AED900E3A130 /* Release */ = {
+		EDA4077521C4B600002B045B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
@@ -641,7 +635,7 @@
 			};
 			name = Release;
 		};
-		ED8D42E521C4AED900E3A130 /* Debug */ = {
+		EDA4077821C4B600002B045B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -660,7 +654,7 @@
 			};
 			name = Debug;
 		};
-		ED8D42E621C4AED900E3A130 /* Release */ = {
+		EDA4077921C4B600002B045B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -843,20 +837,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED8D42E021C4AED900E3A130 /* Build configuration list for PBXNativeTarget "Hackr Watch Extension" */ = {
+		EDA4077321C4B600002B045B /* Build configuration list for PBXNativeTarget "Hackr Watch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ED8D42E121C4AED900E3A130 /* Debug */,
-				ED8D42E221C4AED900E3A130 /* Release */,
+				EDA4077421C4B600002B045B /* Debug */,
+				EDA4077521C4B600002B045B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED8D42E421C4AED900E3A130 /* Build configuration list for PBXNativeTarget "Hackr Watch" */ = {
+		EDA4077721C4B600002B045B /* Build configuration list for PBXNativeTarget "Hackr Watch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ED8D42E521C4AED900E3A130 /* Debug */,
-				ED8D42E621C4AED900E3A130 /* Release */,
+				EDA4077821C4B600002B045B /* Debug */,
+				EDA4077921C4B600002B045B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

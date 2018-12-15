@@ -1,47 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
-            <objects>
-                <notificationController id="YCC-NB-fut">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Hackr_Watch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Top Stories" id="QY1-N7-3sh"/>
+                        <table alignment="left" id="C4K-bK-dU9">
+                            <items>
+                                <tableRow identifier="Story" id="l1N-xg-idL">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="wGW-Cg-l6a">
+                                        <items>
+                                            <group width="1" alignment="left" layout="vertical" id="BzS-aG-f3a">
+                                                <items>
+                                                    <label alignment="left" text="Title" id="c6g-VI-SWw"/>
+                                                    <label alignment="left" text="Points 🔥" id="DHb-xD-7A0"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                        <segue destination="AZm-ZA-yh1" kind="relationship" relationship="nextPage" id="Adf-6t-vfv"/>
                     </connections>
-                </notificationController>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="100" y="-259"/>
         </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
+        <!--Interface Controller-->
+        <scene sceneID="KTE-rL-2kQ">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="AZm-ZA-yh1">
+                    <items>
+                        <label height="20" alignment="left" text="New Stories" id="LkV-94-cr7"/>
+                        <table alignment="left" id="FXa-0K-ycf">
+                            <items>
+                                <tableRow identifier="Story" id="olv-bK-Qm6">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="lOD-N9-ST4">
+                                        <items>
+                                            <group width="1" alignment="left" layout="vertical" id="7CI-Ff-Yrx">
+                                                <items>
+                                                    <label alignment="left" text="Title" id="4gr-RU-6Lf"/>
+                                                    <label alignment="left" text="Points 🔥" id="VXj-5Z-2mI"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <segue destination="3W7-ds-uas" kind="relationship" relationship="nextPage" id="VXt-Ga-15M"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="100" y="100"/>
         </scene>
-        <!--Notification Controller-->
-        <scene sceneID="Niz-AI-uX2">
+        <!--Interface Controller-->
+        <scene sceneID="A5N-EO-etd">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="3W7-ds-uas">
+                    <items>
+                        <label height="20" alignment="left" text="Best Stories" id="lzn-Ag-jIs"/>
+                        <table alignment="left" id="MZq-sU-i2k">
+                            <items>
+                                <tableRow identifier="Story" id="nc8-YY-kge">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="yOX-it-C4R">
+                                        <items>
+                                            <group width="1" alignment="left" layout="vertical" id="8MZ-OK-NPe">
+                                                <items>
+                                                    <label alignment="left" text="Title" id="zsL-Wr-PWN"/>
+                                                    <label alignment="left" text="Points 🔥" id="RxC-vf-1f2"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="419" y="100"/>
         </scene>
     </scenes>
 </document>
