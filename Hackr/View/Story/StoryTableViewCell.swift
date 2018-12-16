@@ -19,13 +19,15 @@ class StoryTableViewCell: UITableViewCell {
     var story: HackerNewsStory? {
         didSet {
             titleLabel.text = story?.title
-            authorAndPointsLabel.text = "👾 by \(story!.by!) | \(story!.score!) points 🔥"
+            let points = story?.score ?? 0
+            authorAndPointsLabel.text =
+                "👾 by \(story!.by!) | " +
+                "\(getQuantityString(for: points, singular: "point", plural: "points")) 🔥"
             dateLabel.text = self.story?.time?.formatted()
             numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
             
             // Story details a11y
             authorAndPointsLabel.isAccessibilityElement = true
-            let points = story?.score ?? 0
             authorAndPointsLabel.accessibilityLabel =
                 "Story posted by \(story?.by ?? "unknown"), "
                 + getQuantityString(for: points, singular: "point", plural: "points")

@@ -25,8 +25,17 @@
 		EDA4076521C4B5FF002B045B /* Hackr Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA4076421C4B5FF002B045B /* Hackr Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EDA4076E21C4B5FF002B045B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA4076D21C4B5FF002B045B /* Assets.xcassets */; };
 		EDA4077221C4B5FF002B045B /* Hackr Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = EDA4075821C4B5FE002B045B /* Hackr Watch.app */; };
-		EDA4077B21C4B6B8002B045B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4077A21C4B6B8002B045B /* InterfaceController.swift */; };
+		EDA4077B21C4B6B8002B045B /* TopStoriesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4077A21C4B6B8002B045B /* TopStoriesInterfaceController.swift */; };
 		EDA4077D21C4B6C2002B045B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4077C21C4B6C2002B045B /* ExtensionDelegate.swift */; };
+		EDA4077F21C70228002B045B /* StoryRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4077E21C70228002B045B /* StoryRowController.swift */; };
+		EDA4078121C703D0002B045B /* HackerNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E121A0BAC80005CD69 /* HackerNewsService.swift */; };
+		EDA4078221C70438002B045B /* HackerNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */; };
+		EDA4078321C7043B002B045B /* HackerNewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */; };
+		EDA4078421C7044D002B045B /* StoryDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */; };
+		EDA4078521C7045F002B045B /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
+		EDA4078621C7046C002B045B /* HackerNewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E321A0BAD20005CD69 /* HackerNewsParser.swift */; };
+		EDA4078721C70477002B045B /* HackerNewsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42BE21C1F00400E3A130 /* HackerNewsConstants.swift */; };
+		EDA4078821C706AF002B045B /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
 		EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */; };
@@ -110,8 +119,9 @@
 		EDA4076421C4B5FF002B045B /* Hackr Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hackr Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA4076D21C4B5FF002B045B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA4076F21C4B5FF002B045B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDA4077A21C4B6B8002B045B /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		EDA4077A21C4B6B8002B045B /* TopStoriesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopStoriesInterfaceController.swift; sourceTree = "<group>"; };
 		EDA4077C21C4B6C2002B045B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		EDA4077E21C70228002B045B /* StoryRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRowController.swift; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848D421A0BA1A0005CD69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -225,7 +235,8 @@
 		EDA4076821C4B5FF002B045B /* Hackr Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				EDA4077A21C4B6B8002B045B /* InterfaceController.swift */,
+				EDA4077A21C4B6B8002B045B /* TopStoriesInterfaceController.swift */,
+				EDA4077E21C70228002B045B /* StoryRowController.swift */,
 				EDA4077C21C4B6C2002B045B /* ExtensionDelegate.swift */,
 				EDA4076D21C4B5FF002B045B /* Assets.xcassets */,
 				EDA4076F21C4B5FF002B045B /* Info.plist */,
@@ -481,8 +492,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA4077B21C4B6B8002B045B /* InterfaceController.swift in Sources */,
+				EDA4077B21C4B6B8002B045B /* TopStoriesInterfaceController.swift in Sources */,
 				EDA4077D21C4B6C2002B045B /* ExtensionDelegate.swift in Sources */,
+				EDA4078221C70438002B045B /* HackerNewsItem.swift in Sources */,
+				EDA4078121C703D0002B045B /* HackerNewsService.swift in Sources */,
+				EDA4078321C7043B002B045B /* HackerNewsStory.swift in Sources */,
+				EDA4078821C706AF002B045B /* String+Quantity.swift in Sources */,
+				EDA4077F21C70228002B045B /* StoryRowController.swift in Sources */,
+				EDA4078521C7045F002B045B /* AsyncOperation.swift in Sources */,
+				EDA4078421C7044D002B045B /* StoryDownloadOperation.swift in Sources */,
+				EDA4078721C70477002B045B /* HackerNewsConstants.swift in Sources */,
+				EDA4078621C7046C002B045B /* HackerNewsParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

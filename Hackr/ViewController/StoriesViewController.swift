@@ -12,7 +12,7 @@ import SafariServices
 class StoriesViewController: UIViewController {
     
     private var storiesTable: UITableView!
-    private var topStories = [HackerNewsStory]()
+    private var stories = [HackerNewsStory]()
     private var refresher: UIRefreshControl!
     private var spinner: UIActivityIndicatorView!
     private var hnService: HackerNewsService!
@@ -40,7 +40,7 @@ class StoriesViewController: UIViewController {
                                  forCellReuseIdentifier: StoryTableViewCell.identifier)
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(refreshTopStories), for: .valueChanged)
+        refresher.addTarget(self, action: #selector(refreshStories), for: .valueChanged)
         refresher.tintColor = UIColor.hackerNewsOrange
         storiesTable.refreshControl = refresher
         self.view.addSubview(storiesTable)
@@ -63,7 +63,7 @@ class StoriesViewController: UIViewController {
                     return
                 }
                 if let stories = stories {
-                    self.topStories += stories
+                    self.stories += stories
                     self.storiesTable.reloadData()
                 }
             }
@@ -76,8 +76,8 @@ class StoriesViewController: UIViewController {
         }
     }
     
-    @objc private func refreshTopStories() {
-        self.topStories = []
+    @objc private func refreshStories() {
+        self.stories = []
         self.storiesTable.reloadData()
         self.hnService.getStories(completion: { stories, error in
             DispatchQueue.main.async {
@@ -86,12 +86,14 @@ class StoriesViewController: UIViewController {
                     return
                 }
                 guard let stories = stories else { return }
-                self.topStories += stories
+                self.stories += stories
                 self.storiesTable.reloadData()
             }
         })
     }
 }
+
+// MARK: UITableViewDelegate
 
 extension StoriesViewController: UITableViewDelegate {}
 
@@ -99,7 +101,7 @@ extension StoriesViewController: UITableViewDelegate {}
 
 extension StoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topStories.count
+        return stories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,14 +109,14 @@ extension StoriesViewController: UITableViewDataSource {
             withIdentifier: StoryTableViewCell.identifier) as! StoryTableViewCell
         cell.delegate = self
         if (!refresher.isRefreshing) {
-            cell.story = self.topStories[indexPath.row]
+            cell.story = self.stories[indexPath.row]
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.refresher.isRefreshing { return }
-        if let url = URL(string: topStories[indexPath.row].url ?? "") {
+        if let url = URL(string: self.stories[indexPath.row].url ?? "") {
             guard let safariVC = self.safariViewForItem(
                 at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
             self.present(safariVC, animated: true, completion: nil)
@@ -124,13 +126,13 @@ extension StoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                    forRowAt indexPath: IndexPath) {
-        if indexPath.row == self.topStories.count - 1 {
+        if indexPath.row == self.stories.count - 1 {
             self.hnService.loadMoreStories(completion: { stories, error in
                     DispatchQueue.main.async {
                         if let _ = error { return }
                         guard let stories = stories else { return }
                         if stories.isEmpty { return }
-                        self.topStories += stories
+                        self.stories += stories
                         self.storiesTable.reloadData()
                     }
             })

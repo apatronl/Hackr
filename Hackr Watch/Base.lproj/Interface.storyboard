@@ -9,30 +9,35 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Top Stories Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Hackr_Watch" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="TopStoriesInterfaceController" customModule="Hackr_Watch_Extension">
                     <items>
                         <label alignment="left" text="Top Stories" id="QY1-N7-3sh"/>
                         <table alignment="left" id="C4K-bK-dU9">
                             <items>
-                                <tableRow identifier="Story" id="l1N-xg-idL">
+                                <tableRow identifier="StoryRowController" id="l1N-xg-idL" customClass="StoryRowController" customModule="Hackr_Watch_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="wGW-Cg-l6a">
                                         <items>
                                             <group width="1" alignment="left" layout="vertical" id="BzS-aG-f3a">
                                                 <items>
-                                                    <label alignment="left" text="Title" id="c6g-VI-SWw"/>
+                                                    <label alignment="left" text="Title" numberOfLines="0" id="c6g-VI-SWw"/>
                                                     <label alignment="left" text="Points 🔥" id="DHb-xD-7A0"/>
                                                 </items>
                                             </group>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="pointsLabel" destination="DHb-xD-7A0" id="BYO-mQ-xK7"/>
+                                        <outlet property="titleLabel" destination="c6g-VI-SWw" id="omI-mM-50x"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
                     <connections>
+                        <outlet property="storiesTableView" destination="C4K-bK-dU9" id="Nhx-W3-MJJ"/>
                         <segue destination="AZm-ZA-yh1" kind="relationship" relationship="nextPage" id="Adf-6t-vfv"/>
                     </connections>
                 </controller>
