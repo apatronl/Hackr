@@ -21,7 +21,7 @@ class StoriesViewController: UIViewController {
 
     public init(for storyType: HackerNewsItemType) {
         self.storyType = storyType
-        self.hnService = HackerNewsService(type: storyType)
+        self.hnService = HackerNewsService(type: storyType, maxStoriesToLoad: 20)
         super.init(nibName: nil, bundle: nil)
     }
     

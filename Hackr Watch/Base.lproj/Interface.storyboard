@@ -44,59 +44,71 @@
             </objects>
             <point key="canvasLocation" x="100" y="-259"/>
         </scene>
-        <!--Interface Controller-->
+        <!--New Stories Interface Controller-->
         <scene sceneID="KTE-rL-2kQ">
             <objects>
-                <controller id="AZm-ZA-yh1">
+                <controller id="AZm-ZA-yh1" customClass="NewStoriesInterfaceController" customModule="Hackr_Watch_Extension">
                     <items>
                         <label height="20" alignment="left" text="New Stories" id="LkV-94-cr7"/>
                         <table alignment="left" id="FXa-0K-ycf">
                             <items>
-                                <tableRow identifier="Story" id="olv-bK-Qm6">
+                                <tableRow identifier="StoryRowController" id="olv-bK-Qm6" customClass="StoryRowController" customModule="Hackr_Watch_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="lOD-N9-ST4">
                                         <items>
                                             <group width="1" alignment="left" layout="vertical" id="7CI-Ff-Yrx">
                                                 <items>
-                                                    <label alignment="left" text="Title" id="4gr-RU-6Lf"/>
+                                                    <label alignment="left" text="Title" numberOfLines="0" id="4gr-RU-6Lf"/>
                                                     <label alignment="left" text="Points 🔥" id="VXj-5Z-2mI"/>
                                                 </items>
                                             </group>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="pointsLabel" destination="VXj-5Z-2mI" id="vVc-hi-Tjf"/>
+                                        <outlet property="titleLabel" destination="4gr-RU-6Lf" id="9wQ-38-Fcn"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
                     <connections>
+                        <outlet property="storiesTableView" destination="FXa-0K-ycf" id="5EY-ga-NbR"/>
                         <segue destination="3W7-ds-uas" kind="relationship" relationship="nextPage" id="VXt-Ga-15M"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="100" y="100"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Best Stories Interface Controller-->
         <scene sceneID="A5N-EO-etd">
             <objects>
-                <controller id="3W7-ds-uas">
+                <controller id="3W7-ds-uas" customClass="BestStoriesInterfaceController" customModule="Hackr_Watch_Extension">
                     <items>
                         <label height="20" alignment="left" text="Best Stories" id="lzn-Ag-jIs"/>
                         <table alignment="left" id="MZq-sU-i2k">
                             <items>
-                                <tableRow identifier="Story" id="nc8-YY-kge">
+                                <tableRow identifier="StoryRowController" id="nc8-YY-kge" customClass="StoryRowController" customModule="Hackr_Watch_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="yOX-it-C4R">
                                         <items>
                                             <group width="1" alignment="left" layout="vertical" id="8MZ-OK-NPe">
                                                 <items>
-                                                    <label alignment="left" text="Title" id="zsL-Wr-PWN"/>
+                                                    <label alignment="left" text="Title" numberOfLines="0" id="zsL-Wr-PWN"/>
                                                     <label alignment="left" text="Points 🔥" id="RxC-vf-1f2"/>
                                                 </items>
                                             </group>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="pointsLabel" destination="RxC-vf-1f2" id="MRM-Fj-OI9"/>
+                                        <outlet property="titleLabel" destination="zsL-Wr-PWN" id="UGg-0r-NgZ"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="storiesTableView" destination="MZq-sU-i2k" id="npM-dd-19j"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="419" y="100"/>

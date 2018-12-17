@@ -14,13 +14,14 @@ class HackerNewsService {
 
     private var ids = [String]()
     private var currentPage = 0
-    private let maxStoriesToLoad = 20
+    private var maxStoriesToLoad = 5
     private var isFetching = false
     private let storyFetchingQueue = OperationQueue()
     typealias Completion = ([HackerNewsStory]?, Error?) -> Void
     
-    init(type: HackerNewsItemType) {
+    init(type: HackerNewsItemType, maxStoriesToLoad: Int) {
         self.url = HackerNewsConstants.urlForType(type)
+        self.maxStoriesToLoad = maxStoriesToLoad
     }
     
     /// Sends a GET request to the Hacker News API for a given item type.
@@ -58,8 +59,8 @@ class HackerNewsService {
     ///     - completion: The function to execute when all stories in the current page are finished
     ///         loading from the server.
     private func getStoriesForIds(completion: @escaping Completion) {
-        let start = currentPage * maxStoriesToLoad
-        let end = min((currentPage + 1) * maxStoriesToLoad - 1, ids.count - 1)
+        let start = currentPage * self.maxStoriesToLoad
+        let end = min((currentPage + 1) * self.maxStoriesToLoad - 1, ids.count - 1)
         if (start >= ids.count) {
             return
         }
@@ -78,7 +79,7 @@ class HackerNewsService {
                     stories.append(story)
             })
             if i > start {
-                operation.addDependency(operations[i % maxStoriesToLoad - 1])
+                operation.addDependency(operations[i % self.maxStoriesToLoad - 1])
             }
             operations.append(operation)
         }

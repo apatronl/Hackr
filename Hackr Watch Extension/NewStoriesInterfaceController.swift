@@ -1,8 +1,8 @@
 //
-//  InterfaceController.swift
+//  NewStoriesInterfaceController.swift
 //  Hackr Watch Extension
 //
-//  Created by Alejandrina Patron on 12/14/18.
+//  Created by Alejandrina Patron on 12/16/18.
 //  Copyright © 2018 Alejandrina Patron. All rights reserved.
 //
 
@@ -10,9 +10,10 @@ import WatchKit
 import Foundation
 
 
-class TopStoriesInterfaceController: WKInterfaceController {
+class NewStoriesInterfaceController: WKInterfaceController {
     
     @IBOutlet weak var storiesTableView: WKInterfaceTable!
+
     var hnService: HackerNewsService!
     var stories: [HackerNewsStory]!
 
@@ -20,20 +21,20 @@ class TopStoriesInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        self.hnService = HackerNewsService(type: .topStories, maxStoriesToLoad: 5)
+        self.hnService = HackerNewsService(type: .newStories, maxStoriesToLoad: 5)
         self.loadStories()
     }
-    
+
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
-    
+
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
     private func loadStories() {
         self.hnService.getStories(completion: { (stories, error) in
             guard let stories = stories else { return }
