@@ -9,6 +9,11 @@ Hackr: a simple iOS client for Y Combinator's [Hacker News](https://news.ycombin
 <img src="img/mock2.png" width="350"/>
 </p>
 
+<p align="center">
+<img src="img/WatchAppIcon.png" width="200"/>
+<img src="img/WatchApp.png" width="200"/>
+</p>
+
 |         | Features  |
 ----------|-----------------
 :trophy: | See Hacker News' top, new, and best stories
