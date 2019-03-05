@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED07AB3F21A3B659000B5607 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB3E21A3B659000B5607 /* UIView+Constraints.swift */; };
-		ED07AB4121A3C485000B5607 /* UIViewController+Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4021A3C485000B5607 /* UIViewController+Safari.swift */; };
-		ED07AB4421A4DE47000B5607 /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4321A4DE47000B5607 /* UILabel+TextStyle.swift */; };
-		ED3C851821AAFB7C004299F4 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851721AAFB7C004299F4 /* Date+Format.swift */; };
+		ED07AB3F21A3B659000B5607 /* UIView+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB3E21A3B659000B5607 /* UIView+Hackr.swift */; };
+		ED07AB4121A3C485000B5607 /* UIViewController+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4021A3C485000B5607 /* UIViewController+Hackr.swift */; };
+		ED07AB4421A4DE47000B5607 /* UILabel+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07AB4321A4DE47000B5607 /* UILabel+Hackr.swift */; };
+		ED0AA9F7222E2C5E006397F8 /* HackrNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0AA9F6222E2C5E006397F8 /* HackrNavigationController.swift */; };
+		ED0AA9FC222E36C6006397F8 /* DarkModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0AA9FB222E36C6006397F8 /* DarkModeController.swift */; };
+		ED3C851821AAFB7C004299F4 /* Date+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851721AAFB7C004299F4 /* Date+Hackr.swift */; };
 		ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */; };
 		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
+		ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */; };
 		ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
-		ED8D427621B77E5B00E3A130 /* UITableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */; };
+		ED8D427621B77E5B00E3A130 /* UITableViewCell+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */; };
 		ED8D427E21B8B51600E3A130 /* HackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427D21B8B51600E3A130 /* HackrTests.swift */; };
 		ED8D429721B8B6BE00E3A130 /* StringUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D429521B8B6BC00E3A130 /* StringUtilTest.swift */; };
 		ED8D42BB21BF603900E3A130 /* StoryPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D42BA21BF603900E3A130 /* StoryPagesViewController.swift */; };
@@ -45,7 +48,7 @@
 		EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E321A0BAD20005CD69 /* HackerNewsParser.swift */; };
 		EDD848E621A0BADC0005CD69 /* HackerNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */; };
 		EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */; };
-		EDD848EC21A114FE0005CD69 /* UIColor+HackrColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EB21A114FE0005CD69 /* UIColor+HackrColor.swift */; };
+		EDD848EC21A114FE0005CD69 /* UIColor+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EB21A114FE0005CD69 /* UIColor+Hackr.swift */; };
 		EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,14 +102,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		ED07AB3E21A3B659000B5607 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
-		ED07AB4021A3C485000B5607 /* UIViewController+Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Safari.swift"; sourceTree = "<group>"; };
-		ED07AB4321A4DE47000B5607 /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
-		ED3C851721AAFB7C004299F4 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		ED07AB3E21A3B659000B5607 /* UIView+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Hackr.swift"; sourceTree = "<group>"; };
+		ED07AB4021A3C485000B5607 /* UIViewController+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Hackr.swift"; sourceTree = "<group>"; };
+		ED07AB4321A4DE47000B5607 /* UILabel+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Hackr.swift"; sourceTree = "<group>"; };
+		ED0AA9F6222E2C5E006397F8 /* HackrNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackrNavigationController.swift; sourceTree = "<group>"; };
+		ED0AA9FB222E36C6006397F8 /* DarkModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeController.swift; sourceTree = "<group>"; };
+		ED3C851721AAFB7C004299F4 /* Date+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Hackr.swift"; sourceTree = "<group>"; };
 		ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDownloadOperation.swift; sourceTree = "<group>"; };
 		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ED8D427321B6043600E3A130 /* String+Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Quantity.swift"; sourceTree = "<group>"; };
-		ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identifier.swift"; sourceTree = "<group>"; };
+		ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Hackr.swift"; sourceTree = "<group>"; };
 		ED8D427B21B8B51600E3A130 /* HackrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8D427D21B8B51600E3A130 /* HackrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackrTests.swift; sourceTree = "<group>"; };
 		ED8D427F21B8B51600E3A130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,7 +141,7 @@
 		EDD848E321A0BAD20005CD69 /* HackerNewsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsParser.swift; sourceTree = "<group>"; };
 		EDD848E521A0BADC0005CD69 /* HackerNewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsItem.swift; sourceTree = "<group>"; };
 		EDD848E821A0DA4D0005CD69 /* HackerNewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsStory.swift; sourceTree = "<group>"; };
-		EDD848EB21A114FE0005CD69 /* UIColor+HackrColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HackrColor.swift"; sourceTree = "<group>"; };
+		EDD848EB21A114FE0005CD69 /* UIColor+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hackr.swift"; sourceTree = "<group>"; };
 		EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,11 +173,12 @@
 		ED07AB3C21A3B4FF000B5607 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EDD848EB21A114FE0005CD69 /* UIColor+HackrColor.swift */,
-				ED07AB3E21A3B659000B5607 /* UIView+Constraints.swift */,
-				ED07AB4321A4DE47000B5607 /* UILabel+TextStyle.swift */,
-				ED3C851721AAFB7C004299F4 /* Date+Format.swift */,
-				ED8D427521B77E5B00E3A130 /* UITableViewCell+Identifier.swift */,
+				ED3C851721AAFB7C004299F4 /* Date+Hackr.swift */,
+				EDD848EB21A114FE0005CD69 /* UIColor+Hackr.swift */,
+				ED07AB4321A4DE47000B5607 /* UILabel+Hackr.swift */,
+				ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */,
+				ED07AB3E21A3B659000B5607 /* UIView+Hackr.swift */,
+				ED07AB4021A3C485000B5607 /* UIViewController+Hackr.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,12 +191,29 @@
 			path = Story;
 			sourceTree = "<group>";
 		};
-		ED07AB4221A3C489000B5607 /* Extensions */ = {
+		ED0AA9F8222E2F6E006397F8 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				ED07AB4021A3C485000B5607 /* UIViewController+Safari.swift */,
+				ED8D42BA21BF603900E3A130 /* StoryPagesViewController.swift */,
+				ED8D42BC21BF658300E3A130 /* StoriesViewController.swift */,
 			);
-			path = Extensions;
+			path = Stories;
+			sourceTree = "<group>";
+		};
+		ED0AA9F9222E2F78006397F8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		ED0AA9FA222E3234006397F8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED0AA9FB222E36C6006397F8 /* DarkModeController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		ED3C852021ACC18C004299F4 /* Networking */ = {
@@ -275,12 +299,14 @@
 		EDD848CC21A0BA190005CD69 /* Hackr */ = {
 			isa = PBXGroup;
 			children = (
+				ED0AA9FA222E3234006397F8 /* Controller */,
 				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
+				ED07AB3C21A3B4FF000B5607 /* Extensions */,
+				EDD848E021A0BAB90005CD69 /* HackerNews */,
 				EDD848DF21A0BAB40005CD69 /* Model */,
+				ED3C852021ACC18C004299F4 /* Networking */,
 				EDD848EA21A114D60005CD69 /* View */,
 				EDD848E721A0CF600005CD69 /* ViewController */,
-				EDD848E021A0BAB90005CD69 /* HackerNews */,
-				ED3C852021ACC18C004299F4 /* Networking */,
 				ED8D427221B6040800E3A130 /* Util */,
 				EDD848D421A0BA1A0005CD69 /* Assets.xcassets */,
 				EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */,
@@ -312,9 +338,9 @@
 		EDD848E721A0CF600005CD69 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ED07AB4221A3C489000B5607 /* Extensions */,
-				ED8D42BA21BF603900E3A130 /* StoryPagesViewController.swift */,
-				ED8D42BC21BF658300E3A130 /* StoriesViewController.swift */,
+				ED0AA9F8222E2F6E006397F8 /* Stories */,
+				ED0AA9F9222E2F78006397F8 /* Settings */,
+				ED0AA9F6222E2C5E006397F8 /* HackrNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -322,7 +348,6 @@
 		EDD848EA21A114D60005CD69 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ED07AB3C21A3B4FF000B5607 /* Extensions */,
 				ED07AB3D21A3B5CF000B5607 /* Story */,
 			);
 			path = View;
@@ -522,19 +547,22 @@
 				ED8D42BF21C1F00400E3A130 /* HackerNewsConstants.swift in Sources */,
 				EDD848E621A0BADC0005CD69 /* HackerNewsItem.swift in Sources */,
 				ED8D42BB21BF603900E3A130 /* StoryPagesViewController.swift in Sources */,
-				EDD848EC21A114FE0005CD69 /* UIColor+HackrColor.swift in Sources */,
-				ED07AB4421A4DE47000B5607 /* UILabel+TextStyle.swift in Sources */,
-				ED8D427621B77E5B00E3A130 /* UITableViewCell+Identifier.swift in Sources */,
+				EDD848EC21A114FE0005CD69 /* UIColor+Hackr.swift in Sources */,
+				ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */,
+				ED07AB4421A4DE47000B5607 /* UILabel+Hackr.swift in Sources */,
+				ED0AA9FC222E36C6006397F8 /* DarkModeController.swift in Sources */,
+				ED0AA9F7222E2C5E006397F8 /* HackrNavigationController.swift in Sources */,
+				ED8D427621B77E5B00E3A130 /* UITableViewCell+Hackr.swift in Sources */,
 				EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */,
-				ED07AB4121A3C485000B5607 /* UIViewController+Safari.swift in Sources */,
+				ED07AB4121A3C485000B5607 /* UIViewController+Hackr.swift in Sources */,
 				ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */,
 				ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */,
-				ED3C851821AAFB7C004299F4 /* Date+Format.swift in Sources */,
+				ED3C851821AAFB7C004299F4 /* Date+Hackr.swift in Sources */,
 				EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */,
 				EDD848E921A0DA4D0005CD69 /* HackerNewsStory.swift in Sources */,
 				ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */,
 				EDD848E221A0BAC80005CD69 /* HackerNewsService.swift in Sources */,
-				ED07AB3F21A3B659000B5607 /* UIView+Constraints.swift in Sources */,
+				ED07AB3F21A3B659000B5607 /* UIView+Hackr.swift in Sources */,
 				EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,7 +612,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MBTYQ8R5C4;
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				INFOPLIST_FILE = HackrTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -604,7 +632,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MBTYQ8R5C4;
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				INFOPLIST_FILE = HackrTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -11,64 +11,64 @@ import SafariServices
 
 class StoriesViewController: UIViewController {
     
-    private var storiesTable: UITableView!
-    private var stories = [HackerNewsStory]()
-    private var refresher: UIRefreshControl!
-    private var spinner: UIActivityIndicatorView!
-    private var hnService: HackerNewsService!
+  private var storiesTable: UITableView!
+  private var stories = [HackerNewsStory]()
+  private var refresher: UIRefreshControl!
+  private var spinner: UIActivityIndicatorView!
+  private var hnService: HackerNewsService!
     
-    var storyType: HackerNewsItemType
+  var storyType: HackerNewsItemType
 
-    public init(for storyType: HackerNewsItemType) {
-        self.storyType = storyType
-        self.hnService = HackerNewsService(type: storyType, maxStoriesToLoad: 20)
-        super.init(nibName: nil, bundle: nil)
-    }
+  public init(for storyType: HackerNewsItemType) {
+    self.storyType = storyType
+    self.hnService = HackerNewsService(type: storyType, maxStoriesToLoad: 20)
+    super.init(nibName: nil, bundle: nil)
+  }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  required init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+  }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        storiesTable = UITableView()
-        storiesTable.tableFooterView = UIView(frame: CGRect.zero)
-        storiesTable.dataSource = self
-        storiesTable.delegate = self
-        storiesTable.register(StoryTableViewCell.self,
-                                 forCellReuseIdentifier: StoryTableViewCell.identifier)
-        
-        refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(refreshStories), for: .valueChanged)
-        refresher.tintColor = UIColor.hackerNewsOrange
-        storiesTable.refreshControl = refresher
-        self.view.addSubview(storiesTable)
-        storiesTable.anchor(top: self.view.topAnchor, left: self.view.leftAnchor,
-                               bottom: self.view.bottomAnchor, right: self.view.rightAnchor,
-                               paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
-                               width: 0, height: 0, enableInsets: false)
+    storiesTable = UITableView()
+    storiesTable.tableFooterView = UIView(frame: CGRect.zero)
+    storiesTable.dataSource = self
+    storiesTable.delegate = self
+    storiesTable.register(StoryTableViewCell.self,
+                             forCellReuseIdentifier: StoryTableViewCell.identifier)
+  
+    refresher = UIRefreshControl()
+    refresher.addTarget(self, action: #selector(refreshStories), for: .valueChanged)
+    refresher.tintColor = UIColor.hackerNewsOrange
+    storiesTable.refreshControl = refresher
+    self.view.addSubview(storiesTable)
+    storiesTable.anchor(top: self.view.topAnchor, left: self.view.leftAnchor,
+                           bottom: self.view.bottomAnchor, right: self.view.rightAnchor,
+                           paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
+                           width: 0, height: 0, enableInsets: false)
 
-        spinner = UIActivityIndicatorView(style: .whiteLarge)
-        spinner.color = UIColor.hackerNewsOrange
-        spinner.autoresizingMask =
-            [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
-        spinner.center = self.view.center
-        self.view.addSubview(spinner)
-        spinner.startAnimating()
-        self.hnService.getStories(completion: { stories, error in
-            DispatchQueue.main.async {
-                self.spinner.stopAnimating()
-                if let _ = error {
-                    return
-                }
-                if let stories = stories {
-                    self.stories += stories
-                    self.storiesTable.reloadData()
-                }
-            }
-        })
-    }
+    spinner = UIActivityIndicatorView(style: .whiteLarge)
+    spinner.color = UIColor.hackerNewsOrange
+    spinner.autoresizingMask =
+        [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+    spinner.center = self.view.center
+    self.view.addSubview(spinner)
+    spinner.startAnimating()
+    self.hnService.getStories(completion: { stories, error in
+      DispatchQueue.main.async {
+        self.spinner.stopAnimating()
+        if let _ = error {
+          return
+        }
+        if let stories = stories {
+          self.stories += stories
+          self.storiesTable.reloadData()
+        }
+      }
+    })
+  }
     
     override func viewDidAppear(_ animated: Bool) {
         if (traitCollection.forceTouchCapability == .available) {

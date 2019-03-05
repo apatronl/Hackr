@@ -9,6 +9,6 @@
 import UIKit
 
 extension UIColor {
-    static let hackerNewsOrange =
-        UIColor(red: 255.0/255.0, green: 86.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+  static let hackerNewsOrange =
+    UIColor(red: 255.0/255.0, green: 86.0/255.0, blue: 0.0/255.0, alpha: 1.0)
 }
