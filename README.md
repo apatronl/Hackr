@@ -20,6 +20,7 @@ Hackr: a simple iOS client for Y Combinator's [Hacker News](https://news.ycombin
 :trophy: | See Hacker News' top, new, and best stories
 :watch: | Apple Watch app for top 5 stories in each category
 :eyeglasses: | Accessibility for the visually impaired
+:black_circle: | Dark mode
 :octocat: | Free and open source
 
 ## Future Work
