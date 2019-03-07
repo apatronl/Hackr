@@ -22,9 +22,13 @@ struct DarkModeController {
   }
 
   private static let userDefaults = UserDefaults.standard
+  private static var darkModeListeners = [DarkModeDelegate]()
 
   static func setDarkModeState(_ state: DarkModeState) {
     userDefaults.set(state.rawValue, forKey: Constants.key)
+    for listener in darkModeListeners {
+      listener.darkModeStateDidChange(state)
+    }
   }
 
   static func getDarkModeState() -> DarkModeState {
@@ -34,4 +38,12 @@ struct DarkModeController {
     }
     return .off
   }
+
+  static func addListener(_ listener: DarkModeDelegate) {
+    darkModeListeners.append(listener)
+  }
+}
+
+protocol DarkModeDelegate {
+  func darkModeStateDidChange(_ state: DarkModeState)
 }

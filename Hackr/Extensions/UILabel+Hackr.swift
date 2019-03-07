@@ -9,11 +9,9 @@
 import UIKit
 
 extension UILabel {
-    
-    func withTextStyle(textStyle: UIFont.TextStyle) -> UILabel {
-        self.font = UIFont.preferredFont(forTextStyle: textStyle)
-        self.adjustsFontForContentSizeCategory = true
-        return self
-    }
-    
+  func withTextStyle(textStyle: UIFont.TextStyle) -> UILabel {
+    self.font = UIFont.preferredFont(forTextStyle: textStyle)
+    self.adjustsFontForContentSizeCategory = true
+    return self
+  }
 }

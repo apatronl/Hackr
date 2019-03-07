@@ -20,11 +20,15 @@ final class SettingsViewController: UIViewController {
   // MARK: - Private Properties
 
   private let tableView = UITableView(frame: .zero, style: .grouped)
+  private var darkModeState: DarkModeState = .off
 
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    DarkModeController.addListener(self)
+    darkModeState = DarkModeController.getDarkModeState()
+    setUpViewForDarkModeState(darkModeState)
     tableView.frame = view.bounds
     tableView.tableHeaderView =
       UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
@@ -48,6 +52,14 @@ final class SettingsViewController: UIViewController {
     switchButton.isOn = DarkModeController.getDarkModeState() == .on
     switchButton.addTarget(self, action: #selector(darkModeSwitchTapped(_:)), for: .valueChanged)
     return switchButton
+  }
+  
+  private func setUpViewForDarkModeState(_ state: DarkModeState) {
+    self.view.backgroundColor = state == .on ? UIColor.black : UIColor.white
+    self.navigationController?.navigationBar.barStyle = state == .on ? .black : .default
+    self.navigationController?.view.backgroundColor =
+      state == .on ? UIColor.darkModeGray : UIColor.white
+    tableView.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
   }
 
   @objc private func doneButtonTapped() {
@@ -89,12 +101,23 @@ extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
     cell.textLabel?.text = Constants.hackrSettingNames[indexPath.row]
+    cell.textLabel?.textColor = darkModeState == .on ? .white : .black
+    cell.backgroundColor = darkModeState == .on ? UIColor.darkModeGray : .white
     switch indexPath.row {
     case 0:
       cell.accessoryView = setUpDarkModeSwitch()
+      cell.selectionStyle = .none
     default:
       break
     }
     return cell
+  }
+}
+
+extension SettingsViewController: DarkModeDelegate {
+  func darkModeStateDidChange(_ state: DarkModeState) {
+    darkModeState = state
+    tableView.reloadData()
+    setUpViewForDarkModeState(state)
   }
 }
