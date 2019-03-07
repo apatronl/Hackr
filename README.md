@@ -5,9 +5,9 @@
 Hackr: a simple iOS client for Y Combinator's [Hacker News](https://news.ycombinator.com/).
 
 <p align="center">
-<img src="img/mock1.png" width="300"/>
-<img src="img/mock3.png" width="300"/>
-<img src="img/mock2.png" width="300"/>
+<img src="img/mock1.png" width="270"/>
+<img src="img/mock3.png" width="270"/>
+<img src="img/mock2.png" width="270"/>
 </p>
 
 <p align="center">
