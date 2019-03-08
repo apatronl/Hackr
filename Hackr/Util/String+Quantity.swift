@@ -9,5 +9,5 @@
 import Foundation
 
 func getQuantityString(for quantity: Int, singular: String, plural: String) -> String {
-    return "\(quantity) \(quantity == 1 ? singular : plural)"
+  return "\(quantity) \(quantity == 1 ? singular : plural)"
 }
