@@ -137,6 +137,8 @@ extension StoryPagesViewController: UIPageViewControllerDataSource {
   }
 }
 
+// MARK: - DarkModeDelegate
+
 extension StoryPagesViewController: DarkModeDelegate {
   func darkModeStateDidChange(_ state: DarkModeState) {
     setUpViewForDarkModeState(state)

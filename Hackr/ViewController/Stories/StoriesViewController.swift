@@ -86,7 +86,6 @@ class StoriesViewController: UIViewController {
   }
     
   @objc private func refreshStories() {
-    self.stories = []
     self.storiesTable.reloadData()
     self.hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
@@ -95,9 +94,9 @@ class StoriesViewController: UIViewController {
           return
         }
         guard let stories = stories else { return }
-        self.stories += stories
+        self.stories = stories
         self.storiesTable.reloadData()
-        }
+      }
     })
   }
 }
