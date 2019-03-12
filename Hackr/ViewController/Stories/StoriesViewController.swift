@@ -10,15 +10,25 @@ import UIKit
 import SafariServices
 
 class StoriesViewController: UIViewController {
-    
+
+  // MARK: - Private Properties
+
   private var storiesTable = UITableView()
   private var stories = [HackerNewsStory]()
-  private var refresher: UIRefreshControl!
-  private var spinner: UIActivityIndicatorView!
+  private var refresher = UIRefreshControl()
   private var hnService: HackerNewsService!
   private var darkModeState: DarkModeState = .off
-    
-  var storyType: HackerNewsItemType
+  private(set) var storyType: HackerNewsItemType
+
+  private var spinner: UIActivityIndicatorView = {
+    let spinner = UIActivityIndicatorView(style: .whiteLarge)
+    spinner.color = UIColor.hackerNewsOrange
+    spinner.autoresizingMask =
+      [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+    return spinner
+  }()
+
+  // MARK: - Life Cycle
 
   public init(for storyType: HackerNewsItemType) {
     self.storyType = storyType
@@ -27,11 +37,11 @@ class StoriesViewController: UIViewController {
     super.init(nibName: nil, bundle: nil)
     DarkModeController.addListener(self)
   }
-    
+
   required init?(coder aDecoder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -41,23 +51,17 @@ class StoriesViewController: UIViewController {
     storiesTable.delegate = self
     storiesTable.register(StoryTableViewCell.self,
                              forCellReuseIdentifier: StoryTableViewCell.identifier)
-  
-    refresher = UIRefreshControl()
+
     refresher.addTarget(self, action: #selector(refreshStories), for: .valueChanged)
     refresher.tintColor = UIColor.hackerNewsOrange
     storiesTable.refreshControl = refresher
     self.view.addSubview(storiesTable)
-    storiesTable.anchor(top: self.view.topAnchor, left: self.view.leftAnchor,
-                           bottom: self.view.bottomAnchor, right: self.view.rightAnchor,
-                           paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0,
-                           width: 0, height: 0, enableInsets: false)
+    storiesTable.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor,
+                        right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0,
+                        paddingRight: 0, width: 0, height: 0, enableInsets: false)
 
-    spinner = UIActivityIndicatorView(style: .whiteLarge)
-    spinner.color = UIColor.hackerNewsOrange
-    spinner.autoresizingMask =
-        [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
-    spinner.center = self.view.center
-    self.view.addSubview(spinner)
+    spinner.center = view.center
+    view.addSubview(spinner)
     spinner.startAnimating()
     self.hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
@@ -72,21 +76,22 @@ class StoriesViewController: UIViewController {
       }
     })
   }
-    
+
   override func viewDidAppear(_ animated: Bool) {
     if (traitCollection.forceTouchCapability == .available) {
       self.registerForPreviewing(with: self, sourceView: self.storiesTable)
     }
   }
-  
+
+  // MARK: - Private
+
   private func setUpViewForDarkModeState(_ state: DarkModeState) {
     self.view.backgroundColor = state == .on ? UIColor.black : UIColor.white
     storiesTable.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
     storiesTable.reloadData()
   }
-    
+
   @objc private func refreshStories() {
-    self.storiesTable.reloadData()
     self.hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
         self.refresher.endRefreshing()
