@@ -11,17 +11,17 @@ import Foundation
 class StoryDownloadOperation: AsyncOperation {
   let url: URL
   let completion: (HackerNewsStory?, Error?) -> ()
-  
+
   init(url: URL, completion: @escaping (HackerNewsStory?, Error?) -> ()) {
     self.url = url
     self.completion = completion
   }
-  
+
   override func main() {
     if isCancelled {
       return
     }
-  
+
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
       guard !self.isCancelled else {
         self.state = .isFinished

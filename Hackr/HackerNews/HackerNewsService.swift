@@ -39,8 +39,7 @@ class HackerNewsService {
         self.resetFetch()
         return
       }
-      guard let ids =
-        self.handleStoryIdsResponse(data: data, response: response, error: error) else {
+      guard let ids = self.handleStoryIdsResponse(data: data, response: response) else {
         // TODO: Better handle errors
         print("Error")
         self.resetFetch()
@@ -137,15 +136,8 @@ class HackerNewsService {
   ///     - response: An object that provides response metadata, such as HTTP headers and status
   ///         code. If you are making an HTTP or HTTPS request, the returned object is actually an
   ///         `HTTPURLResponse` object.
-  ///     - error: An error object that indicates why the request failed, or `nil` if the request
-  ///         was successful.
   /// - Returns: A list of story ids.
-  private func handleStoryIdsResponse(
-    data: Data?, response: URLResponse?, error: Error?) -> [String]? {
-    if let _ = error {
-      print("An error occurred while getting items")
-      return nil
-    }
+  private func handleStoryIdsResponse(data: Data?, response: URLResponse?) -> [String]? {
     guard let data = data else { return nil }
     return HackerNewsParser.parseDataForStoryIds(data: data)
   }

@@ -18,4 +18,12 @@ extension UIViewController {
       DarkModeController.getDarkModeState() == .on ? UIColor.darkModeGray : .white
     return safariVC
   }
+
+  func showErrorMessage(_ error: Error) {
+    let msgView = MessageView(
+      frame: CGRect(x: 0, y: 0, width: view.frame.width, height: MessageView.Constants.height),
+      message: error.localizedDescription)
+    view.addSubview(msgView)
+    msgView.showAnimated()
+  }
 }

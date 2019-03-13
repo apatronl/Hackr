@@ -66,7 +66,8 @@ class StoriesViewController: UIViewController {
     self.hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
         self.spinner.stopAnimating()
-        if let _ = error {
+        if let error = error {
+          self.showErrorMessage(error)
           return
         }
         if let stories = stories {
@@ -95,7 +96,8 @@ class StoriesViewController: UIViewController {
     self.hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
         self.refresher.endRefreshing()
-        if let _ = error {
+        if let error = error {
+          self.showErrorMessage(error)
           return
         }
         guard let stories = stories else { return }
@@ -143,7 +145,10 @@ extension StoriesViewController: UITableViewDataSource {
     if indexPath.row == self.stories.count - 1 {
       self.hnService.loadMoreStories(completion: { stories, error in
         DispatchQueue.main.async {
-          if let _ = error { return }
+          if let error = error {
+            self.showErrorMessage(error)
+            return
+          }
           guard let stories = stories else { return }
           if stories.isEmpty { return }
           self.stories += stories

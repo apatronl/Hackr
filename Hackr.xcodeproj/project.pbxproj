@@ -16,6 +16,7 @@
 		ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */; };
 		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
 		ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */; };
+		ED84BF7E2238740A002B8C3A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84BF7D2238740A002B8C3A /* MessageView.swift */; };
 		ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
 		ED8D427621B77E5B00E3A130 /* UITableViewCell+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */; };
 		ED8D427E21B8B51600E3A130 /* HackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427D21B8B51600E3A130 /* HackrTests.swift */; };
@@ -111,6 +112,7 @@
 		ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDownloadOperation.swift; sourceTree = "<group>"; };
 		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		ED84BF7D2238740A002B8C3A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		ED8D427321B6043600E3A130 /* String+Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Quantity.swift"; sourceTree = "<group>"; };
 		ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Hackr.swift"; sourceTree = "<group>"; };
 		ED8D427B21B8B51600E3A130 /* HackrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,8 +301,8 @@
 		EDD848CC21A0BA190005CD69 /* Hackr */ = {
 			isa = PBXGroup;
 			children = (
-				ED0AA9FA222E3234006397F8 /* Controller */,
 				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
+				ED0AA9FA222E3234006397F8 /* Controller */,
 				ED07AB3C21A3B4FF000B5607 /* Extensions */,
 				EDD848E021A0BAB90005CD69 /* HackerNews */,
 				EDD848DF21A0BAB40005CD69 /* Model */,
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				ED07AB3D21A3B5CF000B5607 /* Story */,
+				ED84BF7D2238740A002B8C3A /* MessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				ED8D42BB21BF603900E3A130 /* StoryPagesViewController.swift in Sources */,
 				EDD848EC21A114FE0005CD69 /* UIColor+Hackr.swift in Sources */,
 				ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */,
+				ED84BF7E2238740A002B8C3A /* MessageView.swift in Sources */,
 				ED07AB4421A4DE47000B5607 /* UILabel+Hackr.swift in Sources */,
 				ED0AA9FC222E36C6006397F8 /* DarkModeController.swift in Sources */,
 				ED0AA9F7222E2C5E006397F8 /* HackrNavigationController.swift in Sources */,

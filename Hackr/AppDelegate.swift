@@ -12,13 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  static var navigationBarHeight: CGFloat = -55
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     let mainNavigationController = UINavigationController()
     mainNavigationController.viewControllers = [StoryPagesViewController()]
+    // TODO: Figure out a better way to store this property
+    AppDelegate.navigationBarHeight = UIApplication.shared.statusBarFrame.size.height
+      + mainNavigationController.navigationBar.frame.height
     window = UIWindow(frame: UIScreen.main.bounds)
     window!.rootViewController = mainNavigationController
     window!.makeKeyAndVisible()
