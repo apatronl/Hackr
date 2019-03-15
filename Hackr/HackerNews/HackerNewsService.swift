@@ -39,6 +39,10 @@ class HackerNewsService {
         self.resetFetch()
         return
       }
+      // For debugging
+      if let r = response as? HTTPURLResponse {
+        print("\(r.statusCode): \(HTTPURLResponse.localizedString(forStatusCode: r.statusCode))")
+      }
       guard let ids = self.handleStoryIdsResponse(data: data, response: response) else {
         // TODO: Better handle errors
         print("Error")
