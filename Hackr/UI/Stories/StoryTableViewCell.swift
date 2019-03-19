@@ -25,14 +25,14 @@ class StoryTableViewCell: UITableViewCell {
           "\(getQuantityString(for: points, singular: "point", plural: "points")) 🔥"
       dateLabel.text = self.story?.time?.formatted()
       numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
-    
+
       // Story details a11y
       authorAndPointsLabel.isAccessibilityElement = true
       authorAndPointsLabel.accessibilityLabel =
           "Story posted by \(story?.by ?? "unknown"), "
           + getQuantityString(for: points, singular: "point", plural: "points")
       numberOfCommentsLabel.isAccessibilityElement = false
-    
+
       // Comments button a11y
       commentsImageView.isAccessibilityElement = true
       let numOfComments = story?.descendants ?? 0

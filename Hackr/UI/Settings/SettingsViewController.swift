@@ -56,7 +56,7 @@ final class SettingsViewController: UIViewController {
     switchButton.addTarget(self, action: #selector(darkModeSwitchTapped(_:)), for: .valueChanged)
     return switchButton
   }
-  
+
   private func setUpViewForDarkModeState(_ state: DarkModeState) {
     self.view.backgroundColor = state == .on ? UIColor.black : UIColor.white
     self.navigationController?.navigationBar.barStyle = state == .on ? .black : .default

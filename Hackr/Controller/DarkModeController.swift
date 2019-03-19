@@ -32,11 +32,8 @@ struct DarkModeController {
   }
 
   static func getDarkModeState() -> DarkModeState {
-    if let rawState = userDefaults.string(forKey: Constants.key),
-       let darkModeState = DarkModeState(rawValue: rawState) {
-      return darkModeState
-    }
-    return .off
+    let rawState = userDefaults.string(forKey: Constants.key) ?? ""
+    return DarkModeState(rawValue: rawState) ?? .off
   }
 
   static func addListener(_ listener: DarkModeDelegate) {

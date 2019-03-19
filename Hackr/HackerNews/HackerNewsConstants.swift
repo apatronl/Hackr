@@ -17,7 +17,7 @@ struct HackerNewsConstants {
   static let BEST_STORIES = "beststories"
   static let NEW_STORIES = "newstories"
   static let JSON = ".json"
-  
+
   static func urlForType(_ type: HackerNewsItemType) -> URL! {
     var typeUrl = ""
     switch type {
@@ -30,7 +30,7 @@ struct HackerNewsConstants {
     }
     return URL(string: BASE_URL + typeUrl + JSON)!
   }
-  
+
   static func urlForId(_ id: String) -> URL! {
     return URL(string: BASE_URL + ITEM + id + JSON)!
   }

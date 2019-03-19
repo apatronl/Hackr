@@ -118,7 +118,7 @@ extension StoriesViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return stories.count
   }
-    
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(
         withIdentifier: StoryTableViewCell.identifier) as! StoryTableViewCell
@@ -129,7 +129,7 @@ extension StoriesViewController: UITableViewDataSource {
     cell.darkModeState = darkModeState
     return cell
   }
-    
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if self.refresher.isRefreshing { return }
     if let url = URL(string: self.stories[indexPath.row].url ?? "") {
@@ -139,7 +139,7 @@ extension StoriesViewController: UITableViewDataSource {
     }
     self.storiesTable.deselectRow(at: indexPath, animated: true)
   }
-    
+
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                  forRowAt indexPath: IndexPath) {
     if indexPath.row == self.stories.count - 1 {
@@ -170,7 +170,7 @@ extension StoriesViewController: UIViewControllerPreviewingDelegate {
       return self.safariViewForItem(
         at: URL(string: cell.story?.url ?? ""), defaultUrl: HackerNewsConstants.HOME_URL)
   }
-    
+
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                          commit viewControllerToCommit: UIViewController) {
     self.present(viewControllerToCommit, animated: true, completion: nil)

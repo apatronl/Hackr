@@ -11,7 +11,6 @@ import Foundation
 class HackerNewsService {
 
   private var url: URL!
-
   private var ids = [String]()
   private var currentPage = 0
   private var maxStoriesToLoad = 5
@@ -23,7 +22,7 @@ class HackerNewsService {
     self.url = HackerNewsConstants.urlForType(type)
     self.maxStoriesToLoad = maxStoriesToLoad
   }
-    
+
   /// Sends a GET request to the Hacker News API for a given item type.
   ///
   /// - Parameters:
@@ -54,7 +53,6 @@ class HackerNewsService {
     }
     task.resume()
   }
-
 
   /// Sends a GET request to the Hacker News API to get stories given the fetched story ids.
   ///

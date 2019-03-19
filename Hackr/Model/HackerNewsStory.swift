@@ -18,7 +18,7 @@ struct HackerNewsStory {
   let time: Date?
   let title: String?
   let url: String?
-    
+
   init(json: [String: Any]) {
     self.by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
     self.descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0

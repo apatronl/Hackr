@@ -9,7 +9,7 @@
 import Foundation
 
 struct HackerNewsParser {
-    
+
   static func parseDataForStoryIds(data: Data) -> [String]? {
     if let text = String(data: data, encoding: String.Encoding.utf8) {
       let trimemdText = text.trimmingCharacters(in: CharacterSet.init(
@@ -19,7 +19,7 @@ struct HackerNewsParser {
     }
     return nil
   }
-  
+
   static func parseDataForStory(data: Data) -> HackerNewsStory? {
     do {
       if let json =

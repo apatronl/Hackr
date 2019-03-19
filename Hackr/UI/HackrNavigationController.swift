@@ -9,7 +9,7 @@
 import UIKit
 
 open class HackrNavigationController: UINavigationController {
-  
+
   override open func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
