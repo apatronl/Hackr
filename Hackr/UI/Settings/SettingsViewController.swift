@@ -58,9 +58,9 @@ final class SettingsViewController: UIViewController {
   }
 
   private func setUpViewForDarkModeState(_ state: DarkModeState) {
-    self.view.backgroundColor = state == .on ? UIColor.black : UIColor.white
-    self.navigationController?.navigationBar.barStyle = state == .on ? .black : .default
-    self.navigationController?.view.backgroundColor =
+    view.backgroundColor = state == .on ? UIColor.black : UIColor.white
+    navigationController?.navigationBar.barStyle = state == .on ? .black : .default
+    navigationController?.view.backgroundColor =
       state == .on ? UIColor.darkModeGray : UIColor.white
     tableView.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
   }

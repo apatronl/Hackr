@@ -20,23 +20,23 @@ struct HackerNewsStory {
   let url: String?
 
   init(json: [String: Any]) {
-    self.by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
-    self.descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0
-    self.id = "\(json[HackerNewsItemFieldKeys.id] ?? "1")"
-    self.kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
-    self.score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
+    by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
+    descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0
+    id = "\(json[HackerNewsItemFieldKeys.id] ?? "1")"
+    kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
+    score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
     if let timeInterval = json[HackerNewsItemFieldKeys.time] as? TimeInterval {
-      self.time = Date(timeIntervalSince1970: timeInterval)
+      time = Date(timeIntervalSince1970: timeInterval)
     } else {
-      self.time = nil
+      time = nil
     }
-    self.title = json[HackerNewsItemFieldKeys.title] as? String ?? "Title"
-    if let url = json[HackerNewsItemFieldKeys.url] as? String {
-      self.url = url
+    title = json[HackerNewsItemFieldKeys.title] as? String ?? "Title"
+    if let hackerNewsUrl = json[HackerNewsItemFieldKeys.url] as? String {
+      url = hackerNewsUrl
     } else if let id = self.id {
-      self.url = HackerNewsConstants.COMMENTS_URL + id
+      url = HackerNewsConstants.COMMENTS_URL + id
     } else {
-      self.url = HackerNewsConstants.HOME_URL?.absoluteString
+      url = HackerNewsConstants.HOME_URL?.absoluteString
     }
   }
     

@@ -23,7 +23,7 @@ class StoryTableViewCell: UITableViewCell {
       authorAndPointsLabel.text =
           "👾 by \(story!.by!) | " +
           "\(getQuantityString(for: points, singular: "point", plural: "points")) 🔥"
-      dateLabel.text = self.story?.time?.formatted()
+      dateLabel.text = story?.time?.formatted()
       numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
 
       // Story details a11y
@@ -95,10 +95,10 @@ class StoryTableViewCell: UITableViewCell {
     commentsStack.spacing = 3
     commentsStack.alignment = .center
 
-    self.addSubview(titleLabel)
-    self.addSubview(authorAndPointsLabel)
-    self.addSubview(dateLabel)
-    self.addSubview(commentsStack)
+    addSubview(titleLabel)
+    addSubview(authorAndPointsLabel)
+    addSubview(dateLabel)
+    addSubview(commentsStack)
 
     titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: authorAndPointsLabel.topAnchor,
                       right: commentsStack.leftAnchor, paddingTop: 10, paddingLeft: 15,
@@ -115,7 +115,7 @@ class StoryTableViewCell: UITableViewCell {
                      paddingBottom: 10, paddingRight: 50, width: 0, height: 0,
                      enableInsets: false)
 
-    commentsStack.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    commentsStack.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     commentsStack.widthAnchor.constraint(equalToConstant: 70).isActive = true
     commentsStack.rightAnchor.constraint(equalTo: rightAnchor, constant: 5).isActive = true
     commentsStack.leftAnchor.constraint(
@@ -138,7 +138,7 @@ class StoryTableViewCell: UITableViewCell {
   }
   
   @objc func commentsButtonTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-    self.delegate?.didPressCommentsButton(self)
+    delegate?.didPressCommentsButton(self)
   }
 }
 
