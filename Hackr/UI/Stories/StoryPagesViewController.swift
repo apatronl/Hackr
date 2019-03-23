@@ -12,7 +12,7 @@ final class StoryPagesViewController: UIViewController {
   enum Constants {
     static let settingsIcon = UIImage(named: "ic-settings")
   }
-  
+
   // MARK: - Private Properties
 
   private var pagesViewController: UIPageViewController!
@@ -21,6 +21,13 @@ final class StoryPagesViewController: UIViewController {
   private var storyPages: [StoriesViewController] = []
   private var lastPendingViewControllerIndex = 0
   private var currentViewControllerIndex = 0
+
+  private var searchController: UISearchController = {
+    let controller = UISearchController(searchResultsController: nil)
+    controller.searchBar.tintColor = UIColor.hackerNewsOrange
+    controller.dimsBackgroundDuringPresentation = false
+    return controller
+  }()
 
   // MARK: - Life Cycle
 
@@ -45,7 +52,7 @@ final class StoryPagesViewController: UIViewController {
                       action: #selector(settingsButtonTapped(sender:)))
     settingsButton.tintColor = UIColor.hackerNewsOrange
     navigationItem.rightBarButtonItem = settingsButton
-    
+
     pagesViewController = UIPageViewController(transitionStyle: .scroll,
                                                navigationOrientation: .horizontal,
                                                options: nil)
@@ -53,13 +60,17 @@ final class StoryPagesViewController: UIViewController {
     for storyType in storyTypes {
       storyPages.append(StoriesViewController(for: storyType))
     }
-    pagesViewController.setViewControllers(
-      [storyPages[0]], direction: .forward, animated: true, completion: nil)
+    pagesViewController.setViewControllers([storyPages[currentViewControllerIndex]],
+                                           direction: .forward, animated: true, completion: nil)
     pagesViewController.dataSource = self
     pagesViewController.delegate = self
 
     addChild(pagesViewController)
     view.addSubview(pagesViewController.view)
+
+    navigationItem.hidesSearchBarWhenScrolling = false
+    searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
+    navigationItem.searchController = searchController
   }
 
   func indexOfViewController(_ viewController: StoriesViewController) -> Int {
@@ -99,6 +110,7 @@ extension StoryPagesViewController: UIPageViewControllerDelegate {
       currentViewControllerIndex = lastPendingViewControllerIndex
       navigationItem.title = storyTypes[currentViewControllerIndex].rawValue
       pageControl.currentPage = currentViewControllerIndex
+      searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
     }
   }
 }

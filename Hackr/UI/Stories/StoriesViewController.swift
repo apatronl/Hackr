@@ -15,6 +15,8 @@ class StoriesViewController: UIViewController {
 
   private var storiesTable = UITableView()
   private var stories = [HackerNewsStory]()
+  private var queriedStories = [HackerNewsStory]()
+  private var searchQueryActive = false
   private var refresher = UIRefreshControl()
   private var hnService: HackerNewsService!
   private var darkModeState: DarkModeState = .off
@@ -32,7 +34,7 @@ class StoriesViewController: UIViewController {
 
   public init(for storyType: HackerNewsItemType) {
     self.storyType = storyType
-    self.hnService = HackerNewsService(type: storyType, maxStoriesToLoad: 20)
+    hnService = HackerNewsService(type: storyType, maxStoriesToLoad: 20)
     darkModeState = DarkModeController.getDarkModeState()
     super.init(nibName: nil, bundle: nil)
     DarkModeController.addListener(self)
@@ -55,7 +57,7 @@ class StoriesViewController: UIViewController {
     refresher.addTarget(self, action: #selector(refreshStories), for: .valueChanged)
     refresher.tintColor = UIColor.hackerNewsOrange
     storiesTable.refreshControl = refresher
-    self.view.addSubview(storiesTable)
+    view.addSubview(storiesTable)
     storiesTable.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor,
                         right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0,
                         paddingRight: 0, width: 0, height: 0, enableInsets: false)
@@ -63,7 +65,7 @@ class StoriesViewController: UIViewController {
     spinner.center = view.center
     view.addSubview(spinner)
     spinner.startAnimating()
-    self.hnService.getStories(completion: { stories, error in
+    hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
         self.spinner.stopAnimating()
         if let error = error {
@@ -80,20 +82,20 @@ class StoriesViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     if (traitCollection.forceTouchCapability == .available) {
-      self.registerForPreviewing(with: self, sourceView: self.storiesTable)
+      registerForPreviewing(with: self, sourceView: storiesTable)
     }
   }
 
   // MARK: - Private
 
   private func setUpViewForDarkModeState(_ state: DarkModeState) {
-    self.view.backgroundColor = state == .on ? UIColor.black : UIColor.white
+    view.backgroundColor = state == .on ? UIColor.black : UIColor.white
     storiesTable.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
     storiesTable.reloadData()
   }
 
   @objc private func refreshStories() {
-    self.hnService.getStories(completion: { stories, error in
+    hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
         self.refresher.endRefreshing()
         if let error = error {
@@ -116,6 +118,9 @@ extension StoriesViewController: UITableViewDelegate {}
 
 extension StoriesViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if searchQueryActive {
+      return queriedStories.count
+    }
     return stories.count
   }
 
@@ -124,26 +129,28 @@ extension StoriesViewController: UITableViewDataSource {
         withIdentifier: StoryTableViewCell.identifier) as! StoryTableViewCell
     cell.delegate = self
     if (!refresher.isRefreshing) {
-        cell.story = self.stories[indexPath.row]
+      cell.story = searchQueryActive ? queriedStories[indexPath.row] : stories[indexPath.row]
     }
     cell.darkModeState = darkModeState
     return cell
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if self.refresher.isRefreshing { return }
-    if let url = URL(string: self.stories[indexPath.row].url ?? "") {
-      guard let safariVC = self.safariViewForItem(
-        at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
-      self.present(safariVC, animated: true, completion: nil)
+    if refresher.isRefreshing { return }
+    let selectedStory = searchQueryActive ? queriedStories[indexPath.row] : stories[indexPath.row]
+    if let url = URL(string: selectedStory.url ?? "") {
+      guard let safariVC =
+        safariViewForItem(at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
+      present(safariVC, animated: true, completion: nil)
     }
-    self.storiesTable.deselectRow(at: indexPath, animated: true)
+    storiesTable.deselectRow(at: indexPath, animated: true)
   }
 
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                  forRowAt indexPath: IndexPath) {
-    if indexPath.row == self.stories.count - 1 {
-      self.hnService.loadMoreStories(completion: { stories, error in
+    guard !searchQueryActive else { return }
+    if indexPath.row == stories.count - 1 {
+      hnService.loadMoreStories(completion: { stories, error in
         DispatchQueue.main.async {
           if let error = error {
             self.showErrorMessage(error)
@@ -164,16 +171,16 @@ extension StoriesViewController: UITableViewDataSource {
 extension StoriesViewController: UIViewControllerPreviewingDelegate {
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
-    guard let indexPath = self.storiesTable.indexPathForRow(at: location) else { return nil }
-      guard let cell = self.storiesTable.cellForRow(at: indexPath)
+    guard let indexPath = storiesTable.indexPathForRow(at: location) else { return nil }
+      guard let cell = storiesTable.cellForRow(at: indexPath)
         as? StoryTableViewCell else { return nil }
-      return self.safariViewForItem(
-        at: URL(string: cell.story?.url ?? ""), defaultUrl: HackerNewsConstants.HOME_URL)
+      return safariViewForItem(at: URL(string: cell.story?.url ?? ""),
+                               defaultUrl: HackerNewsConstants.HOME_URL)
   }
 
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                          commit viewControllerToCommit: UIViewController) {
-    self.present(viewControllerToCommit, animated: true, completion: nil)
+    present(viewControllerToCommit, animated: true, completion: nil)
   }
 }
 
@@ -183,8 +190,8 @@ extension StoriesViewController: StoryTableViewCellDelegate {
   func didPressCommentsButton(_ cell: StoryTableViewCell) {
     let url = URL(string: HackerNewsConstants.COMMENTS_URL + "\(cell.story?.id ?? "1")")
     guard let safariVC =
-      self.safariViewForItem(at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
-    self.present(safariVC, animated: true, completion: nil)
+      safariViewForItem(at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
+    present(safariVC, animated: true, completion: nil)
   }
 }
 
@@ -194,5 +201,22 @@ extension StoriesViewController: DarkModeDelegate {
   func darkModeStateDidChange(_ state: DarkModeState) {
     darkModeState = state
     setUpViewForDarkModeState(state)
+  }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension StoriesViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    if let query = searchController.searchBar.text, !query.isEmpty {
+      queriedStories = stories.filter({ story in
+        return story.title?.lowercased().contains(query.lowercased()) ?? false
+      })
+      searchQueryActive = true
+    } else {
+      searchQueryActive = false
+      queriedStories.removeAll()
+    }
+    storiesTable.reloadData()
   }
 }
