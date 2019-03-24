@@ -26,9 +26,9 @@ struct DarkModeController {
 
   static func setDarkModeState(_ state: DarkModeState) {
     userDefaults.set(state.rawValue, forKey: Constants.key)
-    for listener in darkModeListeners {
+    darkModeListeners.forEach({ listener in
       listener.darkModeStateDidChange(state)
-    }
+    })
   }
 
   static func getDarkModeState() -> DarkModeState {

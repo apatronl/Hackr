@@ -13,24 +13,27 @@ import UIKit
 /// comments, and comments button.
 ///
 class StoryTableViewCell: UITableViewCell {
+  
+  enum Constants {
+    static let authorEmoji = "👾"
+    static let point = "point"
+    static let points = "points"
+    static let pointsEmoji = "🔥"
+    static let unknownAuthor = "unknown"
+  }
 
   var delegate: StoryTableViewCellDelegate?
 
   var story: HackerNewsStory? {
     didSet {
       titleLabel.text = story?.title
-      let points = story?.score ?? 0
-      authorAndPointsLabel.text =
-          "👾 by \(story!.by!) | " +
-          "\(getQuantityString(for: points, singular: "point", plural: "points")) 🔥"
+      authorAndPointsLabel.text = getAuthorAndPointsLabelText()
       dateLabel.text = story?.time?.formatted()
       numberOfCommentsLabel.text = "\(story?.descendants ?? 0)"
 
       // Story details a11y
       authorAndPointsLabel.isAccessibilityElement = true
-      authorAndPointsLabel.accessibilityLabel =
-          "Story posted by \(story?.by ?? "unknown"), "
-          + getQuantityString(for: points, singular: "point", plural: "points")
+      authorAndPointsLabel.accessibilityLabel = getAuthorAndPointsA11yLabelText()
       numberOfCommentsLabel.isAccessibilityElement = false
 
       // Comments button a11y
@@ -136,9 +139,24 @@ class StoryTableViewCell: UITableViewCell {
 
     // Configure the view for the selected state
   }
-  
+
   @objc func commentsButtonTapped(tapGestureRecognizer: UITapGestureRecognizer) {
     delegate?.didPressCommentsButton(self)
+  }
+
+  // MARK: - Private
+
+  private func getAuthorAndPointsLabelText() -> String {
+    let points = story?.score ?? 0
+    return "\(Constants.authorEmoji) by \(story?.by ?? "\(Constants.unknownAuthor)") |"
+      + "\(getQuantityString(for: points, singular: Constants.point, plural: Constants.points)) "
+      + "\(Constants.pointsEmoji)"
+  }
+
+  private func getAuthorAndPointsA11yLabelText() -> String {
+    let points = story?.score ?? 0
+    return "Story posted by \(story?.by ?? "\(Constants.unknownAuthor)"), "
+      + getQuantityString(for: points, singular: Constants.point, plural: Constants.points)
   }
 }
 

@@ -123,8 +123,8 @@ extension SettingsViewController: UITableViewDataSource {
     let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
     cell.textLabel?.textColor = darkModeState == .on ? .white : .black
     cell.backgroundColor = darkModeState == .on ? UIColor.darkModeGray : .white
-    // If more rows are added to one of these sections, then we also need to check indexPath.row
-    // when creating the cell
+    // NOTE: - If more rows are added to one of these sections, then we also need to check
+    // indexPath.row when creating the cell
     switch indexPath.section {
     case 0:
       cell.textLabel?.text = Constants.interfaceSettingNames[indexPath.row]

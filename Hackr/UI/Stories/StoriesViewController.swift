@@ -156,8 +156,7 @@ extension StoriesViewController: UITableViewDataSource {
             self.showErrorMessage(error)
             return
           }
-          guard let stories = stories else { return }
-          if stories.isEmpty { return }
+          guard let stories = stories, !stories.isEmpty else { return }
           self.stories += stories
           self.storiesTable.reloadData()
         }
@@ -171,11 +170,10 @@ extension StoriesViewController: UITableViewDataSource {
 extension StoriesViewController: UIViewControllerPreviewingDelegate {
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
-    guard let indexPath = storiesTable.indexPathForRow(at: location) else { return nil }
-      guard let cell = storiesTable.cellForRow(at: indexPath)
-        as? StoryTableViewCell else { return nil }
-      return safariViewForItem(at: URL(string: cell.story?.url ?? ""),
-                               defaultUrl: HackerNewsConstants.HOME_URL)
+    guard let indexPath = storiesTable.indexPathForRow(at: location),
+      let cell =  storiesTable.cellForRow(at: indexPath) as? StoryTableViewCell else { return nil }
+    return safariViewForItem(at: URL(string: cell.story?.url ?? ""),
+                             defaultUrl: HackerNewsConstants.HOME_URL)
   }
 
   func previewingContext(_ previewingContext: UIViewControllerPreviewing,

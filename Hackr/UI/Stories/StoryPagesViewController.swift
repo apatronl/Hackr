@@ -45,11 +45,10 @@ final class StoryPagesViewController: UIViewController {
     pageControl.currentPageIndicatorTintColor = UIColor.hackerNewsOrange
     navigationController?.navigationBar.addSubview(pageControl)
 
-    let settingsButton =
-      UIBarButtonItem(image: Constants.settingsIcon,
-                      style: .plain,
-                      target: self,
-                      action: #selector(settingsButtonTapped(sender:)))
+    let settingsButton = UIBarButtonItem(image: Constants.settingsIcon,
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(settingsButtonTapped(sender:)))
     settingsButton.tintColor = UIColor.hackerNewsOrange
     navigationItem.rightBarButtonItem = settingsButton
 
