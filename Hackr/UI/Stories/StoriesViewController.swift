@@ -11,6 +11,11 @@ import SafariServices
 
 class StoriesViewController: UIViewController {
 
+  enum Constants {
+    static let tableFooterViewHeight: CGFloat = 50.0
+    static let tableSpinnerHeight = tableFooterViewHeight / 2
+  }
+
   // MARK: - Private Properties
 
   private var storiesTable = UITableView()
@@ -24,6 +29,14 @@ class StoriesViewController: UIViewController {
 
   private var spinner: UIActivityIndicatorView = {
     let spinner = UIActivityIndicatorView(style: .whiteLarge)
+    spinner.color = UIColor.hackerNewsOrange
+    spinner.autoresizingMask =
+      [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+    return spinner
+  }()
+
+  private var tableSpinner: UIActivityIndicatorView = {
+    let spinner = UIActivityIndicatorView(style: .white)
     spinner.color = UIColor.hackerNewsOrange
     spinner.autoresizingMask =
       [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
@@ -94,6 +107,19 @@ class StoriesViewController: UIViewController {
     storiesTable.reloadData()
   }
 
+  private func setupTableViewSpinner() {
+    storiesTable.tableFooterView = UIView(frame: CGRect(x: 0,
+                                                        y: 0,
+                                                        width: storiesTable.frame.width,
+                                                        height: Constants.tableFooterViewHeight))
+    tableSpinner.frame = CGRect(x: storiesTable.frame.width / 2 - Constants.tableSpinnerHeight / 2,
+                                y: Constants.tableSpinnerHeight / 2,
+                                width: Constants.tableSpinnerHeight,
+                                height: Constants.tableSpinnerHeight)
+    storiesTable.tableFooterView?.addSubview(tableSpinner)
+    tableSpinner.startAnimating()
+  }
+
   @objc private func refreshStories() {
     hnService.getStories(completion: { stories, error in
       DispatchQueue.main.async {
@@ -150,8 +176,11 @@ extension StoriesViewController: UITableViewDataSource {
                  forRowAt indexPath: IndexPath) {
     guard !searchQueryActive else { return }
     if indexPath.row == stories.count - 1 {
+      setupTableViewSpinner()
       hnService.loadMoreStories(completion: { stories, error in
         DispatchQueue.main.async {
+          self.tableSpinner.stopAnimating()
+          self.storiesTable.tableFooterView = UIView(frame: CGRect.zero)
           if let error = error {
             self.showErrorMessage(error)
             return
@@ -207,9 +236,9 @@ extension StoriesViewController: DarkModeDelegate {
 extension StoriesViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     if let query = searchController.searchBar.text, !query.isEmpty {
-      queriedStories = stories.filter({ story in
-        return story.title?.lowercased().contains(query.lowercased()) ?? false
-      })
+      queriedStories = stories.filter {
+        return $0.title?.lowercased().contains(query.lowercased()) ?? false
+      }
       searchQueryActive = true
     } else {
       searchQueryActive = false
