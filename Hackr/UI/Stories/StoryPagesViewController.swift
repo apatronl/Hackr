@@ -67,9 +67,10 @@ final class StoryPagesViewController: UIViewController {
     addChild(pagesViewController)
     view.addSubview(pagesViewController.view)
 
-    navigationItem.hidesSearchBarWhenScrolling = false
-    searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
-    navigationItem.searchController = searchController
+//    navigationItem.hidesSearchBarWhenScrolling = false
+//    searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
+//    storyPages[currentViewControllerIndex].searchController = searchController
+//    navigationItem.searchController = searchController
   }
 
   func indexOfViewController(_ viewController: StoriesViewController) -> Int {
@@ -109,7 +110,8 @@ extension StoryPagesViewController: UIPageViewControllerDelegate {
       currentViewControllerIndex = lastPendingViewControllerIndex
       navigationItem.title = storyTypes[currentViewControllerIndex].rawValue
       pageControl.currentPage = currentViewControllerIndex
-      searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
+//      searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
+//      storyPages[currentViewControllerIndex].searchController = searchController
     }
   }
 }

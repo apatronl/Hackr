@@ -16,6 +16,8 @@ class StoriesViewController: UIViewController {
     static let tableSpinnerHeight = tableFooterViewHeight / 2
   }
 
+//  public var searchController: UISearchController?
+
   // MARK: - Private Properties
 
   private var storiesTable = UITableView()
@@ -163,13 +165,21 @@ extension StoriesViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if refresher.isRefreshing { return }
+//    searchController?.isActive = false
+    storiesTable.deselectRow(at: indexPath, animated: true)
     let selectedStory = searchQueryActive ? queriedStories[indexPath.row] : stories[indexPath.row]
     if let url = URL(string: selectedStory.url ?? "") {
       guard let safariVC =
         safariViewForItem(at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
       present(safariVC, animated: true, completion: nil)
+//      if let presentedVC = presentedViewController {
+//        presentedVC.dismiss(animated: true, completion: {
+//          //self.present(safariVC, animated: true, completion: nil)
+//        })
+//      } else {
+//        present(safariVC, animated: true, completion: nil)
+//      }
     }
-    storiesTable.deselectRow(at: indexPath, animated: true)
   }
 
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
@@ -233,17 +243,17 @@ extension StoriesViewController: DarkModeDelegate {
 
 // MARK: - UISearchResultsUpdating
 
-extension StoriesViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    if let query = searchController.searchBar.text, !query.isEmpty {
-      queriedStories = stories.filter {
-        return $0.title?.lowercased().contains(query.lowercased()) ?? false
-      }
-      searchQueryActive = true
-    } else {
-      searchQueryActive = false
-      queriedStories.removeAll()
-    }
-    storiesTable.reloadData()
-  }
-}
+//extension StoriesViewController: UISearchResultsUpdating {
+//  func updateSearchResults(for searchController: UISearchController) {
+//    if let query = searchController.searchBar.text, !query.isEmpty {
+//      queriedStories = stories.filter {
+//        return $0.title?.lowercased().contains(query.lowercased()) ?? false
+//      }
+//      searchQueryActive = true
+//    } else {
+//      searchQueryActive = false
+//      queriedStories.removeAll()
+//    }
+//    storiesTable.reloadData()
+//  }
+//}
