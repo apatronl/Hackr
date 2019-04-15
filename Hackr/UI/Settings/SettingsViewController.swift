@@ -14,8 +14,8 @@ final class SettingsViewController: UIViewController {
 
   enum Constants {
     static let hackrSourceCodeUrl = URL(string: "https://github.com/apatronl/Hackr")
-    static let interfaceTitle = "Interface"
-    static let interfaceSettingNames = ["Dark Mode"]
+    static let appearanceTitle = "Appearance"
+    static let appearanceSettingNames = ["Dark Mode"]
     static let sourcesSettingsNames = ["Source Code"]
     static let sections = 2
   }
@@ -102,7 +102,7 @@ extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 0:
-      return Constants.interfaceTitle
+      return Constants.appearanceTitle
     default:
       return nil
     }
@@ -111,7 +111,7 @@ extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
-      return Constants.interfaceSettingNames.count
+      return Constants.appearanceSettingNames.count
     case 1:
       return Constants.sourcesSettingsNames.count
     default:
@@ -127,7 +127,7 @@ extension SettingsViewController: UITableViewDataSource {
     // indexPath.row when creating the cell
     switch indexPath.section {
     case 0:
-      cell.textLabel?.text = Constants.interfaceSettingNames[indexPath.row]
+      cell.textLabel?.text = Constants.appearanceSettingNames[indexPath.row]
       cell.accessoryView = setUpDarkModeSwitch()
       cell.selectionStyle = .none
     case 1:
