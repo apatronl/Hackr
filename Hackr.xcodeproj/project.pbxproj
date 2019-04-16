@@ -15,6 +15,8 @@
 		ED3C851821AAFB7C004299F4 /* Date+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851721AAFB7C004299F4 /* Date+Hackr.swift */; };
 		ED3C851A21ABB485004299F4 /* StoryDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */; };
 		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
+		ED68686422657AE40027AF7D /* AppIcon-Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */; };
+		ED68686522657AE40027AF7D /* AppIcon-Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */; };
 		ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */; };
 		ED84BF7E2238740A002B8C3A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84BF7D2238740A002B8C3A /* MessageView.swift */; };
 		ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
@@ -115,6 +117,8 @@
 		ED3C851721AAFB7C004299F4 /* Date+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Hackr.swift"; sourceTree = "<group>"; };
 		ED3C851921ABB484004299F4 /* StoryDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDownloadOperation.swift; sourceTree = "<group>"; };
 		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Dark@3x.png"; sourceTree = "<group>"; };
+		ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Dark@2x.png"; sourceTree = "<group>"; };
 		ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ED84BF7D2238740A002B8C3A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		ED8D427321B6043600E3A130 /* String+Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Quantity.swift"; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 		EDD32C0622655375003648B9 /* App Icon Dark Mode */ = {
 			isa = PBXGroup;
 			children = (
+				ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */,
+				ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */,
 				EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */,
 				EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */,
 			);
@@ -534,11 +540,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDD32C3022655655003648B9 /* AppIcon-Default@3x.png in Resources */,
+				ED68686522657AE40027AF7D /* AppIcon-Dark@2x.png in Resources */,
 				EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */,
 				EDD32C2D226555EE003648B9 /* AppIcon-DarkMode@3x.png in Resources */,
 				EDD32C3222655689003648B9 /* AppIcon-Default@2x.png in Resources */,
 				EDD32C2E226555EE003648B9 /* AppIcon-DarkMode@2x.png in Resources */,
 				EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */,
+				ED68686422657AE40027AF7D /* AppIcon-Dark@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

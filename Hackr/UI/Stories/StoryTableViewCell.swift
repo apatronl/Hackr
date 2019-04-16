@@ -148,7 +148,7 @@ class StoryTableViewCell: UITableViewCell {
 
   private func getAuthorAndPointsLabelText() -> String {
     let points = story?.score ?? 0
-    return "\(Constants.authorEmoji) by \(story?.by ?? "\(Constants.unknownAuthor)") |"
+    return "\(Constants.authorEmoji) by \(story?.by ?? "\(Constants.unknownAuthor)") | "
       + "\(getQuantityString(for: points, singular: Constants.point, plural: Constants.points)) "
       + "\(Constants.pointsEmoji)"
   }

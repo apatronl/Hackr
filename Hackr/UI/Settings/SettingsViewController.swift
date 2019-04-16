@@ -13,11 +13,13 @@ final class SettingsViewController: UIViewController {
   // MARK: - Constants
 
   enum Constants {
-    static let defaultAppIcon = "AppIcon-Default"
-    static let darkModeAppIcon = "AppIcon-DarkMode"
+    static let defaultAppIconName = "AppIcon-Default"
+    static let darkAppIconName = "AppIcon-Dark"
     static let hackrSourceCodeUrl = URL(string: "https://github.com/apatronl/Hackr")
     static let appearanceTitle = "Appearance"
-    static let appearanceSettingNames = ["Dark Mode"]
+    static let darkMode = "Dark Mode"
+    static let darkAppIcon = "Dark App Icon"
+    static let appearanceSettingNames = [Constants.darkMode, Constants.darkAppIcon]
     static let sourcesSettingsNames = ["Source Code"]
     static let sections = 2
   }
@@ -26,6 +28,25 @@ final class SettingsViewController: UIViewController {
 
   private let tableView = UITableView(frame: .zero, style: .grouped)
   private var darkModeState: DarkModeState = .off
+
+  private let darkModeSwitch: UISwitch = {
+    let switchButton = UISwitch(frame: .zero)
+    switchButton.onTintColor = UIColor.hackerNewsOrange
+    switchButton.isOn = DarkModeController.getDarkModeState() == .on
+    switchButton.addTarget(self, action: #selector(darkModeSwitchTapped(_:)), for: .valueChanged)
+    return switchButton
+  }()
+
+  private let darkAppIconSwitch: UISwitch = {
+    let switchButton = UISwitch(frame: .zero)
+    switchButton.onTintColor = UIColor.hackerNewsOrange
+    if let appIconName = UIApplication.shared.alternateIconName,
+           appIconName == Constants.darkAppIconName {
+      switchButton.isOn = true
+    }
+    switchButton.addTarget(self, action: #selector(darkAppIconSwitchTapped(_:)), for: .valueChanged)
+    return switchButton
+  }()
 
   // MARK: - Life Cycle
 
@@ -51,14 +72,6 @@ final class SettingsViewController: UIViewController {
 
   // MARK: - Private
 
-  private func setUpDarkModeSwitch() -> UISwitch {
-    let switchButton = UISwitch(frame: .zero)
-    switchButton.onTintColor = UIColor.hackerNewsOrange
-    switchButton.isOn = DarkModeController.getDarkModeState() == .on
-    switchButton.addTarget(self, action: #selector(darkModeSwitchTapped(_:)), for: .valueChanged)
-    return switchButton
-  }
-
   private func setUpViewForDarkModeState(_ state: DarkModeState) {
     view.backgroundColor = state == .on ? UIColor.black : UIColor.white
     navigationController?.navigationBar.barStyle = state == .on ? .black : .default
@@ -74,12 +87,14 @@ final class SettingsViewController: UIViewController {
   @objc private func darkModeSwitchTapped(_ sender: UISwitch) {
     let state = sender.isOn ? DarkModeState.on : DarkModeState.off
     DarkModeController.setDarkModeState(state)
+  }
+
+  @objc private func darkAppIconSwitchTapped(_ sender: UISwitch) {
     guard UIApplication.shared.supportsAlternateIcons else { return }
-    let iconName = state == .on ? Constants.darkModeAppIcon : Constants.defaultAppIcon
+    let iconName = sender.isOn ? Constants.darkAppIconName : Constants.defaultAppIconName
     UIApplication.shared.setAlternateIconName(iconName) { (error) in
-      if let error = error {
-        print("App icon change failed: \(error.localizedDescription)")
-      }
+      guard let error = error else { return }
+      print("App icon change failed: \(error.localizedDescription)")
     }
   }
 }
@@ -132,13 +147,18 @@ extension SettingsViewController: UITableViewDataSource {
     let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
     cell.textLabel?.textColor = darkModeState == .on ? .white : .black
     cell.backgroundColor = darkModeState == .on ? UIColor.darkModeGray : .white
-    // NOTE: - If more rows are added to one of these sections, then we also need to check
-    // indexPath.row when creating the cell
     switch indexPath.section {
     case 0:
       cell.textLabel?.text = Constants.appearanceSettingNames[indexPath.row]
-      cell.accessoryView = setUpDarkModeSwitch()
       cell.selectionStyle = .none
+      switch indexPath.row {
+      case 0:
+        cell.accessoryView = darkModeSwitch
+      case 1:
+        cell.accessoryView = darkAppIconSwitch
+      default:
+        break
+      }
     case 1:
       cell.textLabel?.text = Constants.sourcesSettingsNames[indexPath.row]
       cell.accessoryType = .disclosureIndicator
