@@ -42,6 +42,10 @@
 		EDA4078821C706AF002B045B /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
 		EDA4078A21C7420D002B045B /* NewStoriesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4078921C7420D002B045B /* NewStoriesInterfaceController.swift */; };
 		EDA4078C21C74234002B045B /* BestStoriesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4078B21C74234002B045B /* BestStoriesInterfaceController.swift */; };
+		EDD32C2D226555EE003648B9 /* AppIcon-DarkMode@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */; };
+		EDD32C2E226555EE003648B9 /* AppIcon-DarkMode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */; };
+		EDD32C3022655655003648B9 /* AppIcon-Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C2F22655655003648B9 /* AppIcon-Default@3x.png */; };
+		EDD32C3222655689003648B9 /* AppIcon-Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C3122655689003648B9 /* AppIcon-Default@2x.png */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
 		EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */; };
@@ -134,6 +138,10 @@
 		EDA4077E21C70228002B045B /* StoryRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRowController.swift; sourceTree = "<group>"; };
 		EDA4078921C7420D002B045B /* NewStoriesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStoriesInterfaceController.swift; sourceTree = "<group>"; };
 		EDA4078B21C74234002B045B /* BestStoriesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestStoriesInterfaceController.swift; sourceTree = "<group>"; };
+		EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-DarkMode@3x.png"; sourceTree = "<group>"; };
+		EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-DarkMode@2x.png"; sourceTree = "<group>"; };
+		EDD32C2F22655655003648B9 /* AppIcon-Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@3x.png"; sourceTree = "<group>"; };
+		EDD32C3122655689003648B9 /* AppIcon-Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@2x.png"; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848D421A0BA1A0005CD69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -277,6 +285,33 @@
 			path = "Hackr Watch Extension";
 			sourceTree = "<group>";
 		};
+		EDD32C0422655360003648B9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EDD32C0622655375003648B9 /* App Icon Dark Mode */,
+				EDD32C0522655369003648B9 /* App Icon Default */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EDD32C0522655369003648B9 /* App Icon Default */ = {
+			isa = PBXGroup;
+			children = (
+				EDD32C3122655689003648B9 /* AppIcon-Default@2x.png */,
+				EDD32C2F22655655003648B9 /* AppIcon-Default@3x.png */,
+			);
+			path = "App Icon Default";
+			sourceTree = "<group>";
+		};
+		EDD32C0622655375003648B9 /* App Icon Dark Mode */ = {
+			isa = PBXGroup;
+			children = (
+				EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */,
+				EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */,
+			);
+			path = "App Icon Dark Mode";
+			sourceTree = "<group>";
+		};
 		EDD848C121A0BA190005CD69 = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +337,7 @@
 		EDD848CC21A0BA190005CD69 /* Hackr */ = {
 			isa = PBXGroup;
 			children = (
+				EDD32C0422655360003648B9 /* Assets */,
 				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
 				ED0AA9FA222E3234006397F8 /* Controller */,
 				ED07AB3C21A3B4FF000B5607 /* Extensions */,
@@ -497,7 +533,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDD32C3022655655003648B9 /* AppIcon-Default@3x.png in Resources */,
 				EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */,
+				EDD32C2D226555EE003648B9 /* AppIcon-DarkMode@3x.png in Resources */,
+				EDD32C3222655689003648B9 /* AppIcon-Default@2x.png in Resources */,
+				EDD32C2E226555EE003648B9 /* AppIcon-DarkMode@2x.png in Resources */,
 				EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -63,6 +63,7 @@ class HackerNewsService {
     let start = currentPage * self.maxStoriesToLoad
     let end = min((currentPage + 1) * self.maxStoriesToLoad - 1, ids.count - 1)
     if (start >= ids.count) {
+      completion([], nil)
       return
     }
     var stories = [HackerNewsStory]()

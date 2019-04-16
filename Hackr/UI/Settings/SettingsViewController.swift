@@ -13,6 +13,8 @@ final class SettingsViewController: UIViewController {
   // MARK: - Constants
 
   enum Constants {
+    static let defaultAppIcon = "AppIcon-Default"
+    static let darkModeAppIcon = "AppIcon-DarkMode"
     static let hackrSourceCodeUrl = URL(string: "https://github.com/apatronl/Hackr")
     static let appearanceTitle = "Appearance"
     static let appearanceSettingNames = ["Dark Mode"]
@@ -72,6 +74,13 @@ final class SettingsViewController: UIViewController {
   @objc private func darkModeSwitchTapped(_ sender: UISwitch) {
     let state = sender.isOn ? DarkModeState.on : DarkModeState.off
     DarkModeController.setDarkModeState(state)
+    guard UIApplication.shared.supportsAlternateIcons else { return }
+    let iconName = state == .on ? Constants.darkModeAppIcon : Constants.defaultAppIcon
+    UIApplication.shared.setAlternateIconName(iconName) { (error) in
+      if let error = error {
+        print("App icon change failed: \(error.localizedDescription)")
+      }
+    }
   }
 }
 
