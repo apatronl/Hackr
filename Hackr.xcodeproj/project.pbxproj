@@ -18,6 +18,8 @@
 		ED68686422657AE40027AF7D /* AppIcon-Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */; };
 		ED68686522657AE40027AF7D /* AppIcon-Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */; };
 		ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */; };
+		ED83E68D22697487006A5929 /* AppIcon-Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED83E68B22697487006A5929 /* AppIcon-Default@2x.png */; };
+		ED83E68E22697487006A5929 /* AppIcon-Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED83E68C22697487006A5929 /* AppIcon-Default@3x.png */; };
 		ED84BF7E2238740A002B8C3A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84BF7D2238740A002B8C3A /* MessageView.swift */; };
 		ED8D427421B6043600E3A130 /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
 		ED8D427621B77E5B00E3A130 /* UITableViewCell+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */; };
@@ -44,10 +46,6 @@
 		EDA4078821C706AF002B045B /* String+Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D427321B6043600E3A130 /* String+Quantity.swift */; };
 		EDA4078A21C7420D002B045B /* NewStoriesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4078921C7420D002B045B /* NewStoriesInterfaceController.swift */; };
 		EDA4078C21C74234002B045B /* BestStoriesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4078B21C74234002B045B /* BestStoriesInterfaceController.swift */; };
-		EDD32C2D226555EE003648B9 /* AppIcon-DarkMode@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */; };
-		EDD32C2E226555EE003648B9 /* AppIcon-DarkMode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */; };
-		EDD32C3022655655003648B9 /* AppIcon-Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C2F22655655003648B9 /* AppIcon-Default@3x.png */; };
-		EDD32C3222655689003648B9 /* AppIcon-Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD32C3122655689003648B9 /* AppIcon-Default@2x.png */; };
 		EDD848CE21A0BA190005CD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD848CD21A0BA190005CD69 /* AppDelegate.swift */; };
 		EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D421A0BA1A0005CD69 /* Assets.xcassets */; };
 		EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD848D621A0BA1A0005CD69 /* LaunchScreen.storyboard */; };
@@ -120,6 +118,8 @@
 		ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Dark@3x.png"; sourceTree = "<group>"; };
 		ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Dark@2x.png"; sourceTree = "<group>"; };
 		ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		ED83E68B22697487006A5929 /* AppIcon-Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@2x.png"; sourceTree = "<group>"; };
+		ED83E68C22697487006A5929 /* AppIcon-Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@3x.png"; sourceTree = "<group>"; };
 		ED84BF7D2238740A002B8C3A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		ED8D427321B6043600E3A130 /* String+Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Quantity.swift"; sourceTree = "<group>"; };
 		ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Hackr.swift"; sourceTree = "<group>"; };
@@ -142,10 +142,6 @@
 		EDA4077E21C70228002B045B /* StoryRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRowController.swift; sourceTree = "<group>"; };
 		EDA4078921C7420D002B045B /* NewStoriesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStoriesInterfaceController.swift; sourceTree = "<group>"; };
 		EDA4078B21C74234002B045B /* BestStoriesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestStoriesInterfaceController.swift; sourceTree = "<group>"; };
-		EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-DarkMode@3x.png"; sourceTree = "<group>"; };
-		EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-DarkMode@2x.png"; sourceTree = "<group>"; };
-		EDD32C2F22655655003648B9 /* AppIcon-Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@3x.png"; sourceTree = "<group>"; };
-		EDD32C3122655689003648B9 /* AppIcon-Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@2x.png"; sourceTree = "<group>"; };
 		EDD848CA21A0BA190005CD69 /* Hackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD848CD21A0BA190005CD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD848D421A0BA1A0005CD69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -301,8 +297,8 @@
 		EDD32C0522655369003648B9 /* App Icon Default */ = {
 			isa = PBXGroup;
 			children = (
-				EDD32C3122655689003648B9 /* AppIcon-Default@2x.png */,
-				EDD32C2F22655655003648B9 /* AppIcon-Default@3x.png */,
+				ED83E68B22697487006A5929 /* AppIcon-Default@2x.png */,
+				ED83E68C22697487006A5929 /* AppIcon-Default@3x.png */,
 			);
 			path = "App Icon Default";
 			sourceTree = "<group>";
@@ -312,8 +308,6 @@
 			children = (
 				ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */,
 				ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */,
-				EDD32C2C226555EE003648B9 /* AppIcon-DarkMode@2x.png */,
-				EDD32C2B226555EE003648B9 /* AppIcon-DarkMode@3x.png */,
 			);
 			path = "App Icon Dark Mode";
 			sourceTree = "<group>";
@@ -539,13 +533,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDD32C3022655655003648B9 /* AppIcon-Default@3x.png in Resources */,
+				ED83E68D22697487006A5929 /* AppIcon-Default@2x.png in Resources */,
 				ED68686522657AE40027AF7D /* AppIcon-Dark@2x.png in Resources */,
 				EDD848D821A0BA1A0005CD69 /* LaunchScreen.storyboard in Resources */,
-				EDD32C2D226555EE003648B9 /* AppIcon-DarkMode@3x.png in Resources */,
-				EDD32C3222655689003648B9 /* AppIcon-Default@2x.png in Resources */,
-				EDD32C2E226555EE003648B9 /* AppIcon-DarkMode@2x.png in Resources */,
 				EDD848D521A0BA1A0005CD69 /* Assets.xcassets in Resources */,
+				ED83E68E22697487006A5929 /* AppIcon-Default@3x.png in Resources */,
 				ED68686422657AE40027AF7D /* AppIcon-Dark@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
