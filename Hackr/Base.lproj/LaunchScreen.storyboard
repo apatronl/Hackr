@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HackrText" translatesAutoresizingMaskIntoConstraints="NO" id="hei-jm-mMo">
-                                <rect key="frame" x="97.5" y="318.5" width="180" height="50"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenText" translatesAutoresizingMaskIntoConstraints="NO" id="hwu-9y-MsR">
+                                <rect key="frame" x="88" y="292.5" width="199" height="102"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6wh-lv-Mww"/>
-                                    <constraint firstAttribute="width" constant="180" id="WB6-pP-ZGk"/>
+                                    <constraint firstAttribute="height" constant="102" id="ubf-64-QBo"/>
+                                    <constraint firstAttribute="width" constant="199" id="vnO-Lf-WOq"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.33725490196078434" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hei-jm-mMo" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Xbs-jG-7fZ"/>
-                            <constraint firstItem="hei-jm-mMo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tjz-NS-B8g"/>
+                            <constraint firstItem="hwu-9y-MsR" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="S3V-0p-OzL"/>
+                            <constraint firstItem="hwu-9y-MsR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uNR-j3-Ygy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HackrText" width="808" height="226"/>
+        <image name="LaunchScreenText" width="419" height="127"/>
     </resources>
 </document>
