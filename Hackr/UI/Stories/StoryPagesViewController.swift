@@ -74,7 +74,7 @@ final class StoryPagesViewController: UIViewController {
   }
 
   func indexOfViewController(_ viewController: StoriesViewController) -> Int {
-    return storyTypes.index(of: viewController.storyType) ?? NSNotFound
+    return storyTypes.firstIndex(of: viewController.storyType) ?? NSNotFound
   }
 
   private func setUpViewForDarkModeState(_ state: DarkModeState) {
