@@ -16,6 +16,9 @@ class StoryTableViewCell: UITableViewCell {
   
   enum Constants {
     static let authorEmoji = "👾"
+    static let comment = "comment"
+    static let comments = "comments"
+    static let commentsA11yHint = "Shows comments for this story"
     static let point = "point"
     static let points = "points"
     static let pointsEmoji = "🔥"
@@ -40,8 +43,10 @@ class StoryTableViewCell: UITableViewCell {
       commentsImageView.isAccessibilityElement = true
       let numOfComments = story?.descendants ?? 0
       commentsImageView.accessibilityLabel =
-          getQuantityString(for: numOfComments, singular: "comment", plural: "comments")
-      commentsImageView.accessibilityHint = "Shows comments for this story"
+          getQuantityString(for: numOfComments,
+                            singular: Constants.comment,
+                            plural: Constants.comments)
+      commentsImageView.accessibilityHint = Constants.commentsA11yHint
       commentsImageView.accessibilityTraits = .button
     }
   }
