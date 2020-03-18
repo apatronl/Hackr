@@ -1,5 +1,5 @@
 //
-//  HNStoryTableViewCell.swift
+//  StoryTableViewCell.swift
 //  Hackr
 //
 //  Created by Alejandrina Patron on 11/18/18.
@@ -48,17 +48,6 @@ class StoryTableViewCell: UITableViewCell {
                             plural: Constants.comments)
       commentsImageView.accessibilityHint = Constants.commentsA11yHint
       commentsImageView.accessibilityTraits = .button
-    }
-  }
-
-  var darkModeState: DarkModeState = .off {
-    didSet {
-      titleLabel.textColor = darkModeState == .on ? .white : .black
-      backgroundColor = darkModeState == .on ? UIColor.darkModeGray : .white
-      let bgColorView = UIView()
-      bgColorView.backgroundColor = darkModeState == .on ? .darkGray : .lightGray
-      selectedBackgroundView = bgColorView
-      selectionStyle = .default
     }
   }
 

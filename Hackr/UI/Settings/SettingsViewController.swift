@@ -17,9 +17,8 @@ final class SettingsViewController: UIViewController {
     static let darkAppIconName = "AppIcon-Dark"
     static let hackrSourceCodeUrl = URL(string: "https://github.com/apatronl/Hackr")
     static let appearanceTitle = "Appearance"
-    static let darkMode = "Dark Mode"
     static let darkAppIcon = "Dark App Icon"
-    static let appearanceSettingNames = [Constants.darkMode, Constants.darkAppIcon]
+    static let appearanceSettingNames = [Constants.darkAppIcon]
     static let sourcesSettingsNames = ["Source Code"]
     static let sections = 2
   }
@@ -27,15 +26,6 @@ final class SettingsViewController: UIViewController {
   // MARK: - Private Properties
 
   private let tableView = UITableView(frame: .zero, style: .grouped)
-  private var darkModeState: DarkModeState = .off
-
-  private let darkModeSwitch: UISwitch = {
-    let switchButton = UISwitch(frame: .zero)
-    switchButton.onTintColor = UIColor.hackerNewsOrange
-    switchButton.isOn = DarkModeController.getDarkModeState() == .on
-    switchButton.addTarget(self, action: #selector(darkModeSwitchTapped(_:)), for: .valueChanged)
-    return switchButton
-  }()
 
   private let darkAppIconSwitch: UISwitch = {
     let switchButton = UISwitch(frame: .zero)
@@ -52,9 +42,6 @@ final class SettingsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    DarkModeController.addListener(self)
-    darkModeState = DarkModeController.getDarkModeState()
-    setUpViewForDarkModeState(darkModeState)
     tableView.frame = view.bounds
     tableView.tableHeaderView =
       UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
@@ -72,21 +59,8 @@ final class SettingsViewController: UIViewController {
 
   // MARK: - Private
 
-  private func setUpViewForDarkModeState(_ state: DarkModeState) {
-    view.backgroundColor = state == .on ? UIColor.black : UIColor.white
-    navigationController?.navigationBar.barStyle = state == .on ? .black : .default
-    navigationController?.view.backgroundColor =
-      state == .on ? UIColor.darkModeGray : UIColor.white
-    tableView.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
-  }
-
   @objc private func doneButtonTapped() {
     dismiss(animated: true, completion: nil)
-  }
-
-  @objc private func darkModeSwitchTapped(_ sender: UISwitch) {
-    let state = sender.isOn ? DarkModeState.on : DarkModeState.off
-    DarkModeController.setDarkModeState(state)
   }
 
   @objc private func darkAppIconSwitchTapped(_ sender: UISwitch) {
@@ -145,16 +119,12 @@ extension SettingsViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-    cell.textLabel?.textColor = darkModeState == .on ? .white : .black
-    cell.backgroundColor = darkModeState == .on ? UIColor.darkModeGray : .white
     switch indexPath.section {
     case 0:
       cell.textLabel?.text = Constants.appearanceSettingNames[indexPath.row]
       cell.selectionStyle = .none
       switch indexPath.row {
       case 0:
-        cell.accessoryView = darkModeSwitch
-      case 1:
         cell.accessoryView = darkAppIconSwitch
       default:
         break
@@ -166,15 +136,5 @@ extension SettingsViewController: UITableViewDataSource {
       break
     }
     return cell
-  }
-}
-
-// MARK: - DarkModeDelegate
-
-extension SettingsViewController: DarkModeDelegate {
-  func darkModeStateDidChange(_ state: DarkModeState) {
-    darkModeState = state
-    tableView.reloadData()
-    setUpViewForDarkModeState(state)
   }
 }

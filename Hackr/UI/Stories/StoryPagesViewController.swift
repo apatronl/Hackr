@@ -33,8 +33,6 @@ final class StoryPagesViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    DarkModeController.addListener(self)
-    setUpViewForDarkModeState(DarkModeController.getDarkModeState())
     navigationItem.title = storyTypes[0].rawValue
 
     pageControl =
@@ -75,12 +73,6 @@ final class StoryPagesViewController: UIViewController {
 
   func indexOfViewController(_ viewController: StoriesViewController) -> Int {
     return storyTypes.firstIndex(of: viewController.storyType) ?? NSNotFound
-  }
-
-  private func setUpViewForDarkModeState(_ state: DarkModeState) {
-    view.backgroundColor = state == .on ? UIColor.black : UIColor.white
-    navigationController?.navigationBar.barStyle = state == .on ? .black : .default
-    navigationController?.view.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
   }
 
   // MARK: - Private
@@ -136,13 +128,5 @@ extension StoryPagesViewController: UIPageViewControllerDataSource {
     index += 1
     guard index != storyPages.count else { return nil }
     return storyPages[index]
-  }
-}
-
-// MARK: - DarkModeDelegate
-
-extension StoryPagesViewController: DarkModeDelegate {
-  func darkModeStateDidChange(_ state: DarkModeState) {
-    setUpViewForDarkModeState(state)
   }
 }

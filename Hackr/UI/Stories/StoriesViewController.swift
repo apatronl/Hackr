@@ -26,7 +26,6 @@ class StoriesViewController: UIViewController {
   private var searchQueryActive = false
   private var refresher = UIRefreshControl()
   private var hnService: HackerNewsService!
-  private var darkModeState: DarkModeState = .off
   private(set) var storyType: HackerNewsItemType
 
   private var spinner: UIActivityIndicatorView = {
@@ -50,9 +49,7 @@ class StoriesViewController: UIViewController {
   public init(for storyType: HackerNewsItemType) {
     self.storyType = storyType
     hnService = HackerNewsService(type: storyType, maxStoriesToLoad: 20)
-    darkModeState = DarkModeController.getDarkModeState()
     super.init(nibName: nil, bundle: nil)
-    DarkModeController.addListener(self)
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -62,7 +59,6 @@ class StoriesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    setUpViewForDarkModeState(darkModeState)
     storiesTable.tableFooterView = UIView(frame: CGRect.zero)
     storiesTable.dataSource = self
     storiesTable.delegate = self
@@ -102,12 +98,6 @@ class StoriesViewController: UIViewController {
   }
 
   // MARK: - Private
-
-  private func setUpViewForDarkModeState(_ state: DarkModeState) {
-    view.backgroundColor = state == .on ? UIColor.black : UIColor.white
-    storiesTable.backgroundColor = state == .on ? UIColor.darkModeGray : UIColor.white
-    storiesTable.reloadData()
-  }
 
   private func setupTableViewSpinner() {
     storiesTable.tableFooterView = UIView(frame: CGRect(x: 0,
@@ -159,7 +149,6 @@ extension StoriesViewController: UITableViewDataSource {
     if (!refresher.isRefreshing) {
       cell.story = searchQueryActive ? queriedStories[indexPath.row] : stories[indexPath.row]
     }
-    cell.darkModeState = darkModeState
     return cell
   }
 
@@ -229,15 +218,6 @@ extension StoriesViewController: StoryTableViewCellDelegate {
     guard let safariVC =
       safariViewForItem(at: url, defaultUrl: HackerNewsConstants.HOME_URL) else { return }
     present(safariVC, animated: true, completion: nil)
-  }
-}
-
-// MARK: DarkModeDelegate
-
-extension StoriesViewController: DarkModeDelegate {
-  func darkModeStateDidChange(_ state: DarkModeState) {
-    darkModeState = state
-    setUpViewForDarkModeState(state)
   }
 }
 
