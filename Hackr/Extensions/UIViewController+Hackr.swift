@@ -14,8 +14,6 @@ extension UIViewController {
     guard let url = url ?? defaultUrl else { return nil }
     let safariVC = SFSafariViewController(url: url)
     safariVC.preferredControlTintColor = UIColor.hackerNewsOrange
-    safariVC.preferredBarTintColor =
-      DarkModeController.getDarkModeState() == .on ? UIColor.darkModeGray : .white
     return safariVC
   }
 

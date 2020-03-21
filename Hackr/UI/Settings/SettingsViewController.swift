@@ -68,7 +68,9 @@ final class SettingsViewController: UIViewController {
     let iconName = sender.isOn ? Constants.darkAppIconName : Constants.defaultAppIconName
     UIApplication.shared.setAlternateIconName(iconName) { (error) in
       guard let error = error else { return }
+      #if DEBUG
       print("App icon change failed: \(error.localizedDescription)")
+      #endif
     }
   }
 }
