@@ -15,9 +15,12 @@ final class StoryPagesViewController: UIViewController {
 
   // MARK: - Private Properties
 
-  private var pagesViewController: UIPageViewController!
-  private var pageControl: UIPageControl!
+  private var hackrTabBarController: UITabBarController!
   private let storyTypes = HackerNewsItemType.allCases
+  private let storyTypeToTitle: [HackerNewsItemType: String] =
+    [.topStories: "Top", .newStories: "New", .bestStories: "Best"]
+  private let storyTypeToIcon: [HackerNewsItemType: String] =
+    [.topStories: "topStories", .newStories: "newStories", .bestStories: "bestStories"]
   private var storyPages: [StoriesViewController] = []
   private var lastPendingViewControllerIndex = 0
   private var currentViewControllerIndex = 0
@@ -25,7 +28,6 @@ final class StoryPagesViewController: UIViewController {
   private var searchController: UISearchController = {
     let controller = UISearchController(searchResultsController: nil)
     controller.searchBar.tintColor = UIColor.hackerNewsOrange
-    controller.dimsBackgroundDuringPresentation = false
     return controller
   }()
 
@@ -35,14 +37,6 @@ final class StoryPagesViewController: UIViewController {
     super.viewDidLoad()
     navigationItem.title = storyTypes[0].rawValue
 
-    pageControl =
-      UIPageControl(frame: CGRect(x: 35, y: (navigationController?.navigationBar.frame.height)! / 2,
-                    width: 0, height: 0))
-    pageControl.numberOfPages = 3
-    pageControl.pageIndicatorTintColor = UIColor.lightGray
-    pageControl.currentPageIndicatorTintColor = UIColor.hackerNewsOrange
-    navigationController?.navigationBar.addSubview(pageControl)
-
     let settingsButton = UIBarButtonItem(image: Constants.settingsIcon,
                                          style: .plain,
                                          target: self,
@@ -50,29 +44,36 @@ final class StoryPagesViewController: UIViewController {
     settingsButton.tintColor = UIColor.hackerNewsOrange
     navigationItem.rightBarButtonItem = settingsButton
 
-    pagesViewController = UIPageViewController(transitionStyle: .scroll,
-                                               navigationOrientation: .horizontal,
-                                               options: nil)
-
-    for storyType in storyTypes {
-      storyPages.append(StoriesViewController(for: storyType))
-    }
-    pagesViewController.setViewControllers([storyPages[currentViewControllerIndex]],
-                                           direction: .forward, animated: true, completion: nil)
-    pagesViewController.dataSource = self
-    pagesViewController.delegate = self
-
-    addChild(pagesViewController)
-    view.addSubview(pagesViewController.view)
-
 //    navigationItem.hidesSearchBarWhenScrolling = false
 //    searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
 //    storyPages[currentViewControllerIndex].searchController = searchController
 //    navigationItem.searchController = searchController
-  }
 
-  func indexOfViewController(_ viewController: StoriesViewController) -> Int {
-    return storyTypes.firstIndex(of: viewController.storyType) ?? NSNotFound
+    var viewControllers: [UIViewController] = []
+    
+    // Hacker News Stories
+    // Order: New, Top, Best
+    for i in 0...storyTypes.count - 1 {
+      let storyType = storyTypes[i]
+      let storiesVC = StoriesViewController(for: storyType)
+      let tabBarIcon = UIImage(named: storyTypeToIcon[storyType]!)
+      storiesVC.tabBarItem =
+        UITabBarItem(title: storyTypeToTitle[storyType], image: tabBarIcon, tag: i)
+      viewControllers.append(storiesVC)
+    }
+    
+    // Saved Stories
+    let savedStoriesVC = SavedStoriesViewController()
+    savedStoriesVC.tabBarItem =
+      UITabBarItem(title: "Saved", image: UIImage(named: "savedStories"), tag: 3)
+    viewControllers.append(savedStoriesVC)
+    
+    hackrTabBarController = UITabBarController()
+    hackrTabBarController.delegate = self
+    hackrTabBarController.viewControllers = viewControllers
+    hackrTabBarController.tabBar.tintColor = UIColor.hackerNewsOrange
+    addChild(hackrTabBarController)
+    view.addSubview(hackrTabBarController.view)
   }
 
   // MARK: - Private
@@ -84,49 +85,16 @@ final class StoryPagesViewController: UIViewController {
   }
 }
 
-// MARK: - UIPageViewControllerDelegate
+// MARK: - UITabBarControllerDelegate
 
-extension StoryPagesViewController: UIPageViewControllerDelegate {
-  func pageViewController(_ pageViewController: UIPageViewController,
-                          willTransitionTo pendingViewControllers: [UIViewController]) {
-    if let vc = pendingViewControllers[0] as? StoriesViewController {
-      lastPendingViewControllerIndex = indexOfViewController(vc)
+extension StoryPagesViewController: UITabBarControllerDelegate {
+  func tabBarController(
+    _ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    let selectedIndex = tabBarController.selectedIndex
+    if selectedIndex == 3 {
+      navigationItem.title = "Saved Stories"
+      return
     }
-  }
-
-  func pageViewController(_ pageViewController: UIPageViewController,
-                          didFinishAnimating finished: Bool,
-                          previousViewControllers: [UIViewController],
-                          transitionCompleted completed: Bool) {
-    if completed {
-      currentViewControllerIndex = lastPendingViewControllerIndex
-      navigationItem.title = storyTypes[currentViewControllerIndex].rawValue
-      pageControl.currentPage = currentViewControllerIndex
-//      searchController.searchResultsUpdater = storyPages[currentViewControllerIndex]
-//      storyPages[currentViewControllerIndex].searchController = searchController
-    }
-  }
-}
-
-// MARK: - UIPageViewControllerDataSource
-
-extension StoryPagesViewController: UIPageViewControllerDataSource {
-  func pageViewController(
-      _ pageViewController: UIPageViewController,
-    viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    var index = indexOfViewController(viewController as! StoriesViewController)
-    guard index != 0 && index != NSNotFound else { return nil }
-    index -= 1
-    return storyPages[index]
-  }
-
-  func pageViewController(
-      _ pageViewController: UIPageViewController,
-      viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    var index = indexOfViewController(viewController as! StoriesViewController)
-    guard index != NSNotFound else { return nil }
-    index += 1
-    guard index != storyPages.count else { return nil }
-    return storyPages[index]
+    navigationItem.title = storyTypes[tabBarController.selectedIndex].rawValue
   }
 }

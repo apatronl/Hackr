@@ -16,6 +16,9 @@
 		ED3C851F21ACC180004299F4 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C851E21ACC180004299F4 /* AsyncOperation.swift */; };
 		ED68686422657AE40027AF7D /* AppIcon-Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */; };
 		ED68686522657AE40027AF7D /* AppIcon-Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */; };
+		ED779C9D24272EA0003688B4 /* SavedStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED779C9C24272EA0003688B4 /* SavedStoriesViewController.swift */; };
+		ED779CA024273583003688B4 /* UserDefaults+Hackr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED779C9F24273583003688B4 /* UserDefaults+Hackr.swift */; };
+		ED779CA3242735C8003688B4 /* SavedStoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED779CA2242735C8003688B4 /* SavedStoriesController.swift */; };
 		ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */; };
 		ED83E68D22697487006A5929 /* AppIcon-Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED83E68B22697487006A5929 /* AppIcon-Default@2x.png */; };
 		ED83E68E22697487006A5929 /* AppIcon-Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED83E68C22697487006A5929 /* AppIcon-Default@3x.png */; };
@@ -115,6 +118,9 @@
 		ED3C851E21ACC180004299F4 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		ED68686222657AE40027AF7D /* AppIcon-Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Dark@3x.png"; sourceTree = "<group>"; };
 		ED68686322657AE40027AF7D /* AppIcon-Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Dark@2x.png"; sourceTree = "<group>"; };
+		ED779C9C24272EA0003688B4 /* SavedStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStoriesViewController.swift; sourceTree = "<group>"; };
+		ED779C9F24273583003688B4 /* UserDefaults+Hackr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Hackr.swift"; sourceTree = "<group>"; };
+		ED779CA2242735C8003688B4 /* SavedStoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStoriesController.swift; sourceTree = "<group>"; };
 		ED7EADFC222E221E00BEFE99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ED83E68B22697487006A5929 /* AppIcon-Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@2x.png"; sourceTree = "<group>"; };
 		ED83E68C22697487006A5929 /* AppIcon-Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Default@3x.png"; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 				ED8D427521B77E5B00E3A130 /* UITableViewCell+Hackr.swift */,
 				ED07AB3E21A3B659000B5607 /* UIView+Hackr.swift */,
 				ED07AB4021A3C485000B5607 /* UIViewController+Hackr.swift */,
+				ED779C9F24273583003688B4 /* UserDefaults+Hackr.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 				ED8D42BA21BF603900E3A130 /* StoryPagesViewController.swift */,
 				EDD848EF21A1E1CE0005CD69 /* StoryTableViewCell.swift */,
 				ED8D42BC21BF658300E3A130 /* StoriesViewController.swift */,
+				ED779C9C24272EA0003688B4 /* SavedStoriesViewController.swift */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -223,6 +231,30 @@
 				ED3C851E21ACC180004299F4 /* AsyncOperation.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		ED779C9B2426DF36003688B4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				ED0AA9F6222E2C5E006397F8 /* HackrNavigationController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ED779C9E24273285003688B4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ED779CA1242735AB003688B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED779CA2242735C8003688B4 /* SavedStoriesController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		ED8D427221B6040800E3A130 /* Util */ = {
@@ -327,8 +359,9 @@
 		EDD848CC21A0BA190005CD69 /* Hackr */ = {
 			isa = PBXGroup;
 			children = (
+				ED779C9E24273285003688B4 /* App */,
 				EDD32C0422655360003648B9 /* Assets */,
-				EDD848CD21A0BA190005CD69 /* AppDelegate.swift */,
+				ED779CA1242735AB003688B4 /* Controllers */,
 				ED07AB3C21A3B4FF000B5607 /* Extensions */,
 				EDD848E021A0BAB90005CD69 /* HackerNews */,
 				EDD848DF21A0BAB40005CD69 /* Model */,
@@ -365,10 +398,10 @@
 		EDD848E721A0CF600005CD69 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ED779C9B2426DF36003688B4 /* App */,
 				ED1E6B942239CA2D004B4865 /* Message */,
 				ED0AA9F9222E2F78006397F8 /* Settings */,
 				ED0AA9F8222E2F6E006397F8 /* Stories */,
-				ED0AA9F6222E2C5E006397F8 /* HackrNavigationController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -576,9 +609,11 @@
 				ED8D42BB21BF603900E3A130 /* StoryPagesViewController.swift in Sources */,
 				EDD848EC21A114FE0005CD69 /* UIColor+Hackr.swift in Sources */,
 				ED7EADFD222E221F00BEFE99 /* SettingsViewController.swift in Sources */,
+				ED779CA024273583003688B4 /* UserDefaults+Hackr.swift in Sources */,
 				ED84BF7E2238740A002B8C3A /* MessageView.swift in Sources */,
 				ED07AB4421A4DE47000B5607 /* UILabel+Hackr.swift in Sources */,
 				ED0AA9F7222E2C5E006397F8 /* HackrNavigationController.swift in Sources */,
+				ED779C9D24272EA0003688B4 /* SavedStoriesViewController.swift in Sources */,
 				ED8D427621B77E5B00E3A130 /* UITableViewCell+Hackr.swift in Sources */,
 				EDD848E421A0BAD20005CD69 /* HackerNewsParser.swift in Sources */,
 				ED07AB4121A3C485000B5607 /* UIViewController+Hackr.swift in Sources */,
@@ -591,6 +626,7 @@
 				EDD848E221A0BAC80005CD69 /* HackerNewsService.swift in Sources */,
 				ED07AB3F21A3B659000B5607 /* UIView+Hackr.swift in Sources */,
 				EDD848F021A1E1CE0005CD69 /* StoryTableViewCell.swift in Sources */,
+				ED779CA3242735C8003688B4 /* SavedStoriesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

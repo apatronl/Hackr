@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct HackerNewsStory {
+struct HackerNewsStory: Codable {
 
   let by: String?
   let descendants: Int?
-  let id: String?
+  let id: String!
   let kids: [String]?
   let score: Int?
   let time: Date?
@@ -22,7 +22,7 @@ struct HackerNewsStory {
   init(json: [String: Any]) {
     by = json[HackerNewsItemFieldKeys.by] as? String ?? ""
     descendants = json[HackerNewsItemFieldKeys.descendants] as? Int ?? 0
-    id = "\(json[HackerNewsItemFieldKeys.id] ?? "1")"
+    id = "\(json[HackerNewsItemFieldKeys.id]!)"
     kids = json[HackerNewsItemFieldKeys.kids] as? [String] ?? []
     score = json[HackerNewsItemFieldKeys.score] as? Int ?? 0
     if let timeInterval = json[HackerNewsItemFieldKeys.time] as? TimeInterval {
@@ -40,4 +40,10 @@ struct HackerNewsStory {
     }
   }
     
+}
+
+extension HackerNewsStory: Equatable {
+  static func == (lhs: HackerNewsStory, rhs: HackerNewsStory) -> Bool {
+    return lhs.id == rhs.id && lhs.title == rhs.title
+  }
 }

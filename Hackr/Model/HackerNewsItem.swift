@@ -33,7 +33,7 @@ enum HackerNewsItemFieldKeys {
 /// Hacker News API request types.
 ///
 enum HackerNewsItemType: String, CaseIterable {
-  case topStories = "Top Stories"
   case newStories = "New Stories"
+  case topStories = "Top Stories"
   case bestStories = "Best Stories"
 }

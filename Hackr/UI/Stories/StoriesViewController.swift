@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class StoriesViewController: UIViewController {
+final class StoriesViewController: UIViewController {
 
   enum Constants {
     static let tableFooterViewHeight: CGFloat = 50.0
@@ -53,7 +53,7 @@ class StoriesViewController: UIViewController {
   }
 
   required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
+    fatalError("init(coder:) has not been implemented")
   }
 
   override func viewDidLoad() {
@@ -130,7 +130,18 @@ class StoriesViewController: UIViewController {
 
 // MARK: UITableViewDelegate
 
-extension StoriesViewController: UITableViewDelegate {}
+extension StoriesViewController: UITableViewDelegate {
+  func tableView(
+    _ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+  ) -> UISwipeActionsConfiguration? {
+    let saveStoryAction = UIContextualAction(style: .normal, title: "Save", handler: {
+      action, view, completionHandler in
+      SavedStoriesController.saveStory(self.stories[indexPath.row])
+      completionHandler(true)
+    })
+    return UISwipeActionsConfiguration(actions: [saveStoryAction])
+  }
+}
 
 // MARK: UITableViewDataSource
 
